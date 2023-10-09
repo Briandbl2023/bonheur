@@ -21,7 +21,7 @@ if option == 'Présentation':
     df = pd.read_excel(github_url)
 
     # Maintenant, df contient les données du fichier Excel en tant que DataFrame
-    print(df.head())  # Affiche les premières lignes du DataFrame
+    st.write(df.head())  # Affiche les premières lignes du DataFrame
 
 
 elif option == 'Quelques visualisations':
