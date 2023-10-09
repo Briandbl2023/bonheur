@@ -164,6 +164,11 @@ elif option == 'Modélisation':
                 # Calcul des métriques
                 mae = mean_absolute_error(y_test, y_pred)
                 rmse = mean_squared_error(y_test, y_pred, squared=False)
+                
+                # Affichage des résultats
+                st.write(f"Modèle: {model_name}")
+                st.write(f"MAE: {mae}")
+                st.write(f"RMSE: {rmse}")
             elif model =='linear' or model == 'ridge' or model == 'lasso':
                 model.fit(X_trainl, y_trainl)
                 y_predl = model.predict(X_testl)
@@ -171,11 +176,10 @@ elif option == 'Modélisation':
                 # Calcul des métriques
                 mae = mean_absolute_error(y_testl, y_predl)
                 rmse = mean_squared_error(y_testl, y_predl, squared=False)
-            
-            # Affichage des résultats
-            st.write(f"Modèle: {model_name}")
-            st.write(f"MAE: {mae}")
-            st.write(f"RMSE: {rmse}")
+                # Affichage des résultats
+                st.write(f"Modèle: {model_name}")
+                st.write(f"MAE: {mae}")
+                st.write(f"RMSE: {rmse}")
 
 
 
