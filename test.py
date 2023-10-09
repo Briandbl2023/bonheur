@@ -156,7 +156,7 @@ elif option == 'Modélisation':
 
     # Entraînement du modèle sélectionné    
     for model_name, model in models:
-        st.write(model)
+        st.write(model_name)
         if model_name == selected_model:
             if model =='tree' or model=='random':
                 model.fit(X_train, y_train)
