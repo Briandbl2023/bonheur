@@ -237,7 +237,7 @@ elif option == 'Modélisation':
 
     # Entraînement du modèle sélectionné    
     for model_name, model in models:
-        #st.header(model_name)
+        st.header(selected_model)
         if model_name == selected_model:
             if model_name =='Arbre de décision' or model_name=='Random Forest':
                 model.fit(X_train, y_train)
