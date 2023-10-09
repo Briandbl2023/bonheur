@@ -247,7 +247,7 @@ elif option == 'Modélisation':
                 mae = mean_absolute_error(y_test, y_pred)
                 rmse = mean_squared_error(y_test, y_pred, squared=False)
                 # Affichage des résultats
-                st.write(f"Modèle: {model_name}")
+                #st.write(f"Modèle: {model_name}")
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
                 st.header("Prédictions 2021") 
@@ -280,7 +280,7 @@ elif option == 'Modélisation':
                 mae = mean_absolute_error(y_testl, y_predl)
                 rmse = mean_squared_error(y_testl, y_predl, squared=False)
                 # Affichage des résultats
-                st.write(f"Modèle: {model_name}")
+                #st.write(f"Modèle: {model_name}")
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
                 st.header("Prédictions 2021") 
@@ -314,7 +314,7 @@ elif option == 'Modélisation':
                 mae = mean_absolute_error(y_tests, y_preds)
                 rmse = mean_squared_error(y_tests, y_preds, squared=False)
                 # Affichage des résultats
-                st.write(f"Modèle: {model_name}")
+                #st.write(f"Modèle: {model_name}")
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
                 st.header("Prédictions 2021") 
@@ -348,7 +348,7 @@ elif option == 'Modélisation':
                 mae = mean_absolute_error(y_testk, y_predk)
                 rmse = mean_squared_error(y_testk, y_predk, squared=False)
                 # Affichage des résultats
-                st.write(f"Modèle: {model_name}")
+                #st.write(f"Modèle: {model_name}")
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
                 st.header("Prédictions 2021") 
