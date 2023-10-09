@@ -230,8 +230,7 @@ elif option == 'Modélisation':
     ('Ridge', ridge),
     ('Lasso', lasso),
     ('KNN', knn),
-    ('SVR', svr),
-    ('BOOST', boost)
+    ('SVR', svr)
     ]
 
     # Barre latérale pour choisir le modèle
