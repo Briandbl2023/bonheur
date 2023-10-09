@@ -28,6 +28,8 @@ df3['Regional indicator'] = df1['Regional indicator']
 df4 = df.merge(df3, on='Country name')
 df5 = df4.groupby(['Country name'])['Life Ladder'].mean().to_frame().reset_index()
 df5 = df5.sort_values(by='Life Ladder', ascending = False)
+
+# Modèles Ensemble : 
 df_ensemble = df4.dropna(axis = 0, how = "any")
 df_ensemble = df_ensemble.sort_values(by = "year", ascending = False)
 df_ensemble = df_ensemble.drop("year", axis = 1)
@@ -55,6 +57,40 @@ region_transformer = Pipeline(steps=[('onehot', OneHotEncoder())])
 
 # Combiner les prétraitements numériques et catégoriels
 preprocessor = ColumnTransformer(transformers=[('target', pays_transformer, pays_cols),('hotencoder', region_transformer, region_cols),('num', numeric_transformer, numeric_cols)])
+
+# Modèles Lineaires : 
+df_lineaire = df4.sort_values(by = "year", ascending = False)
+df_lineaire = df_lineaire.drop("year", axis = 1)
+
+# Division des données en ensembles d'entraînement et de test
+yl = df_lineaire ['Life Ladder']
+Xl = df_lineaire.drop(["Life Ladder"], axis = 1)
+X_trainl, X_testl, y_trainl, y_testl = train_test_split(Xl, yl, test_size=0.3, random_state = 42)
+
+
+# Prétraitement des colonnes numériques
+numeric_transformerl = Pipeline(steps=[
+    ('imputer', SimpleImputer(strategy='median'))
+])
+
+# Prétraitement des colonnes catégorielles
+pays_transformerl = Pipeline(steps=[
+    ('targetencoder', TargetEncoder())
+])
+
+# Prétraitement des colonnes catégorielles
+region_transformerl = Pipeline(steps=[
+    ('onehot', OneHotEncoder())
+])
+
+# Combiner les prétraitements numériques et catégoriels
+preprocessorl = ColumnTransformer(
+    transformers=[
+        ('target', pays_transformerl, pays_cols),
+        ('hotencoder', region_transformerl, region_cols),
+        ('num', numeric_transformerl, numeric_cols)
+    ])
+
 
 # Maintenant, df contient les données du fichier Excel en tant que DataFrame
 
@@ -100,12 +136,16 @@ elif option == 'Modélisation':
     tree = make_pipeline(preprocessor, DecisionTreeRegressor(random_state=42, max_depth=6))
     random = make_pipeline(preprocessor, RandomForestRegressor(random_state=42, max_features=5))
     adaboost = make_pipeline(preprocessor, AdaBoostRegressor(RandomForestRegressor(random_state=42, max_features=5, min_samples_split=2, n_estimators=300)))
-
+    linear = make_pipeline(preprocessorl, LinearRegression())
+    ridge = make_pipeline(preprocessorl, Ridge(alpha = 0.9 )) #corrélation entre les variables qui ne necessitent pas de revoir le poids des variables
+    lasso = make_pipeline(preprocessorl, Lasso(alpha = 0.1)) #avec un alpha a 0.1, le modèle ressemble à une régression linéaire standard ==> inutile car pas de grosses corélations entre les variables et pas de nécessité de mettre à 0 certaines variables
     # Liste des modèles à entraîner
     models = [
     ('Arbre de décision', tree),
     ('Random Forest', random),
-    ('Adaboost', adaboost)
+    ('Linear Regression', linear),
+    ('Ridge', ridge),
+    ('Lasso', lasso)
     ]
 
     # Barre latérale pour choisir le modèle
@@ -114,13 +154,21 @@ elif option == 'Modélisation':
     # Entraînement du modèle sélectionné    
     for model_name, model in models:
         if model_name == selected_model:
-            model.fit(X_train, y_train)
-            y_pred = model.predict(X_test)
+            if model =='tree' ∥ model=='random':
+                model.fit(X_train, y_train)
+                y_pred = model.predict(X_test)
 
-            # Calcul des métriques
-            mae = mean_absolute_error(y_test, y_pred)
-            rmse = mean_squared_error(y_test, y_pred, squared=False)
+                # Calcul des métriques
+                mae = mean_absolute_error(y_test, y_pred)
+                rmse = mean_squared_error(y_test, y_pred, squared=False)
+            else model =='linear' ∥ model == 'ridge' ∥ model == 'lasso':
+                model.fit(X_trainl, y_trainl)
+                y_predl = model.predict(X_testl)
 
+                # Calcul des métriques
+                mae = mean_absolute_error(y_testl, y_predl)
+                rmse = mean_squared_error(y_testl, y_predl, squared=False)
+            
             # Affichage des résultats
             st.write(f"Modèle: {model_name}")
             st.write(f"MAE: {mae}")
