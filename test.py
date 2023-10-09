@@ -45,13 +45,13 @@ elif option == 'Quelques visualisations':
     plt.figure(figsize=(10, 6))
     p = sns.barplot(y=df5['Country name'].head(10), x=df5['Life Ladder'].head(10))
     p.set_title("Top 10 des pays les plus heureux")
-
     # Afficher le graphique dans Streamlit
     st.pyplot(plt)
     plt.figure(figsize=(10, 6))
     p= sns.barplot(y=df5['Country name'].tail(10), x=df5['Life Ladder'].tail(10))
     p.set_title("Top 10 des pays les plus malheureux");
-
+    st.pyplot(plt)
+    
 elif option == 'Pre-processing':
     st.header("Pre-Processing")
     st.write("Page pre-processing.")
