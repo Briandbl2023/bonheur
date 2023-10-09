@@ -157,7 +157,7 @@ elif option == 'Modélisation':
     # Entraînement du modèle sélectionné    
     for model_name, model in models:
         if model_name == selected_model:
-            if model =='tree' or model=='random':
+            if model =='tree' ∥ model=='random': #if model =='tree' or model=='random':
                 model.fit(X_train, y_train)
                 y_pred = model.predict(X_test)
 
