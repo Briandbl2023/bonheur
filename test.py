@@ -3,8 +3,8 @@ import streamlit as st
 # Titre de l'application
 st.title("Application Streamlit avec Barre Latérale")
 
-# Barre latérale avec 4 éléments
-option = st.sidebar.selectbox(
+# Barre latérale avec des options cliquables
+option = st.sidebar.radio(
     'Sélectionnez une option',
     ('Accueil', 'Page 1', 'Page 2', 'À propos de nous')
 )
