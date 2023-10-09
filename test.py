@@ -154,14 +154,14 @@ elif option == 'Modélisation':
     # Entraînement du modèle sélectionné    
     for model_name, model in models:
         if model_name == selected_model:
-            if model =='tree' ∥ model=='random':
+            if model =='tree' or model=='random':
                 model.fit(X_train, y_train)
                 y_pred = model.predict(X_test)
 
                 # Calcul des métriques
                 mae = mean_absolute_error(y_test, y_pred)
                 rmse = mean_squared_error(y_test, y_pred, squared=False)
-            else model =='linear' ∥ model == 'ridge' ∥ model == 'lasso':
+            else model =='linear' or model == 'ridge' or model == 'lasso':
                 model.fit(X_trainl, y_trainl)
                 y_predl = model.predict(X_testl)
 
