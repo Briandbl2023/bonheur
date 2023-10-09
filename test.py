@@ -33,6 +33,8 @@ df5 = df4.groupby(['Country name'])['Life Ladder'].mean().to_frame().reset_index
 df5 = df5.sort_values(by='Life Ladder', ascending = False)
 
 # Modèles Ensemble : 
+df2021 = df4[df4['year']==2021]
+df4 = df4[df4['year']!=2021]
 df_ensemble = df4.dropna(axis = 0, how = "any")
 df_ensemble = df_ensemble.sort_values(by = "year", ascending = False)
 df_ensemble = df_ensemble.drop("year", axis = 1)
