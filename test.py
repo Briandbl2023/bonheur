@@ -9,6 +9,9 @@ from sklearn.pipeline import make_pipeline
 from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestRegressor, AdaBoostRegressor
 from sklearn.tree import DecisionTreeRegressor
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.svm import SVR
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.preprocessing import TargetEncoder, OneHotEncoder
 from sklearn.compose import ColumnTransformer
