@@ -3,9 +3,9 @@ import streamlit as st
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-import scikit-learn
+import sklearn
 from sklearn.pipeline import make_pipeline
-from scikit-learn.ensemble import DecisionTreeRegressor, RandomForestRegressor, AdaBoostRegressor
+from sklearn.ensemble import DecisionTreeRegressor, RandomForestRegressor, AdaBoostRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.preprocessing import TargetEncoder, OneHotEncoder
 from sklearn.compose import ColumnTransformer
