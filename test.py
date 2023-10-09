@@ -4,7 +4,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.pipeline import make_pipeline
-from sklearn.ensemble import DecisionTreeRegressor, RandomForestRegressor, AdaBoostRegressor
+from scikit-learn.ensemble import DecisionTreeRegressor, RandomForestRegressor, AdaBoostRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.preprocessing import TargetEncoder, OneHotEncoder
 from sklearn.compose import ColumnTransformer
