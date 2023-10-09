@@ -1,29 +1,29 @@
 import streamlit as st
 
 # Titre de l'application
-st.title("Application Streamlit avec Barre Latérale")
+st.title("Projet Bonheur")
 
 # Barre latérale avec des options cliquables
 option = st.sidebar.radio(
     'Sélectionnez une option',
-    ('Accueil', 'Page 1', 'Page 2', 'À propos de nous')
+    ('Présentation', 'Quelques visualisations', 'Pre-processing', 'Modélisation')
 )
 
 # Contenu en fonction de l'option sélectionnée
-if option == 'Accueil':
-    st.header("Bienvenue sur la page d'accueil")
-    st.write("C'est la page principale de notre application.")
+if option == 'Présentation':
+    st.header("Présentation du projet")
+    st.write("C'est la page de présentation du projet.")
 
-elif option == 'Page 1':
-    st.header("Page 1")
-    st.write("Contenu de la première page.")
+elif option == 'Quelques visualisations':
+    st.header("Quelques visualisations du projet")
+    st.write("Contenu de la présentation du projet.")
 
-elif option == 'Page 2':
-    st.header("Page 2")
-    st.write("Contenu de la deuxième page.")
+elif option == 'Pre-processing':
+    st.header("Pre-Processing")
+    st.write("Page pre-processing.")
 
-elif option == 'À propos de nous':
-    st.header("À propos de nous")
-    st.write("Informations sur notre entreprise ou équipe.")
+elif option == 'Modélisation':
+    st.header("Modélisation")
+    st.write("Test de modélisation.")
 
 # Pour exécuter l'application : streamlit run app.py
