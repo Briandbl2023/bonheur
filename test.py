@@ -48,6 +48,9 @@ elif option == 'Quelques visualisations':
 
     # Afficher le graphique dans Streamlit
     st.pyplot(plt)
+    plt.figure(figsize=(10, 6))
+    p= sns.barplot(y=df5['Country name'].tail(10), x=df5['Life Ladder'].tail(10))
+    p.set_title("Top 10 des pays les plus malheureux");
 
 elif option == 'Pre-processing':
     st.header("Pre-Processing")
