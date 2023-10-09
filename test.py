@@ -161,7 +161,7 @@ elif option == 'Modélisation':
                 # Calcul des métriques
                 mae = mean_absolute_error(y_test, y_pred)
                 rmse = mean_squared_error(y_test, y_pred, squared=False)
-            else model =='linear' or model == 'ridge' or model == 'lasso':
+            elif model =='linear' or model == 'ridge' or model == 'lasso':
                 model.fit(X_trainl, y_trainl)
                 y_predl = model.predict(X_testl)
 
