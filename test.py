@@ -1,5 +1,5 @@
 import streamlit as st
-
+!pip install xlrd
 # Titre de l'application
 st.title("Projet Bonheur")
 
