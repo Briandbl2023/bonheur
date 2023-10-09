@@ -1,7 +1,6 @@
 import streamlit as st
 # Titre de l'application
 import pandas as pd
-import matplotlib.pyplot as plt
 import seaborn as sns
 
 # URL du fichier Excel sur GitHub
