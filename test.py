@@ -35,11 +35,21 @@ df5 = df5.sort_values(by='Life Ladder', ascending = False)
 
 # Modèles Ensemble : 
 df2021 = df4[df4['year']==2021]
+# Séparation de la variable cible des fonctionnalités
+y_2021 = df2021['Life Ladder']
+X_2021 = df2021.drop(columns=['Life Ladder'])
 df4 = df4[df4['year']!=2021]
 df_ensemble = df4.dropna(axis = 0, how = "any")
 df_ensemble = df_ensemble.sort_values(by = "year", ascending = False)
 df_ensemble = df_ensemble.drop("year", axis = 1)
 
+def rmse_revu(y_true, y_pred, threshold = 0.3):
+  errors = np.abs(y_true - y_pred)
+  squared_errors = np.where(errors > threshold, errors**2 , 0)
+  mean_squared_error = np.mean(squared_errors)
+  final_score = np.sqrt(mean_squared_error)
+  return final_score
+    
 # Division des données en ensembles d'entraînement et de test
 y = df_ensemble ['Life Ladder']
 X = df_ensemble.drop(["Life Ladder"], axis = 1)
@@ -172,7 +182,17 @@ elif option == 'Modélisation':
                 st.write(f"Modèle: {model_name}")
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
-            
+                st.header("Prédictions 2021") 
+                y_pred_2021 = model.predict(X_2021)
+                # Calcul des métriques
+                mae = mean_absolute_error(y_pred_2021, y_2021)
+                rmse = mean_squared_error(y_pred_2021, y_2021, squared=False)
+                RMSE_REVU = rmse_revu(y_pred_2021, y_2021)
+                
+                st.write(f"MAE: {mae}")
+                st.write(f"RMSE: {rmse}")
+                st.write(f"RMSE_REVU: {RMSE_REVU}")
+
             elif model_name =='Linear Regression' or model_name == 'Ridge' or model_name == 'Lasso':
                 model.fit(X_trainl, y_trainl)
                 y_predl = model.predict(X_testl)
@@ -184,6 +204,16 @@ elif option == 'Modélisation':
                 st.write(f"Modèle: {model_name}")
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
+                st.header("Prédictions 2021") 
+                y_pred_2021 = model.predict(X_2021)
+                # Calcul des métriques
+                mae = mean_absolute_error(y_pred_2021, y_2021)
+                rmse = mean_squared_error(y_pred_2021, y_2021, squared=False)
+                RMSE_REVU = rmse_revu(y_pred_2021, y_2021)
+                
+                st.write(f"MAE: {mae}")
+                st.write(f"RMSE: {rmse}")
+                st.write(f"RMSE_REVU: {RMSE_REVU}")
 
 
 
