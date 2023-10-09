@@ -107,8 +107,70 @@ preprocessorl = ColumnTransformer(
         ('num', numeric_transformerl, numeric_cols)
     ])
 
+#KNN
+df_KNN = df4.sort_values(by = "year", ascending = False)
+df_KNN = df_KNN.drop("year", axis = 1)
 
-# Maintenant, df contient les données du fichier Excel en tant que DataFrame
+# Division des données en ensembles d'entraînement et de test
+yk = df_KNN ['Life Ladder']
+Xk = df_KNN.drop(["Life Ladder"], axis = 1)
+X_traink, X_testk, y_traink, y_testk = train_test_split(Xk, yk, test_size=0.2, random_state = 42)
+# Prétraitement des colonnes numériques
+numeric_transformerk = Pipeline(steps=[
+    ('imputer', SimpleImputer(strategy='median')),
+    ('scaler', MinMaxScaler())
+])
+
+# Prétraitement des colonnes catégorielles
+pays_transformerk = Pipeline(steps=[
+    ('targetencoder', TargetEncoder())
+])
+
+# Prétraitement des colonnes catégorielles
+region_transformerk = Pipeline(steps=[
+    ('onehot', TargetEncoder())
+])
+
+# Combiner les prétraitements numériques et catégoriels
+preprocessork = ColumnTransformer(
+    transformers=[
+        ('target', pays_transformerk, pays_cols),
+        ('hotencoder', region_transformerk, region_cols),
+        ('num', numeric_transformerk, numeric_cols)
+    ])
+
+#SVR
+df_SVM = df4.sort_values(by = "year", ascending = False)
+df_SVM = df_SVM.drop("year", axis = 1)
+
+# Division des données en ensembles d'entraînement et de test
+ys = df_SVM ['Life Ladder']
+Xs = df_SVM.drop(["Life Ladder"], axis = 1)
+X_trains, X_tests, y_trains, y_tests = train_test_split(Xs, ys, test_size=0.2, random_state = 42)
+
+# Prétraitement des colonnes numériques
+numeric_transformers = Pipeline(steps=[
+    ('imputer', SimpleImputer(strategy='median')),
+    ('scaler', StandardScaler())
+])
+
+# Prétraitement des colonnes catégorielles
+pays_transformers = Pipeline(steps=[
+    ('targetencoder', TargetEncoder())
+])
+#OneHotEncoder
+# Prétraitement des colonnes catégorielles
+region_transformers = Pipeline(steps=[
+    ('onehot', OneHotEncoder())
+])
+
+# Combiner les prétraitements numériques et catégoriels
+preprocessors = ColumnTransformer(
+    transformers=[
+        ('target', pays_transformers, pays_cols),
+        ('hotencoder', region_transformers, region_cols),
+        ('num', numeric_transformers, numeric_cols)
+    ])
 
 st.title("Projet Bonheur")
 
@@ -155,13 +217,20 @@ elif option == 'Modélisation':
     linear = make_pipeline(preprocessorl, LinearRegression())
     ridge = make_pipeline(preprocessorl, Ridge(alpha = 0.9 )) #corrélation entre les variables qui ne necessitent pas de revoir le poids des variables
     lasso = make_pipeline(preprocessorl, Lasso(alpha = 0.1)) #avec un alpha a 0.1, le modèle ressemble à une régression linéaire standard ==> inutile car pas de grosses corélations entre les variables et pas de nécessité de mettre à 0 certaines variables
+    svr = make_pipeline(preprocessors, SVR(kernel = "rbf", C = 6))
+    boost = make_pipeline(preprocessors, AdaBoostRegressor(SVR(kernel = "rbf")))
+    knn = make_pipeline(preprocessork, KNeighborsRegressor(n_neighbors = 3, metric = "manhattan")) #optimisation du nombre de voisins
+
     # Liste des modèles à entraîner
     models = [
     ('Arbre de décision', tree),
     ('Random Forest', random),
     ('Linear Regression', linear),
     ('Ridge', ridge),
-    ('Lasso', lasso)
+    ('Lasso', lasso),
+    ('KNN', knn),
+    ('SVR', svr),
+    ('BOOST', boost)
     ]
 
     # Barre latérale pour choisir le modèle
@@ -211,6 +280,74 @@ elif option == 'Modélisation':
                 # Calcul des métriques
                 mae = mean_absolute_error(y_testl, y_predl)
                 rmse = mean_squared_error(y_testl, y_predl, squared=False)
+                # Affichage des résultats
+                st.write(f"Modèle: {model_name}")
+                st.write(f"MAE: {mae}")
+                st.write(f"RMSE: {rmse}")
+                st.header("Prédictions 2021") 
+                y_pred_2021 = model.predict(X_2021)
+                # Calcul des métriques
+                mae = mean_absolute_error(y_pred_2021, y_2021)
+                rmse = mean_squared_error(y_pred_2021, y_2021, squared=False)
+                RMSE_REVU = rmse_revu(y_pred_2021, y_2021)
+                
+                st.write(f"MAE: {mae}")
+                st.write(f"RMSE: {rmse}")
+                st.write(f"RMSE_REVU: {RMSE_REVU}")
+                #Histogrammes des erreurs
+                plt.figure(figsize = (8,4))
+                err_hist = np.abs(y_2021 - y_pred_2021)
+                err_hist_tol = []
+                for erreur in err_hist:
+                  if erreur >= 0.3:
+                    err_hist_tol.append(erreur)
+                plt.hist(err_hist_tol, label = model_name, bins = 5)
+                plt.title("Histogramme des erreurs")
+
+                plt.xticks([0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4])
+                plt.legend();
+                st.pyplot(plt)
+            elif model_name =='SVR' or model_name == 'BOOST':
+                model.fit(X_trains, y_trains)
+                y_preds = model.predict(X_tests)
+
+                # Calcul des métriques
+                mae = mean_absolute_error(y_tests, y_preds)
+                rmse = mean_squared_error(y_tests, y_preds, squared=False)
+                # Affichage des résultats
+                st.write(f"Modèle: {model_name}")
+                st.write(f"MAE: {mae}")
+                st.write(f"RMSE: {rmse}")
+                st.header("Prédictions 2021") 
+                y_pred_2021 = model.predict(X_2021)
+                # Calcul des métriques
+                mae = mean_absolute_error(y_pred_2021, y_2021)
+                rmse = mean_squared_error(y_pred_2021, y_2021, squared=False)
+                RMSE_REVU = rmse_revu(y_pred_2021, y_2021)
+                
+                st.write(f"MAE: {mae}")
+                st.write(f"RMSE: {rmse}")
+                st.write(f"RMSE_REVU: {RMSE_REVU}")
+                #Histogrammes des erreurs
+                plt.figure(figsize = (8,4))
+                err_hist = np.abs(y_2021 - y_pred_2021)
+                err_hist_tol = []
+                for erreur in err_hist:
+                  if erreur >= 0.3:
+                    err_hist_tol.append(erreur)
+                plt.hist(err_hist_tol, label = model_name, bins = 5)
+                plt.title("Histogramme des erreurs")
+
+                plt.xticks([0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4])
+                plt.legend();
+                st.pyplot(plt)
+            elif model_name =='KNN':
+                model.fit(X_traink, y_traink)
+                y_predk = model.predict(X_testk)
+
+                # Calcul des métriques
+                mae = mean_absolute_error(y_testk, y_predk)
+                rmse = mean_squared_error(y_testk, y_predk, squared=False)
                 # Affichage des résultats
                 st.write(f"Modèle: {model_name}")
                 st.write(f"MAE: {mae}")
