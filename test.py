@@ -192,6 +192,17 @@ elif option == 'Modélisation':
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
                 st.write(f"RMSE_REVU: {RMSE_REVU}")
+                #Histogrammes des erreurs
+                plt.figure(figsize = (8,4))
+                err_hist = np.abs(y_2021 - y_pred_2021)
+                err_hist_tol = []
+                for erreur in err_hist:
+                  if erreur >= 0.3:
+                    err_hist_tol.append(erreur)
+                plt.hist(err_hist_tol, label = model_name, bins = 5)
+                plt.title("Histogramme des erreurs")
+                plt.xticks([0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4])
+                plt.legend();
                 st.pyplot(plt)
             elif model_name =='Linear Regression' or model_name == 'Ridge' or model_name == 'Lasso':
                 model.fit(X_trainl, y_trainl)
@@ -214,6 +225,18 @@ elif option == 'Modélisation':
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
                 st.write(f"RMSE_REVU: {RMSE_REVU}")
+                #Histogrammes des erreurs
+                plt.figure(figsize = (8,4))
+                err_hist = np.abs(y_2021 - y_pred_2021)
+                err_hist_tol = []
+                for erreur in err_hist:
+                  if erreur >= 0.3:
+                    err_hist_tol.append(erreur)
+                plt.hist(err_hist_tol, label = model_name, bins = 5)
+                plt.title("Histogramme des erreurs")
+
+                plt.xticks([0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4])
+                plt.legend();
                 st.pyplot(plt)
 
 
