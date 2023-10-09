@@ -1,7 +1,7 @@
 import streamlit as st
 # Titre de l'application
 import pandas as pd
-#import seaborn as sns
+import seaborn as sns
 
 # URL du fichier Excel sur GitHub
 github_url = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2022.xls'
@@ -15,6 +15,9 @@ df3=pd.DataFrame()
 df3['Country name']= df1['Country name']
 df3['Regional indicator'] = df1['Regional indicator']
 df4 = df.merge(df3, on='Country name')
+df5 = df4.groupby(['Country name'])['Life Ladder'].mean().to_frame().reset_index()
+df5 = df5.sort_values(by='Life Ladder', ascending = False)
+
 # Maintenant, df contient les données du fichier Excel en tant que DataFrame
 
 st.title("Projet Bonheur")
