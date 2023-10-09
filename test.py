@@ -4,13 +4,13 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
-from scikit-learn.pipeline import make_pipeline
-from scikit-learn.ensemble import DecisionTreeRegressor, RandomForestRegressor, AdaBoostRegressor
-from scikit-learn.metrics import mean_absolute_error, mean_squared_error
-from scikit-learn.preprocessing import TargetEncoder, OneHotEncoder
-from scikit-learn.compose import ColumnTransformer
-from scikit-learn.impute import SimpleImputer
-from scikit-learn.model_selection import train_test_split
+from sklearnlearn.pipeline import make_pipeline
+from sklearnlearn.ensemble import DecisionTreeRegressor, RandomForestRegressor, AdaBoostRegressor
+from sklearnlearn.metrics import mean_absolute_error, mean_squared_error
+from sklearnlearn.preprocessing import TargetEncoder, OneHotEncoder
+from sklearnlearn.compose import ColumnTransformer
+from sklearnlearn.impute import SimpleImputer
+from sklearnlearn.model_selection import train_test_split
 # URL du fichier Excel sur GitHub
 github_url = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2022.xls'
 github_url2 = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2021.csv'
