@@ -208,8 +208,7 @@ elif option == 'Pre-processing':
     st.write("Page pre-processing.")
 
 elif option == 'Modélisation':
-    st.header("Modélisation")
-    st.write("Test de modélisation.")
+    st.header("Modélisation jeu d'entraînement")
 
     # Création des pipelines pour les modèles
     tree = make_pipeline(preprocessor, DecisionTreeRegressor(random_state=42, max_depth=6))
