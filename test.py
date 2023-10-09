@@ -234,13 +234,13 @@ elif option == 'Modélisation':
 
     # Barre latérale pour choisir le modèle
     selected_model = st.sidebar.selectbox('Sélectionnez un modèle', [model_name for model_name, _ in models])
-
+    st.header(selected_model)
     # Entraînement du modèle sélectionné    
     for model_name, model in models:
         
         if model_name == selected_model:
             if model_name =='Arbre de décision' or model_name=='Random Forest':
-                st.header(selected_model)
+                
                 model.fit(X_train, y_train)
                 y_pred = model.predict(X_test)
 
