@@ -42,27 +42,16 @@ numeric_cols = ['Log GDP per capita', 'Social support', 'Healthy life expectancy
                 'Positive affect', 'Negative affect', ]
 
 # Prétraitement des colonnes numériques
-numeric_transformer = Pipeline(steps=[
-    ('imputer', SimpleImputer(strategy='median'))
-])
+numeric_transformer = Pipeline(steps=[('imputer', SimpleImputer(strategy='median'))])
 
 # Prétraitement des colonnes catégorielles
-pays_transformer = Pipeline(steps=[
-    ('targetencoder', TargetEncoder())
-])
+pays_transformer = Pipeline(steps=[('targetencoder', TargetEncoder())])
 
 # Prétraitement des colonnes catégorielles
-region_transformer = Pipeline(steps=[
-    ('onehot', OneHotEncoder())
-])
+region_transformer = Pipeline(steps=[('onehot', OneHotEncoder())])
 
 # Combiner les prétraitements numériques et catégoriels
-preprocessor = ColumnTransformer(
-    transformers=[
-        ('target', pays_transformer, pays_cols),
-        ('hotencoder', region_transformer, region_cols),
-        ('num', numeric_transformer, numeric_cols)
-    ])
+preprocessor = ColumnTransformer(transformers=[('target', pays_transformer, pays_cols),('hotencoder', region_transformer, region_cols),('num', numeric_transformer, numeric_cols)])
 
 # Maintenant, df contient les données du fichier Excel en tant que DataFrame
 
