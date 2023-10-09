@@ -170,7 +170,7 @@ elif option == 'Modélisation':
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
             
-            elif model =='linear' or model == 'ridge' or model == 'lasso':
+            elif model_name =='Linear Regression' or model_name == 'Ridge' or model_name == 'Lasso':
                 model.fit(X_trainl, y_trainl)
                 y_predl = model.predict(X_testl)
 
