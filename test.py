@@ -29,6 +29,7 @@ df3=pd.DataFrame()
 df3['Country name']= df1['Country name']
 df3['Regional indicator'] = df1['Regional indicator']
 df4 = df.merge(df3, on='Country name')
+df4 = df4.drop(["Confidence in national government"], axis = 1)
 df5 = df4.groupby(['Country name'])['Life Ladder'].mean().to_frame().reset_index()
 df5 = df5.sort_values(by='Life Ladder', ascending = False)
 
