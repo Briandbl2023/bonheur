@@ -7,6 +7,7 @@ import numpy as np
 import sklearn
 from sklearn.pipeline import make_pipeline
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.tree import DecisionTreeRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.preprocessing import TargetEncoder, OneHotEncoder
 from sklearn.compose import ColumnTransformer
