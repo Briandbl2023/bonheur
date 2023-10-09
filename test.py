@@ -208,8 +208,7 @@ elif option == 'Pre-processing':
     st.write("Page pre-processing.")
 
 elif option == 'Modélisation':
-    st.header("Modélisation jeu d'entraînement")
-
+    
     # Création des pipelines pour les modèles
     tree = make_pipeline(preprocessor, DecisionTreeRegressor(random_state=42, max_depth=6))
     random = make_pipeline(preprocessor, RandomForestRegressor(random_state=42, max_features=5))
@@ -235,6 +234,7 @@ elif option == 'Modélisation':
     # Barre latérale pour choisir le modèle
     selected_model = st.sidebar.selectbox('Sélectionnez un modèle', [model_name for model_name, _ in models])
     st.header(selected_model)
+    st.header("Modélisation jeu d'entraînement")
     # Entraînement du modèle sélectionné    
     for model_name, model in models:
         
