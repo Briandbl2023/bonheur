@@ -1,6 +1,9 @@
 import streamlit as st
 # Titre de l'application
 import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib inline
+import seaborn as sns
 
 # URL du fichier Excel sur GitHub
 github_url = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2022.xls'
@@ -34,8 +37,16 @@ if option == 'Présentation':
 
 elif option == 'Quelques visualisations':
     st.header("Quelques visualisations du projet")
-    st.write("Contenu de la présentation du projet.")
-    
+
+    # Créer le graphique avec Seaborn
+    sns.set(style="whitegrid")
+    plt.figure(figsize=(10, 6))
+    p = sns.barplot(y=df5['Country name'].head(10), x=df5['Life Ladder'].head(10))
+    p.set_title("Top 10 des pays les plus heureux")
+
+    # Afficher le graphique dans Streamlit
+    st.pyplot(plt)
+
 elif option == 'Pre-processing':
     st.header("Pre-Processing")
     st.write("Page pre-processing.")
