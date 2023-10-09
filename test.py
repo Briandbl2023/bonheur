@@ -30,7 +30,7 @@ if option == 'Présentation':
     st.write("C'est la page de présentation du projet.")
         
     st.write(df4.head())  # Affiche les premières lignes du DataFrame
-    st.write(df4.describe())
+    st.write(df4.isna().sum())
 
 elif option == 'Quelques visualisations':
     st.header("Quelques visualisations du projet")
