@@ -4,7 +4,7 @@ st.title("Projet Bonheur")
 
 # Barre latérale avec des options cliquables
 option = st.sidebar.radio(
-    'Sélectionnez une option',
+    'Menu',
     ('Présentation', 'Quelques visualisations', 'Pre-processing', 'Modélisation')
 )
 
@@ -19,7 +19,7 @@ if option == 'Présentation':
 
     # Lire le fichier Excel dans un DataFrame
     df = pd.read_excel(github_url)
-
+    df = df[df['year']]!=2005
     # Maintenant, df contient les données du fichier Excel en tant que DataFrame
     st.write(df.head())  # Affiche les premières lignes du DataFrame
 
