@@ -2,6 +2,7 @@ import streamlit as st
 # Titre de l'application
 import pandas as pd
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 # URL du fichier Excel sur GitHub
 github_url = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2022.xls'
