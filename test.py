@@ -192,7 +192,7 @@ elif option == 'Modélisation':
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
                 st.write(f"RMSE_REVU: {RMSE_REVU}")
-
+                st.pyplot(plt)
             elif model_name =='Linear Regression' or model_name == 'Ridge' or model_name == 'Lasso':
                 model.fit(X_trainl, y_trainl)
                 y_predl = model.predict(X_testl)
@@ -214,7 +214,7 @@ elif option == 'Modélisation':
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
                 st.write(f"RMSE_REVU: {RMSE_REVU}")
-
+                st.pyplot(plt)
 
 
 # Pour exécuter l'application : streamlit run app.py
