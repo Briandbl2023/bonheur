@@ -28,7 +28,17 @@ if option == 'Présentation':
 elif option == 'Quelques visualisations':
     st.header("Quelques visualisations du projet")
     st.write("Contenu de la présentation du projet.")
+    import pandas as pd
 
+    # URL du fichier Excel sur GitHub
+    github_url = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2022.xls'
+
+    # Lire le fichier Excel dans un DataFrame
+    df = pd.read_excel(github_url)
+
+    # Maintenant, df contient les données du fichier Excel en tant que DataFrame
+    print(df.head())  # Affiche les premières lignes du DataFrame
+    
 elif option == 'Pre-processing':
     st.header("Pre-Processing")
     st.write("Page pre-processing.")
