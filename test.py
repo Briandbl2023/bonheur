@@ -381,7 +381,7 @@ elif option == "Modélisation nouvelles données":
 
         # Zones de texte pour les colonnes du DataFrame df_ensemble à partir de la deuxième colonne
         X_new = {}
-        for column in list(df_ensemble.columns)[1:]:
+        for column in list(df_ensemble.columns)[2:-1]:
             X_new[column] = st.text_input(column)
 
         # Zone de liste avec une seule possibilité de sélection
