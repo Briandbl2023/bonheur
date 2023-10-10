@@ -173,6 +173,29 @@ preprocessors = ColumnTransformer(
         ('num', numeric_transformers, numeric_cols)
     ])
 
+# Création des pipelines pour les modèles
+tree = make_pipeline(preprocessor, DecisionTreeRegressor(random_state=42, max_depth=6))
+random = make_pipeline(preprocessor, RandomForestRegressor(random_state=42, max_features=5))
+adaboost = make_pipeline(preprocessor, AdaBoostRegressor(RandomForestRegressor(random_state=42, max_features=5, min_samples_split=2, n_estimators=300)))
+linear = make_pipeline(preprocessorl, LinearRegression())
+ridge = make_pipeline(preprocessorl, Ridge(alpha = 0.9 )) #corrélation entre les variables qui ne necessitent pas de revoir le poids des variables
+lasso = make_pipeline(preprocessorl, Lasso(alpha = 0.1)) #avec un alpha a 0.1, le modèle ressemble à une régression linéaire standard ==> inutile car pas de grosses corélations entre les variables et pas de nécessité de mettre à 0 certaines variables
+svr = make_pipeline(preprocessors, SVR(kernel = "rbf", C = 6))
+boost = make_pipeline(preprocessors, AdaBoostRegressor(SVR(kernel = "rbf")))
+knn = make_pipeline(preprocessork, KNeighborsRegressor(n_neighbors = 3, metric = "manhattan")) #optimisation du nombre de voisins
+
+# Liste des modèles à entraîner
+models = [
+('Arbre de décision', tree),
+('Random Forest', random),
+('Linear Regression', linear),
+('Ridge', ridge),
+('Lasso', lasso),
+('KNN', knn),
+('SVR', svr)
+]
+
+
 st.title("Projet Bonheur")
 
 # Barre latérale avec des options cliquables
@@ -209,27 +232,7 @@ elif option == 'Pre-processing':
 
 elif option == 'Modélisation':
     
-    # Création des pipelines pour les modèles
-    tree = make_pipeline(preprocessor, DecisionTreeRegressor(random_state=42, max_depth=6))
-    random = make_pipeline(preprocessor, RandomForestRegressor(random_state=42, max_features=5))
-    adaboost = make_pipeline(preprocessor, AdaBoostRegressor(RandomForestRegressor(random_state=42, max_features=5, min_samples_split=2, n_estimators=300)))
-    linear = make_pipeline(preprocessorl, LinearRegression())
-    ridge = make_pipeline(preprocessorl, Ridge(alpha = 0.9 )) #corrélation entre les variables qui ne necessitent pas de revoir le poids des variables
-    lasso = make_pipeline(preprocessorl, Lasso(alpha = 0.1)) #avec un alpha a 0.1, le modèle ressemble à une régression linéaire standard ==> inutile car pas de grosses corélations entre les variables et pas de nécessité de mettre à 0 certaines variables
-    svr = make_pipeline(preprocessors, SVR(kernel = "rbf", C = 6))
-    boost = make_pipeline(preprocessors, AdaBoostRegressor(SVR(kernel = "rbf")))
-    knn = make_pipeline(preprocessork, KNeighborsRegressor(n_neighbors = 3, metric = "manhattan")) #optimisation du nombre de voisins
-
-    # Liste des modèles à entraîner
-    models = [
-    ('Arbre de décision', tree),
-    ('Random Forest', random),
-    ('Linear Regression', linear),
-    ('Ridge', ridge),
-    ('Lasso', lasso),
-    ('KNN', knn),
-    ('SVR', svr)
-    ]
+    
 
     # Barre latérale pour choisir le modèle
     selected_model = st.sidebar.selectbox('Sélectionnez un modèle', [model_name for model_name, _ in models])
@@ -385,7 +388,7 @@ elif option == "Modélisation nouvelles données":
             X_new[column] = st.text_input(column)
 
         # Zone de liste avec une seule possibilité de sélection
-        country_select = st.selectbox('Sélectionnez le pays', df_ensemble['Country name'].unique())
+        country_select = st.selectbox('Sélectionnez le pays', sorted(df_ensemble['Country name'].unique()))
 
         # Zone de liste avec une seule possibilité de sélection
         model_select = st.selectbox('Sélectionnez le modèle à utiliser', [model_name for model_name, _ in models])
