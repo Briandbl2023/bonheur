@@ -389,7 +389,9 @@ elif option == "Modélisation nouvelles données":
         country_select = st.selectbox('Sélectionnez le pays', sorted(df_ensemble['Country name'].unique()))
 
         # Zones de texte pour les colonnes du DataFrame df_ensemble à partir de la deuxième colonne
-        X_new = {}
+        if "X_new" not in st.session_state:
+        st.session_state.X_new = {}
+        
         for column in list(df_ensemble.columns)[2:-1]:
             X_new[column] = st.text_input(column)
 
