@@ -415,6 +415,7 @@ elif option == "Modélisation nouvelles données":
         
         #st.session_state.country_select
         for column in X_train_new:
+            st.write(column)
             if column != 'Country name':
                 X_train_new[column] = X_new[column]
             else :
