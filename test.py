@@ -430,6 +430,13 @@ elif option == "Modélisation nouvelles données":
                 
                     model.fit(X_train, y_train)
                     y_pred = model.predict(X_test)
+                    # Calcul des métriques
+                    mae = mean_absolute_error(y_test, y_pred)
+                    rmse = mean_squared_error(y_test, y_pred, squared=False)
+                    # Affichage des résultats
+                    #st.write(f"Modèle: {model_name}")
+                    st.write(f"MAE: {mae}")
+                    st.write(f"RMSE: {rmse}")
                     y_pred_saisie = model.predict(X_train_new)
                     st.write(y_pred_saisie)
                     
