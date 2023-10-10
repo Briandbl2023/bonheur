@@ -413,7 +413,7 @@ elif option == "Modélisation nouvelles données":
         X_train_new = pd.DataFrame(columns=list(df_ensemble.columns[:-1]))
         X_train_new = X_train_new.drop(columns=['Life Ladder'])
         X_train_new['Country name'] = st.session_state.country_select
-        for column in list(df_ensemble.columns)[2:-1]:
+        for column in list(df_ensemble.columns)[1:-1]:
             X_train_new[column] = X_new[column]
         
         #X_train_new = X_train_new.merge(df3, on='Country name')
