@@ -375,7 +375,7 @@ elif option == 'Modélisation':
                 plt.xticks([0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4])
                 plt.legend();
                 st.pyplot(plt)
-elif option == "Modélisation nouvelles données"
+elif option == "Modélisation nouvelles données":
     # Création du formulaire
     with st.form('modélisation'):
 
