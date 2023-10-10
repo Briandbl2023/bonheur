@@ -388,25 +388,26 @@ elif option == "Modélisation nouvelles données":
         # Zone de liste avec une seule possibilité de sélection
         if "country_select" not in st.session_state :
             st.session_state.country_select=""
-        st.session_state.country_select = st.selectbox('Sélectionnez le pays', sorted(df_ensemble['Country name'].unique()))
+
+            # Dictionnaire pour stocker les valeurs saisies par l'utilisateur
+        user_inputs = {}
 
         # Zones de texte pour les colonnes du DataFrame df_ensemble à partir de la deuxième colonne
-        if "X_new" not in st.session_state:
-            st.session_state.X_new = pd.DataFrame(columns=list(df_ensemble.columns[2:-1]))
-        
-        
         for column in list(df_ensemble.columns)[2:-1]:
-            user_input = st.text_input(column)
-            if user_input != '':
-                st.session_state.X_new[column] = user_input
+            user_inputs[column] = st.text_input(column)
 
         # Bouton "Entraîner les modèles"
         submit_button = st.form_submit_button('Entraîner les modèles')
-    
-    if submit_button:
 
+    # Création du DataFrame à partir des valeurs saisies par l'utilisateur
+    if submit_button:
+        # Filtrer les valeurs non vides
+        user_inputs = {key: value for key, value in user_inputs.items() if value != ''}
+        # Créer un DataFrame à partir du dictionnaire
+        X_new = pd.DataFrame([user_inputs])
         st.write(st.session_state.country_select)
-        st.dataframe(st.session_state.X_new)
+        st.dataframe(X_new)
+
         # Création d'un nouveau jeu de données d'entraînement
         #X_train_new = pd.DataFrame(columns=list(df_ensemble.columns[:-1]))
         #X_train_new['Country name'] = st.session_state.country_select
