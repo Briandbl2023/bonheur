@@ -401,6 +401,7 @@ elif option == "Modélisation nouvelles données":
     if submit_button:
 
         # Création d'un nouveau jeu de données d'entraînement
+        import pandas as pd
         X_train_new = pd.dataframe()
         X_train_new['Country name'] = country_select
         for column in list(df_ensemble.columns)[2:-1]:
