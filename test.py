@@ -391,12 +391,12 @@ elif option == "Modélisation nouvelles données":
         st.session_state.country_select = st.selectbox('Sélectionnez le pays', sorted(df_ensemble['Country name'].unique()))
 
         # Zones de texte pour les colonnes du DataFrame df_ensemble à partir de la deuxième colonne
-        #if "X_new" not in st.session_state:
-        test = pd.dataframe(columns=list(df_ensemble.columns[2:-1]))
-        #st.session_state.X_new = 
+        if "X_new" not in st.session_state:
+            st.session_state.X_new = pd.DataFrame(columns=list(df_ensemble.columns[2:-1]))
         
-        #for column in list(df_ensemble.columns)[2:-1]:
-        #    st.session_state.X_new[column] = st.text_input(column)
+        
+        for column in list(df_ensemble.columns)[2:-1]:
+            st.session_state.X_new[column] = st.text_input(column)
 
         # Bouton "Entraîner les modèles"
         submit_button = st.form_submit_button('Entraîner les modèles')
