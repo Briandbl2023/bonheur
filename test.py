@@ -404,7 +404,7 @@ elif option == "Modélisation nouvelles données":
 
     # Création du DataFrame à partir des valeurs saisies par l'utilisateur
     if submit_button:
-        st.write(st.session_state.model_select)
+        selected_model = st.session_state.model_select
         # Filtrer les valeurs non vides
         user_inputs = {key: value for key, value in user_inputs.items() if value != ''}
         # Créer un DataFrame à partir du dictionnaire
@@ -423,5 +423,33 @@ elif option == "Modélisation nouvelles données":
         
         X_train_new = X_train_new.merge(df3, on='Country name')
         st.write(X_train_new)
+        for model_name, model in models:
+        
+            if model_name == selected_model:
+                if model_name =='Arbre de décision' or model_name=='Random Forest':
+                
+                    model.fit(X_train, y_train)
+                    y_pred = model.predict(X_test)
+                    y_pred_saisie = model.predict(X_train_new)
+                    st.write(y_pred_saisie)
+                    
+                elif model_name =='Linear Regression' or model_name == 'Ridge' or model_name == 'Lasso':
+                    model.fit(X_trainl, y_trainl)
+                    y_predl = model.predict(X_testl)
+                    y_pred_saisie = model.predict(X_train_new)
+                    st.write(y_pred_saisie)
+
+                elif model_name =='SVR' or model_name == 'BOOST':
+                    model.fit(X_trains, y_trains)
+                    y_preds = model.predict(X_tests)
+                    y_pred_saisie = model.predict(X_train_new)
+                    st.write(y_pred_saisie)
+            
+                elif model_name =='KNN':
+                    model.fit(X_traink, y_traink)
+                    y_predk = model.predict(X_testk)
+                    y_pred_saisie = model.predict(X_train_new)
+                    st.write(y_pred_saisie)
+
         
 # Pour exécuter l'application : streamlit run app.py
