@@ -407,7 +407,7 @@ elif option == "Modélisation nouvelles données":
         # Créer un DataFrame à partir du dictionnaire
         X_new = pd.DataFrame([user_inputs])
         st.write(st.session_state.country_select)
-        st.dataframe(X_new)
+        st.write(X_new)
 
         # Création d'un nouveau jeu de données d'entraînement
         #X_train_new = pd.DataFrame(columns=list(df_ensemble.columns[:-1]))
