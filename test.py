@@ -395,6 +395,16 @@ elif option == "Modélisation nouvelles données":
 
         # Bouton "Entraîner les modèles"
         submit_button = st.form_submit_button('Entraîner les modèles')
+    
+    if submit_button:
 
-
+        # Création d'un nouveau jeu de données d'entraînement
+        X_train_new = {}
+        X_train_new['Country name'] = country_select
+        for column in list(df_ensemble.columns)[2:-1]:
+            X_train_new[column] = st.session_state.X_new[column]
+        
+        X_train_new = X_train_new.merge(df3, on='Country name')
+        st.write(X_train_new)
+        
 # Pour exécuter l'application : streamlit run app.py
