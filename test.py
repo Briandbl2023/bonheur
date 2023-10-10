@@ -419,6 +419,7 @@ elif option == "Modélisation nouvelles données":
             if column != 'Country name':
                 X_train_new[column] = X_new[column]
             else :
+                st.write(st.session_state.country_select)
                 X_train_new[column] = 'Test'
         
         #X_train_new = X_train_new.merge(df3, on='Country name')
