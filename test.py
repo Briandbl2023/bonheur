@@ -400,7 +400,7 @@ elif option == "Modélisation nouvelles données":
             user_inputs[column] = st.text_input(column)
 
         # Bouton "Entraîner les modèles"
-        submit_button = st.form_submit_button('Entraîner les modèles')
+        submit_button = st.form_submit_button('Prédiction Life Ladder')
 
     # Création du DataFrame à partir des valeurs saisies par l'utilisateur
     if submit_button:
@@ -436,25 +436,25 @@ elif option == "Modélisation nouvelles données":
                     # Affichage des résultats
                     #st.write(f"Modèle: {model_name}")
                     y_pred_saisie = model.predict(X_train_new)
-                    st.write(y_pred_saisie[0])
+                    st.header(y_pred_saisie[0])
                     
                 elif model_name =='Linear Regression' or model_name == 'Ridge' or model_name == 'Lasso':
                     model.fit(X_trainl, y_trainl)
                     y_predl = model.predict(X_testl)
                     y_pred_saisie = model.predict(X_train_new)
-                    st.write(y_pred_saisie[0])
+                    st.header(y_pred_saisie[0])
 
                 elif model_name =='SVR' or model_name == 'BOOST':
                     model.fit(X_trains, y_trains)
                     y_preds = model.predict(X_tests)
                     y_pred_saisie = model.predict(X_train_new)
-                    st.write(y_pred_saisie[0])
+                    st.header(y_pred_saisie[0])
             
                 elif model_name =='KNN':
                     model.fit(X_traink, y_traink)
                     y_predk = model.predict(X_testk)
                     y_pred_saisie = model.predict(X_train_new)
-                    st.write(y_pred_saisie[0])
+                    st.header(y_pred_saisie[0])
 
         
 # Pour exécuter l'application : streamlit run app.py
