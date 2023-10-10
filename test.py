@@ -385,7 +385,7 @@ elif option == "Modélisation nouvelles données":
             X_new[column] = st.text_input(column)
 
         # Zone de liste avec une seule possibilité de sélection
-        country_select = st.selectbox('Sélectionnez le pays', df_ensemble['Country'].unique())
+        country_select = st.selectbox('Sélectionnez le pays', df_ensemble['Country name'].unique())
 
         # Zone de liste avec une seule possibilité de sélection
         model_select = st.selectbox('Sélectionnez le modèle à utiliser', [model_name for model_name, _ in models])
