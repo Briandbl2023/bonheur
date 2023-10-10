@@ -383,7 +383,9 @@ elif option == "Modélisation nouvelles données":
     with st.form('modélisation'):
 
         # Zone de liste avec une seule possibilité de sélection
-        model_select = st.selectbox('Sélectionnez le modèle à utiliser', [model_name for model_name, _ in models])
+        if "model_select" not in st.session_state :
+            st.session_state.model_select=""
+        st.session_state.model_select = st.selectbox('Sélectionnez le modèle à utiliser', [model_name for model_name, _ in models])
 
         #  Zone de liste avec une seule possibilité de sélection
         if "country_select" not in st.session_state :
@@ -402,6 +404,7 @@ elif option == "Modélisation nouvelles données":
 
     # Création du DataFrame à partir des valeurs saisies par l'utilisateur
     if submit_button:
+        st.write(st.session_state.model_select)
         # Filtrer les valeurs non vides
         user_inputs = {key: value for key, value in user_inputs.items() if value != ''}
         # Créer un DataFrame à partir du dictionnaire
