@@ -435,8 +435,6 @@ elif option == "Modélisation nouvelles données":
                     rmse = mean_squared_error(y_test, y_pred, squared=False)
                     # Affichage des résultats
                     #st.write(f"Modèle: {model_name}")
-                    st.write(f"MAE: {mae}")
-                    st.write(f"RMSE: {rmse}")
                     y_pred_saisie = model.predict(X_train_new)
                     st.write(y_pred_saisie[0])
                     
@@ -444,19 +442,19 @@ elif option == "Modélisation nouvelles données":
                     model.fit(X_trainl, y_trainl)
                     y_predl = model.predict(X_testl)
                     y_pred_saisie = model.predict(X_train_new)
-                    st.write(y_pred_saisie)
+                    st.write(y_pred_saisie[0])
 
                 elif model_name =='SVR' or model_name == 'BOOST':
                     model.fit(X_trains, y_trains)
                     y_preds = model.predict(X_tests)
                     y_pred_saisie = model.predict(X_train_new)
-                    st.write(y_pred_saisie)
+                    st.write(y_pred_saisie)[0]
             
                 elif model_name =='KNN':
                     model.fit(X_traink, y_traink)
                     y_predk = model.predict(X_testk)
                     y_pred_saisie = model.predict(X_train_new)
-                    st.write(y_pred_saisie)
+                    st.write(y_pred_saisie[0])
 
         
 # Pour exécuter l'application : streamlit run app.py
