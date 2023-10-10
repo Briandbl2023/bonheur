@@ -385,11 +385,12 @@ elif option == "Modélisation nouvelles données":
         # Zone de liste avec une seule possibilité de sélection
         model_select = st.selectbox('Sélectionnez le modèle à utiliser', [model_name for model_name, _ in models])
 
-        # Zone de liste avec une seule possibilité de sélection
+        #  Zone de liste avec une seule possibilité de sélection
         if "country_select" not in st.session_state :
             st.session_state.country_select=""
+        st.session_state.country_select = st.selectbox('Sélectionnez le pays', sorted(df_ensemble['Country name'].unique()))
 
-            # Dictionnaire pour stocker les valeurs saisies par l'utilisateur
+        # Dictionnaire pour stocker les valeurs saisies par l'utilisateur
         user_inputs = {}
 
         # Zones de texte pour les colonnes du DataFrame df_ensemble à partir de la deuxième colonne
