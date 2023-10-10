@@ -393,7 +393,7 @@ elif option == "Modélisation nouvelles données":
             st.session_state.X_new = {}
         
         for column in list(df_ensemble.columns)[2:-1]:
-            X_new[column] = st.text_input(column)
+            st.session_state.X_new[column] = st.text_input(column)
 
         # Bouton "Entraîner les modèles"
         submit_button = st.form_submit_button('Entraîner les modèles')
