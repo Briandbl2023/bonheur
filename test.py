@@ -403,11 +403,11 @@ elif option == "Modélisation nouvelles données":
         # Création d'un nouveau jeu de données d'entraînement
         import pandas as pd
         X_train_new = pd.DataFrame(columns=list(df_ensemble.columns[:-1]))
-        X_train_new['Country name'] = country_select
-        for column in list(df_ensemble.columns)[2:-1]:
-            X_train_new[column] = st.session_state.X_new[column]
+        #X_train_new['Country name'] = country_select
+        #for column in list(df_ensemble.columns)[2:-1]:
+        #    X_train_new[column] = st.session_state.X_new[column]
         
-        X_train_new = X_train_new.merge(df3, on='Country name')
+        #X_train_new = X_train_new.merge(df3, on='Country name')
         st.write(X_train_new)
         
 # Pour exécuter l'application : streamlit run app.py
