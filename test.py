@@ -448,7 +448,7 @@ elif option == "Modélisation nouvelles données":
                     model.fit(X_trains, y_trains)
                     y_preds = model.predict(X_tests)
                     y_pred_saisie = model.predict(X_train_new)
-                    st.write(y_pred_saisie)[0]
+                    st.write(y_pred_saisie[0])
             
                 elif model_name =='KNN':
                     model.fit(X_traink, y_traink)
