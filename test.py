@@ -414,9 +414,11 @@ elif option == "Modélisation nouvelles données":
         X_train_new = X_train_new.drop(columns=['Life Ladder'])
         
         #st.session_state.country_select
-        #for column in list(df_ensemble.columns)[1:-1]:
-        #    X_train_new[column] = X_new[column]
-            #X_train_new['Country name'] = 'Test'
+        for column in X_train_new:
+            if column != 'Country name':
+                X_train_new[column] = X_new[column]
+            else :
+                X_train_new[column] = 'Test'
         
         #X_train_new = X_train_new.merge(df3, on='Country name')
         st.write(X_train_new)
