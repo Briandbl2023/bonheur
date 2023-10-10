@@ -406,16 +406,13 @@ elif option == "Modélisation nouvelles données":
         user_inputs = {key: value for key, value in user_inputs.items() if value != ''}
         # Créer un DataFrame à partir du dictionnaire
         X_new = pd.DataFrame([user_inputs])
-        st.write(st.session_state.country_select)
-        st.write(X_new)
-
+       
         # Création d'un nouveau jeu de données d'entraînement
         X_train_new = pd.DataFrame(columns=list(df_ensemble.columns[:-1]))
         X_train_new = X_train_new.drop(columns=['Life Ladder'])
         
         #st.session_state.country_select
         for column in X_train_new:
-            st.write(column)
             if column != 'Country name':
                 X_train_new[column] = X_new[column]
         
