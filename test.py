@@ -391,7 +391,7 @@ elif option == "Modélisation nouvelles données":
         st.session_state.country_select = st.selectbox('Sélectionnez le pays', sorted(df_ensemble['Country name'].unique()))
 
         # Zones de texte pour les colonnes du DataFrame df_ensemble à partir de la deuxième colonne
-        if "X_new" not in st.session_state:
+        #if "X_new" not in st.session_state:
             st.session_state.X_new = pd.dataframe(columns=list(df_ensemble.columns[2:-1]))
         
         for column in list(df_ensemble.columns)[2:-1]:
