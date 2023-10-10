@@ -386,7 +386,9 @@ elif option == "Modélisation nouvelles données":
         model_select = st.selectbox('Sélectionnez le modèle à utiliser', [model_name for model_name, _ in models])
 
         # Zone de liste avec une seule possibilité de sélection
-        country_select = st.selectbox('Sélectionnez le pays', sorted(df_ensemble['Country name'].unique()))
+        if "country_select" not in st.session_state
+            st.session_state.country_select=""
+        st.session_state.country_select = st.selectbox('Sélectionnez le pays', sorted(df_ensemble['Country name'].unique()))
 
         # Zones de texte pour les colonnes du DataFrame df_ensemble à partir de la deuxième colonne
         if "X_new" not in st.session_state:
@@ -403,7 +405,7 @@ elif option == "Modélisation nouvelles données":
         # Création d'un nouveau jeu de données d'entraînement
         import pandas as pd
         X_train_new = pd.DataFrame(columns=list(df_ensemble.columns[:-1]))
-        X_train_new['Country name'] = country_select
+        X_train_new['Country name'] = st.session_state.country_select
         #for column in list(df_ensemble.columns)[2:-1]:
         #    X_train_new[column] = st.session_state.X_new[column]
         
