@@ -438,7 +438,7 @@ elif option == "Modélisation nouvelles données":
                     st.write(f"MAE: {mae}")
                     st.write(f"RMSE: {rmse}")
                     y_pred_saisie = model.predict(X_train_new)
-                    st.write(y_pred_saisie)
+                    st.write(y_pred_saisie[0])
                     
                 elif model_name =='Linear Regression' or model_name == 'Ridge' or model_name == 'Lasso':
                     model.fit(X_trainl, y_trainl)
