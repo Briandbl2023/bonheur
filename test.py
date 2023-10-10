@@ -382,16 +382,16 @@ elif option == "Modélisation nouvelles données":
     # Création du formulaire
     with st.form('modélisation'):
 
-        # Zones de texte pour les colonnes du DataFrame df_ensemble à partir de la deuxième colonne
-        X_new = {}
-        for column in list(df_ensemble.columns)[2:-1]:
-            X_new[column] = st.text_input(column)
+        # Zone de liste avec une seule possibilité de sélection
+        model_select = st.selectbox('Sélectionnez le modèle à utiliser', [model_name for model_name, _ in models])
 
         # Zone de liste avec une seule possibilité de sélection
         country_select = st.selectbox('Sélectionnez le pays', sorted(df_ensemble['Country name'].unique()))
 
-        # Zone de liste avec une seule possibilité de sélection
-        model_select = st.selectbox('Sélectionnez le modèle à utiliser', [model_name for model_name, _ in models])
+        # Zones de texte pour les colonnes du DataFrame df_ensemble à partir de la deuxième colonne
+        X_new = {}
+        for column in list(df_ensemble.columns)[2:-1]:
+            X_new[column] = st.text_input(column)
 
         # Bouton "Entraîner les modèles"
         submit_button = st.form_submit_button('Entraîner les modèles')
