@@ -421,7 +421,7 @@ elif option == "Modélisation nouvelles données":
         
         X_train_new.loc[0, 'Country name'] = st.session_state.country_select
         
-        #X_train_new = X_train_new.merge(df3, on='Country name')
+        X_train_new = X_train_new.merge(df3, on='Country name')
         st.write(X_train_new)
         
 # Pour exécuter l'application : streamlit run app.py
