@@ -402,11 +402,12 @@ elif option == "Modélisation nouvelles données":
     
     if submit_button:
 
+        st.write(st.session_state.country_select)
         # Création d'un nouveau jeu de données d'entraînement
-        X_train_new = pd.DataFrame(columns=list(df_ensemble.columns[:-1]))
-        X_train_new['Country name'] = st.session_state.country_select
-        for column in list(df_ensemble.columns)[2:-1]:
-            X_train_new[column] = st.session_state.X_new[column]
+        #X_train_new = pd.DataFrame(columns=list(df_ensemble.columns[:-1]))
+        #X_train_new['Country name'] = st.session_state.country_select
+        #for column in list(df_ensemble.columns)[2:-1]:
+        #    X_train_new[column] = st.session_state.X_new[column]
         
         #X_train_new = X_train_new.merge(df3, on='Country name')
         st.write(X_train_new)
