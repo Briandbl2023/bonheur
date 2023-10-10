@@ -404,7 +404,7 @@ elif option == "Modélisation nouvelles données":
     if submit_button:
 
         st.write(st.session_state.country_select)
-        st.write(st.session_state.X_new)
+        st.dataframe(st.session_state.X_new)
         # Création d'un nouveau jeu de données d'entraînement
         #X_train_new = pd.DataFrame(columns=list(df_ensemble.columns[:-1]))
         #X_train_new['Country name'] = st.session_state.country_select
