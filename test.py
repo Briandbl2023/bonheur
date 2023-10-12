@@ -196,17 +196,7 @@ models = [
 ]
 
 
-titre = st.markdown(
-    """
-    Projet Bonheur
-    """,
-    style={
-        "textAlign": "center",
-    },
-)
-
-# Afficher le titre
-st.container(titre)
+st.container("""**Projet Bonheur**""", center=True)
 
 # Barre latérale avec des options cliquables
 option = st.sidebar.radio(
