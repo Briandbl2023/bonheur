@@ -206,7 +206,7 @@ option = st.sidebar.radio(
 
 # Contenu en fonction de l'option sélectionnée
 if option == 'Présentation':
-    st.header("Présentation du projet", align="center")
+    st.header("Présentation du projet")
     st.write("C'est la page de présentation du projet.")
         
     st.write(df4.head(), align = "center")  # Affiche les premières lignes du DataFrame
