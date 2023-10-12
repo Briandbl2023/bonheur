@@ -196,7 +196,7 @@ models = [
 ]
 
 
-st.title("Projet Bonheur")
+st.title("Projet analyse du bonheur")
 
 # Barre latérale avec des options cliquables
 option = st.sidebar.radio(
