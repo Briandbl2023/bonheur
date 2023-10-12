@@ -196,7 +196,7 @@ models = [
 ]
 
 
-st.container("""**Projet Bonheur**""", center=True)
+st.container("Projet Bonheur", center=True)
 
 # Barre latérale avec des options cliquables
 option = st.sidebar.radio(
