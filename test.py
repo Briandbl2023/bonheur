@@ -196,7 +196,7 @@ models = [
 ]
 
 
-st.title("Projet Bonheur")
+st.title("Projet Bonheur", align = "center")
 
 # Barre latérale avec des options cliquables
 option = st.sidebar.radio(
@@ -206,13 +206,13 @@ option = st.sidebar.radio(
 
 # Contenu en fonction de l'option sélectionnée
 if option == 'Présentation':
-    st.header("Présentation du projet")
+    st.header("Présentation du projet", align="center")
     st.write("C'est la page de présentation du projet.")
         
-    st.write(df4.head())  # Affiche les premières lignes du DataFrame
+    st.write(df4.head(), align = "center")  # Affiche les premières lignes du DataFrame
 
 elif option == 'Quelques visualisations':
-    st.header("Quelques visualisations du projet")
+    st.header("Quelques visualisations du projet", align="center")
 
     # Créer le graphique avec Seaborn
     sns.set(style="whitegrid")
@@ -227,7 +227,7 @@ elif option == 'Quelques visualisations':
     st.pyplot(plt)
     
 elif option == 'Pre-processing':
-    st.header("Pre-Processing")
+    st.header("Pre-Processing", align="center")
     st.write("Page pre-processing.")
 
 elif option == 'Modélisation':
