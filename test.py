@@ -212,7 +212,7 @@ if option == 'Présentation':
     st.write(df4.head(), align = "center")  # Affiche les premières lignes du DataFrame
 
 elif option == 'Quelques visualisations':
-    st.header("Quelques visualisations du projet", align="center")
+    st.header("Quelques visualisations du projet")
 
     # Créer le graphique avec Seaborn
     sns.set(style="whitegrid")
@@ -227,7 +227,7 @@ elif option == 'Quelques visualisations':
     st.pyplot(plt)
     
 elif option == 'Pre-processing':
-    st.header("Pre-Processing", align="center")
+    st.header("Pre-Processing")
     st.write("Page pre-processing.")
 
 elif option == 'Modélisation':
