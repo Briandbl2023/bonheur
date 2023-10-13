@@ -190,7 +190,7 @@ adaboost = make_pipeline(preprocessor, AdaBoostRegressor(RandomForestRegressor(r
 linear = make_pipeline(preprocessorl, LinearRegression())
 ridge = make_pipeline(preprocessorl, Ridge(alpha = 0.9, solver = "sag")) #corrélation entre les variables qui ne necessitent pas de revoir le poids des variables
 lasso = make_pipeline(preprocessorl, Lasso(alpha = 0.1)) #avec un alpha a 0.1, le modèle ressemble à une régression linéaire standard ==> inutile car pas de grosses corélations entre les variables et pas de nécessité de mettre à 0 certaines variables
-svr = make_pipeline(preprocessors, SVR(kernel = "rbf", C = 6))
+svr = make_pipeline(preprocessors, SVR(C = 15))
 boost = make_pipeline(preprocessors, AdaBoostRegressor(SVR(kernel = "rbf")))
 knn = make_pipeline(preprocessork, KNeighborsRegressor(n_neighbors = 3, metric = "manhattan")) #optimisation du nombre de voisins
 
