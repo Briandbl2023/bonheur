@@ -436,8 +436,7 @@ elif option == "Prédictions":
         X_train_new.loc[0, 'Country name'] = st.session_state.country_select
         
         X_train_new = X_train_new.merge(df3, on='Country name')
-        st.write("Dataframe :")
-        st.write(X_train_new)
+        
         for model_name, model in modelsp:
         # Création des pipelines pour les modèles
 
