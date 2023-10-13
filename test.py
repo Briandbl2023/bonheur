@@ -40,7 +40,6 @@ df2021 = df4[df4['year']==2021]
 y_2021 = df2021['Life Ladder']
 X_2021 = df2021.drop(columns=['Life Ladder'])
 df4 = df4[df4['year']!=2021]
-df_ensemble = df4.dropna(axis = 0, how = "any")
 df_ensemble = df_ensemble.sort_values(by = "year", ascending = False)
 df_ensemble = df_ensemble.drop("year", axis = 1)
 
@@ -84,11 +83,21 @@ df_lineaire = df_lineaire.drop("year", axis = 1)
 yl = df_lineaire ['Life Ladder']
 Xl = df_lineaire.drop(["Life Ladder"], axis = 1)
 X_trainl, X_testl, y_trainl, y_testl = train_test_split(Xl, yl, test_size=0.3, random_state = 42)
+def gestion_nan1(X):
+  for colonne in col_numeric:
+    if 'Regional indicator' in X.columns:
+      X[colonne] = X[colonne].fillna(X.groupby("Regional indicator")[colonne].transform('median'))
 
+  X_new = X.drop("Regional indicator", axis = 1)
+
+  return X_new
+
+X_trainl = gestion_nan1(X_trainl)
+X_testl = gestion_nan1(X_testl)
 
 # Prétraitement des colonnes numériques
 numeric_transformerl = Pipeline(steps=[
-    ('imputer', SimpleImputer(strategy='median'))
+    ('scaler', StandardScaler())
 ])
 
 # Prétraitement des colonnes catégorielles
@@ -149,11 +158,11 @@ df_SVM = df_SVM.drop("year", axis = 1)
 ys = df_SVM ['Life Ladder']
 Xs = df_SVM.drop(["Life Ladder"], axis = 1)
 X_trains, X_tests, y_trains, y_tests = train_test_split(Xs, ys, test_size=0.2, random_state = 42)
-
+X_trains = gestion_nan1(X_trains)
+X_tests = gestion_nan1(X_tests)
 # Prétraitement des colonnes numériques
 numeric_transformers = Pipeline(steps=[
-    ('imputer', SimpleImputer(strategy='median')),
-    ('scaler', StandardScaler())
+   ('scaler', StandardScaler())
 ])
 
 # Prétraitement des colonnes catégorielles
@@ -175,11 +184,11 @@ preprocessors = ColumnTransformer(
     ])
 
 # Création des pipelines pour les modèles
-tree = make_pipeline(preprocessor, DecisionTreeRegressor(random_state=42, max_depth=6))
-random = make_pipeline(preprocessor, RandomForestRegressor(random_state=42, max_features=5))
+tree = make_pipeline(preprocessor, DecisionTreeRegressor(random_state=42, max_depth=6, min_samples_split = 3))
+random = make_pipeline(preprocessor, RandomForestRegressor(random_state=42, max_depth=16, min_samples_split = 3))
 adaboost = make_pipeline(preprocessor, AdaBoostRegressor(RandomForestRegressor(random_state=42, max_features=5, min_samples_split=2, n_estimators=300)))
 linear = make_pipeline(preprocessorl, LinearRegression())
-ridge = make_pipeline(preprocessorl, Ridge(alpha = 0.9 )) #corrélation entre les variables qui ne necessitent pas de revoir le poids des variables
+ridge = make_pipeline(preprocessorl, Ridge(alpha = 0.9, solver = "sag")) #corrélation entre les variables qui ne necessitent pas de revoir le poids des variables
 lasso = make_pipeline(preprocessorl, Lasso(alpha = 0.1)) #avec un alpha a 0.1, le modèle ressemble à une régression linéaire standard ==> inutile car pas de grosses corélations entre les variables et pas de nécessité de mettre à 0 certaines variables
 svr = make_pipeline(preprocessors, SVR(kernel = "rbf", C = 6))
 boost = make_pipeline(preprocessors, AdaBoostRegressor(SVR(kernel = "rbf")))
@@ -280,7 +289,7 @@ elif option == 'Pre-processing et Modélisation':
             elif model_name =='Linear Regression' or model_name == 'Ridge' or model_name == 'Lasso':
                 model.fit(X_trainl, y_trainl)
                 y_predl = model.predict(X_testl)
-
+                X_2021l = gestion_nan1(X_2021)
                 # Calcul des métriques
                 mae = mean_absolute_error(y_testl, y_predl)
                 rmse = mean_squared_error(y_testl, y_predl, squared=False)
@@ -289,7 +298,7 @@ elif option == 'Pre-processing et Modélisation':
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
                 st.header("Prédictions 2021") 
-                y_pred_2021 = model.predict(X_2021)
+                y_pred_2021 = model.predict(X_2021l)
                 # Calcul des métriques
                 mae = mean_absolute_error(y_pred_2021, y_2021)
                 rmse = mean_squared_error(y_pred_2021, y_2021, squared=False)
@@ -314,7 +323,7 @@ elif option == 'Pre-processing et Modélisation':
             elif model_name =='SVR' or model_name == 'BOOST':
                 model.fit(X_trains, y_trains)
                 y_preds = model.predict(X_tests)
-
+                X_2021s = gestion_nan1(X_2021)
                 # Calcul des métriques
                 mae = mean_absolute_error(y_tests, y_preds)
                 rmse = mean_squared_error(y_tests, y_preds, squared=False)
@@ -323,7 +332,7 @@ elif option == 'Pre-processing et Modélisation':
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
                 st.header("Prédictions 2021") 
-                y_pred_2021 = model.predict(X_2021)
+                y_pred_2021 = model.predict(X_2021s)
                 # Calcul des métriques
                 mae = mean_absolute_error(y_pred_2021, y_2021)
                 rmse = mean_squared_error(y_pred_2021, y_2021, squared=False)
