@@ -442,5 +442,6 @@ elif option == "Prédictions":
                     y_predk = model.predict(X_testk)
                     y_pred_saisie = model.predict(X_train_new)
                     st.header("Prédiction : ",y_pred_saisie[0])
+        st.write("Dataframe :")
         st.write(X_train_new)
 # Pour exécuter l'application : streamlit run app.py
