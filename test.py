@@ -419,7 +419,7 @@ elif option == "Prédictions":
         selected_model = st.session_state.model_select
         # Filtrer les valeurs non vides
         user_inputs = {key: value for key, value in user_inputs.items() if value != ''}
-        user_inputs = {clef: valeur.replace(',', '.') for clef, valeur in user_inputs.items()}
+        user_inputs = {clef: float(valeur.replace(',', '.')) for clef, valeur in user_inputs.items()}
 
         # Créer un DataFrame à partir du dictionnaire
         X_new = pd.DataFrame([user_inputs])
