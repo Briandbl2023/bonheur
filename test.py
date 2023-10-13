@@ -40,7 +40,7 @@ df2021 = df4[df4['year']==2021]
 y_2021 = df2021['Life Ladder']
 X_2021 = df2021.drop(columns=['Life Ladder'])
 df4 = df4[df4['year']!=2021]
-df_ensemble = df_ensemble.sort_values(by = "year", ascending = False)
+df_ensemble = df4.sort_values(by = "year", ascending = False)
 df_ensemble = df_ensemble.drop("year", axis = 1)
 
 def rmse_revu(y_true, y_pred, threshold = 0.3):
@@ -125,7 +125,7 @@ df_KNN = df_KNN.drop("year", axis = 1)
 # Division des données en ensembles d'entraînement et de test
 yk = df_KNN ['Life Ladder']
 Xk = df_KNN.drop(["Life Ladder"], axis = 1)
-X_traink, X_testk, y_traink, y_testk = train_test_split(Xk, yk, test_size=0.2, random_state = 42)
+X_traink, X_testk, y_traink, y_testk = train_test_split(Xk, yk, test_size=0.1, random_state = 42)
 # Prétraitement des colonnes numériques
 numeric_transformerk = Pipeline(steps=[
     ('imputer', SimpleImputer(strategy='median')),
