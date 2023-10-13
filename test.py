@@ -84,7 +84,7 @@ yl = df_lineaire ['Life Ladder']
 Xl = df_lineaire.drop(["Life Ladder"], axis = 1)
 X_trainl, X_testl, y_trainl, y_testl = train_test_split(Xl, yl, test_size=0.3, random_state = 42)
 def gestion_nan1(X):
-  for colonne in col_numeric:
+  for colonne in numeric_cols:
     if 'Regional indicator' in X.columns:
       X[colonne] = X[colonne].fillna(X.groupby("Regional indicator")[colonne].transform('median'))
 
