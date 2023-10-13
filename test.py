@@ -1,5 +1,5 @@
 import streamlit as st
-# Titre de l'application
+
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -50,7 +50,8 @@ def rmse_revu(y_true, y_pred, threshold = 0.3):
   mean_squared_error = np.mean(squared_errors)
   final_score = np.sqrt(mean_squared_error)
   return final_score
-    
+
+#Modèles ensembles
 # Division des données en ensembles d'entraînement et de test
 y = df_ensemble ['Life Ladder']
 X = df_ensemble.drop(["Life Ladder"], axis = 1)
@@ -195,7 +196,7 @@ models = [
 ('SVR', svr)
 ]
 
-
+# Titre de l'application
 st.title("Projet analyse du bonheur")
 
 # Barre latérale avec des options cliquables
