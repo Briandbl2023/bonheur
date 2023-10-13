@@ -423,7 +423,7 @@ elif option == "Modélisation nouvelles données":
         X_train_new.loc[0, 'Country name'] = st.session_state.country_select
         
         X_train_new = X_train_new.merge(df3, on='Country name')
-        st.write(X_train_new)
+        
         for model_name, model in models:
         # Création des pipelines pour les modèles
 
@@ -456,6 +456,5 @@ elif option == "Modélisation nouvelles données":
                     y_predk = model.predict(X_testk)
                     y_pred_saisie = model.predict(X_train_new)
                     st.header(y_pred_saisie[0])
-
-        
+        st.write(X_train_new)
 # Pour exécuter l'application : streamlit run app.py
