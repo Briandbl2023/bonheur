@@ -196,21 +196,25 @@ models = [
 ('SVR', svr)
 ]
 
-# Titre de l'application
-st.title("Projet analyse du bonheur")
+# Liste des modèles à entraîner
+modelsp = [
+('KNN', knn),
+('SVR', svr)
+]
 
 # Barre latérale avec des options cliquables
 option = st.sidebar.radio(
     'Menu',
-    ('Présentation', 'Quelques visualisations', 'Pre-processing', 'Modélisation', "Modélisation nouvelles données")
+    ('Présentation', 'Quelques visualisations', 'Pre-processing et Modélisation', "Prédictions")
 )
 
 # Contenu en fonction de l'option sélectionnée
 if option == 'Présentation':
+    st.header("Analyse du bonheur")
     st.header("Présentation du projet")
     st.write("C'est la page de présentation du projet.")
         
-    st.write(df4.head(), align = "center")  # Affiche les premières lignes du DataFrame
+    st.write(df4.head())  
 
 elif option == 'Quelques visualisations':
     st.header("Quelques visualisations du projet")
@@ -227,13 +231,9 @@ elif option == 'Quelques visualisations':
     p.set_title("Top 10 des pays les plus malheureux");
     st.pyplot(plt)
     
-elif option == 'Pre-processing':
-    st.header("Pre-Processing")
-    st.write("Page pre-processing.")
-
-elif option == 'Modélisation':
+elif option == 'Pre-processing et Modélisation':
     
-    
+    st.header("Pre-processing et modélisation")
 
     # Barre latérale pour choisir le modèle
     selected_model = st.sidebar.selectbox('Sélectionnez un modèle', [model_name for model_name, _ in models])
@@ -379,14 +379,16 @@ elif option == 'Modélisation':
                 plt.xticks([0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4])
                 plt.legend();
                 st.pyplot(plt)
-elif option == "Modélisation nouvelles données":
+
+elif option == "Prédictions":
+    st.header("Prédictions")
     # Création du formulaire
     with st.form('modélisation'):
 
         # Zone de liste avec une seule possibilité de sélection
         if "model_select" not in st.session_state :
             st.session_state.model_select=""
-        st.session_state.model_select = st.selectbox('Sélectionnez le modèle à utiliser', [model_name for model_name, _ in models])
+        st.session_state.model_select = st.selectbox('Sélectionnez le modèle à utiliser', [model_name for model_name, _ in modelsp])
                    
         #  Zone de liste avec une seule possibilité de sélection
         if "country_select" not in st.session_state :
@@ -428,33 +430,17 @@ elif option == "Modélisation nouvelles données":
         # Création des pipelines pour les modèles
 
             if model_name == selected_model:
-                if model_name =='Arbre de décision' or model_name=='Random Forest':
-                    model.fit(X_train, y_train)
-                    y_pred = model.predict(X_test)
-                    # Calcul des métriques
-                    mae = mean_absolute_error(y_test, y_pred)
-                    rmse = mean_squared_error(y_test, y_pred, squared=False)
-                    # Affichage des résultats
-                    #st.write(f"Modèle: {model_name}")
-                    y_pred_saisie = model.predict(X_train_new)
-                    st.header(y_pred_saisie[0])
-                    
-                elif model_name =='Linear Regression' or model_name == 'Ridge' or model_name == 'Lasso':
-                    model.fit(X_trainl, y_trainl)
-                    y_predl = model.predict(X_testl)
-                    y_pred_saisie = model.predict(X_train_new)
-                    st.header(y_pred_saisie[0])
-
-                elif model_name =='SVR' or model_name == 'BOOST':
+                
+                if model_name =='SVR' or model_name == 'BOOST':
                     model.fit(X_trains, y_trains)
                     y_preds = model.predict(X_tests)
                     y_pred_saisie = model.predict(X_train_new)
-                    st.header(y_pred_saisie[0])
+                    st.header("Prédiction : ",y_pred_saisie[0])
             
                 elif model_name =='KNN':
                     model.fit(X_traink, y_traink)
                     y_predk = model.predict(X_testk)
                     y_pred_saisie = model.predict(X_train_new)
-                    st.header(y_pred_saisie[0])
+                    st.header("Prédiction : ",y_pred_saisie[0])
         st.write(X_train_new)
 # Pour exécuter l'application : streamlit run app.py
