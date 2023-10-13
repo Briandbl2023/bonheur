@@ -387,7 +387,7 @@ elif option == "Modélisation nouvelles données":
         if "model_select" not in st.session_state :
             st.session_state.model_select=""
         st.session_state.model_select = st.selectbox('Sélectionnez le modèle à utiliser', [model_name for model_name, _ in models])
-
+        st.write("Sélection des hyperparamètres")
         if st.session_state.model_select == "Arbre de décision":
             # Affichez les champs spécifiques pour le modèle 1
             st.session_state.champ1 = st.text_input("Max_depth", value = 6)
