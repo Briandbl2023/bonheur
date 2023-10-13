@@ -387,7 +387,6 @@ elif option == "Modélisation nouvelles données":
         if "model_select" not in st.session_state :
             st.session_state.model_select=""
         st.session_state.model_select = st.selectbox('Sélectionnez le modèle à utiliser', [model_name for model_name, _ in models])
-        st.write("Sélection des hyperparamètres")
                    
         #  Zone de liste avec une seule possibilité de sélection
         if "country_select" not in st.session_state :
