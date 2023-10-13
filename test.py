@@ -391,8 +391,33 @@ elif option == "Modélisation nouvelles données":
         if st.session_state.model_select == "Arbre de décision":
             # Affichez les champs spécifiques pour le modèle 1
             st.session_state.champ1 = st.text_input("Max_depth", value = 6)
-            
+
+        elif st.session_state.model_select == "Random Forest":
+            # Affichez les champs spécifiques pour le modèle 2
+            st.session_state.champ1 = st.text_input("Max_features", value = 5)
+
         
+        elif st.session_state.model_select == "Ridge":
+            # Affichez les champs spécifiques pour le modèle 3
+            st.session_state.champ2 = st.text_input("alpha", value = 0.9)
+
+        
+        elif st.session_state.model_select == "Lasso":
+            # Affichez les champs spécifiques pour le modèle 4
+            st.session_state.champ2 = st.text_input("alpha", value = 0.1)
+
+        
+        elif st.session_state.model_select == "KNN":
+            # Affichez les champs spécifiques pour le modèle 5
+            st.session_state.champ3 = st.text_input("n_neighbors", value = 3)
+            st.session_state.champ4 = st.text_input("metric", value = "manhattan")
+
+        
+        elif st.session_state.model_select == "SVR":
+            # Affichez les champs spécifiques pour le modèle 6
+            st.session_state.champ5 = st.text_input("Kerner", value = "rbf")
+            st.session_state.champ6 = st.text_input("C", value = 6)kernel = "rbf", C = 6
+            
         #  Zone de liste avec une seule possibilité de sélection
         if "country_select" not in st.session_state :
             st.session_state.country_select=""
@@ -430,10 +455,12 @@ elif option == "Modélisation nouvelles données":
         X_train_new = X_train_new.merge(df3, on='Country name')
         st.write(X_train_new)
         for model_name, model in models:
-        
+        # Création des pipelines pour les modèles
+
             if model_name == selected_model:
                 if model_name =='Arbre de décision' or model_name=='Random Forest':
-                
+                    tree = make_pipeline(preprocessor, DecisionTreeRegressor(random_state=42, max_depth=st.session_state.champ1))
+                    random = make_pipeline(preprocessor, RandomForestRegressor(random_state=42, max_features=st.session_state.champ1))
                     model.fit(X_train, y_train)
                     y_pred = model.predict(X_test)
                     # Calcul des métriques
@@ -445,18 +472,23 @@ elif option == "Modélisation nouvelles données":
                     st.header(y_pred_saisie[0])
                     
                 elif model_name =='Linear Regression' or model_name == 'Ridge' or model_name == 'Lasso':
+                    linear = make_pipeline(preprocessorl, LinearRegression())
+                    ridge = make_pipeline(preprocessorl, Ridge(alpha = st.session_state.champ2)) #corrélation entre les variables qui ne necessitent pas de revoir le poids des variables
+                    lasso = make_pipeline(preprocessorl, Lasso(alpha = st.session_state.champ2)) #avec un alpha a 0.1, le modèle ressemble à une régression linéaire standard ==> inutile car pas de grosses corélations entre les variables et pas de nécessité de mettre à 0 certaines variables
                     model.fit(X_trainl, y_trainl)
                     y_predl = model.predict(X_testl)
                     y_pred_saisie = model.predict(X_train_new)
                     st.header(y_pred_saisie[0])
 
                 elif model_name =='SVR' or model_name == 'BOOST':
+                    svr = make_pipeline(preprocessors, SVR(kernel = st.session_state.champ5, C = st.session_state.champ6))
                     model.fit(X_trains, y_trains)
                     y_preds = model.predict(X_tests)
                     y_pred_saisie = model.predict(X_train_new)
                     st.header(y_pred_saisie[0])
             
                 elif model_name =='KNN':
+                    knn = make_pipeline(preprocessork, KNeighborsRegressor(n_neighbors = st.session_state.champ3, metric = st.session_state.champ4)) #optimisation du nombre de voisins
                     model.fit(X_traink, y_traink)
                     y_predk = model.predict(X_testk)
                     y_pred_saisie = model.predict(X_train_new)
