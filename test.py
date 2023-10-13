@@ -416,7 +416,7 @@ elif option == "Modélisation nouvelles données":
         elif st.session_state.model_select == "SVR":
             # Affichez les champs spécifiques pour le modèle 6
             st.session_state.champ5 = st.text_input("Kerner", value = "rbf")
-            st.session_state.champ6 = st.text_input("C", value = 6)kernel = "rbf", C = 6
+            st.session_state.champ6 = st.text_input("C", value = 6)
             
         #  Zone de liste avec une seule possibilité de sélection
         if "country_select" not in st.session_state :
