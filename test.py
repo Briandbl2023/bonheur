@@ -88,7 +88,7 @@ def gestion_nan1(X):
     if 'Regional indicator' in X.columns:
       X[colonne] = X[colonne].fillna(X.groupby("Regional indicator")[colonne].transform('median'))
 
-  X_new = X.drop("Regional indicator", axis = 1)
+  X_new = X #.drop("Regional indicator", axis = 1)
 
   return X_new
 
