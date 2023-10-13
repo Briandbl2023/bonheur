@@ -447,13 +447,13 @@ elif option == "Prédictions":
                     y_preds = model.predict(X_tests)
                     y_pred_saisie = model.predict(X_train_new)
                     st.write(y_pred_saisie)
-                    st.header(y_pred_saisie[0])
+                    st.header("Prédictions : " + str(y_pred_saisie[0]))
             
                 elif model_name =='KNN':
                     model.fit(X_traink, y_traink)
                     y_predk = model.predict(X_testk)
                     y_pred_saisie = model.predict(X_train_new)
-                    st.header(y_pred_saisie[0])
+                    st.header("Prédictions : " + str(y_pred_saisie[0]))
         st.write("Dataframe :")
         st.write(X_train_new)
 # Pour exécuter l'application : streamlit run app.py
