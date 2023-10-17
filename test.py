@@ -245,7 +245,7 @@ elif option == 'Pre-processing et Modélisation':
     st.header("Pre-processing et modélisation")
 
     # Barre latérale pour choisir le modèle
-    selected_model = st.selectbox('Sélectionnez un modèle', [model_name for model_name, _ in models])
+    #selected_model = st.selectbox('Sélectionnez un modèle', [model_name for model_name, _ in models])
     st.header(selected_model)
     st.header("Modélisation jeu d'entraînement")
     # Entraînement du modèle sélectionné    
