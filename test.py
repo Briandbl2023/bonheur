@@ -216,7 +216,7 @@ option = st.sidebar.radio(
     'Sommaire',
     ('Présentation', 'Quelques visualisations', 'Pre-processing et Modélisation', "Prédictions")
 )
-about = "About<br>Blablablabla<br><br>"
+about = "About<br>Blablablabla"
 st.sidebar.markdown(about, unsafe_allow_html=True)
 auteurs = "Auteurs<br>Gaëlle Ekindi<br>Jihade El Ouardi<br>Patricia Verissimo<br>Stéphane Burel"
 st.sidebar.markdown(auteurs, unsafe_allow_html=True)
