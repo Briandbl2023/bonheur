@@ -214,7 +214,7 @@ modelsp = [
 # Barre latérale avec des options cliquables
 option = st.sidebar.radio(
     'Sommaire',
-    ('Présentation', 'Quelques visualisations', 'Pre-processing et Modélisation', "Prédictions")
+    ('Contexte', 'Exploration', 'Modélisation', "Prédictions")
 )
 about = "About<br>Blablablabla"
 st.sidebar.markdown(about, unsafe_allow_html=True)
@@ -223,14 +223,14 @@ st.sidebar.markdown(auteurs, unsafe_allow_html=True)
 st.sidebar.image(logods)
 
 # Contenu en fonction de l'option sélectionnée
-if option == 'Présentation':
+if option == 'Contexte':
     st.header("Analyse du bonheur")
     st.header("Présentation du projet")
     st.write("C'est la page de présentation du projet.")
         
     st.write(df4.head())  
 
-elif option == 'Quelques visualisations':
+elif option == 'Exploration':
     st.header("Quelques visualisations du projet")
 
     # Créer le graphique avec Seaborn
@@ -245,7 +245,7 @@ elif option == 'Quelques visualisations':
     p.set_title("Top 10 des pays les plus malheureux");
     st.pyplot(plt)
     
-elif option == 'Pre-processing et Modélisation':
+elif option == 'Modélisation':
     
     st.header("Pre-processing et modélisation")
 
