@@ -212,13 +212,14 @@ modelsp = [
 ]
 
 # Barre latérale avec des options cliquables
+st.sidebar.write("<b>Sommaire</b>",unsafe_allow_html=True)
 option = st.sidebar.radio(
-    'Sommaire',
+    '',
     ('Contexte', 'Exploration', 'Modélisation', "Prédictions")
 )
-about = "<br><br>About<br>Blablablabla"
+about = "<br><br><b>About</b><br>Blablablabla"
 st.sidebar.markdown(about, unsafe_allow_html=True)
-auteurs = "<br><br>Auteurs<br>Gaëlle Ekindi<br>Jihade El Ouardi<br>Patricia Verissimo<br>Stéphane Burel<br><br>"
+auteurs = "<br><br><b>Auteurs</b><br>Gaëlle Ekindi<br>Jihade El Ouardi<br>Patricia Verissimo<br>Stéphane Burel<br><br>"
 st.sidebar.markdown(auteurs, unsafe_allow_html=True)
 st.sidebar.image(logods)
 
