@@ -212,13 +212,13 @@ modelsp = [
 ]
 # Barre latérale avec des options cliquables
 # Titre en gras dans la barre latérale
-st.sidebar.markdown("<b>Sommaire</b>", unsafe_allow_html=True)
+#st.sidebar.markdown("<b>Sommaire</b>", unsafe_allow_html=True)
 
 # Utilisation de la chaîne de caractères comme label
 option = st.sidebar.radio(
     '',  # Utilisation d'un espace insécable comme label
     ('Contexte', 'Exploration', 'Modélisation', "Prédictions"),
-  label_position="hidden"
+  #label_position="hidden"
 )
 
 
