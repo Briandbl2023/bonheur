@@ -216,7 +216,7 @@ st.sidebar.markdown("<b>Sommaire</b>", unsafe_allow_html=True)
 
 # Options du sommaire (boutons radio)
 option = st.sidebar.radio(
-    '\u200B',  # Utilisation d'un espace insécable comme label
+    '',  # Utilisation d'un espace insécable comme label
     ('Contexte', 'Exploration', 'Modélisation', "Prédictions")
 )
 
