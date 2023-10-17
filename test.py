@@ -210,12 +210,6 @@ modelsp = [
 ('KNN', knn),
 ('SVR', svr)
 ]
-with st.sidebar.container():
-    st.write("### Sommaire")
-    option = st.selectbox(
-        '',
-        ('Présentation', 'Quelques visualisations', 'Pre-processing et Modélisation', 'Prédictions')
-    )
 # Barre latérale avec des options cliquables
 st.sidebar.write("<b>Sommaire</b>",unsafe_allow_html=True)
 option = st.sidebar.radio(
