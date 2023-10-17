@@ -218,7 +218,7 @@ st.sidebar.markdown("<b>Sommaire</b>", unsafe_allow_html=True)
 option = st.sidebar.radio(
     '',  # Utilisation d'un espace insécable comme label
     ('Contexte', 'Exploration', 'Modélisation', "Prédictions"),
-  label_position="hidden",
+  label_position="hidden"
 )
 
 
