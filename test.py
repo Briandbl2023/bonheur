@@ -214,14 +214,10 @@ modelsp = [
 # Titre en gras dans la barre latérale
 st.sidebar.markdown("<b>Sommaire</b>", unsafe_allow_html=True)
 
-# Conversion de l'espace insécable en une chaîne de caractères
-espace_insécable = chr(160)
-
 # Utilisation de la chaîne de caractères comme label
 option = st.sidebar.radio(
-    espace_insécable,  # Utilisation d'un espace insécable comme label
-    ('Contexte', 'Exploration', 'Modélisation', "Prédictions"),
-    label_position=None,
+    '',  # Utilisation d'un espace insécable comme label
+    ('Contexte', 'Exploration', 'Modélisation', "Prédictions")
 )
 
 
