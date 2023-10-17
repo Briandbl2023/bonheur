@@ -226,7 +226,7 @@ option = st.sidebar.radio(
 #option = st.sidebar.radio(
 #    '\u200B',('Contexte', 'Exploration', 'Modélisation', "Prédictions")
 #)
-about = "<b>About</b><br>Projet fil rouge dans le cadre de la formation Data Analyst sur le rapport mondial du bien être, publié tous les ans par l'ONU"
+about = "<br><b>About</b><br>Projet fil rouge dans le cadre de la formation Data Analyst sur le rapport mondial du bien être, publié tous les ans par l'ONU"
 st.sidebar.markdown(about, unsafe_allow_html=True)
 auteurs = "<b>Auteurs</b><br>Gaëlle Ekindi<br>Jihade El Ouardi<br>Patricia Verissimo<br>Stéphane Burel<br><br>"
 st.sidebar.markdown(auteurs, unsafe_allow_html=True)
