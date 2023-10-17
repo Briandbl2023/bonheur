@@ -216,9 +216,9 @@ option = st.sidebar.radio(
     'Sommaire',
     ('Présentation', 'Quelques visualisations', 'Pre-processing et Modélisation', "Prédictions")
 )
-
-st.sidebar.write("About<br>Blablablabla<br><br>")
-auteurs = "Gaëlle Ekindi<br>Jihade El Ouardi<br>Patricia Verissimo<br>Stéphane Burel"
+about = "About<br>Blablablabla<br><br>"
+st.sidebar.markdown(about, unsafe_allow_html=True)
+auteurs = "Auteurs<br>Gaëlle Ekindi<br>Jihade El Ouardi<br>Patricia Verissimo<br>Stéphane Burel"
 st.sidebar.markdown(auteurs, unsafe_allow_html=True)
 st.sidebar.image(logods)
 
