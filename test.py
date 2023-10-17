@@ -217,13 +217,8 @@ option = st.sidebar.radio(
     ('Présentation', 'Quelques visualisations', 'Pre-processing et Modélisation', "Prédictions")
 )
 
-st.sidebar.write("About")
-st.sidebar.write("Blablablabla\n\n")
-st.sidebar.write("Auteurs")
-st.sidebar.write("Gaëlle Ekindi")
-st.sidebar.write("Jihade El Ouardi")
-st.sidebar.write("Patricia Verissimo")
-st.sidebar.write("Stéphane Burel")
+st.sidebar.write("About<br>Blablablabla<br><br>")
+st.sidebar.write("Auteurs<br>Gaëlle Ekindi<br>Jihade El Ouardi<br>Patricia Verissimo<br>Stéphane Burel")
 st.sidebar.image(logods)
 
 # Contenu en fonction de l'option sélectionnée
