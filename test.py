@@ -21,7 +21,7 @@ from category_encoders import TargetEncoder
 # URL du fichier Excel sur GitHub
 github_url = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2022.xls'
 github_url2 = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2021.csv'
-    
+logods ='https://github.com/Briandbl2023/bonheur/raw/main/9686.webp'
 # Lire le fichier Excel dans un DataFrame
 df = pd.read_excel(github_url)
 df = df[df['year']!=2005]
@@ -224,6 +224,7 @@ st.sidebar.write("Gaëlle Ekindi")
 st.sidebar.write("Jihade El Ouardi")
 st.sidebar.write("Patricia Verissimo")
 st.sidebar.write("Stéphane Burel")
+st.sidebar.image(logods)
 
 # Contenu en fonction de l'option sélectionnée
 if option == 'Présentation':
