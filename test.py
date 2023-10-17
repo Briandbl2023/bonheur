@@ -213,7 +213,7 @@ modelsp = [
 
 # Barre latérale avec des options cliquables
 option = st.sidebar.radio(
-    'Menu',
+    'Sommaire',
     ('Présentation', 'Quelques visualisations', 'Pre-processing et Modélisation', "Prédictions")
 )
 
