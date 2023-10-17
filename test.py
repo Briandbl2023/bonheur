@@ -218,7 +218,8 @@ option = st.sidebar.radio(
 )
 
 st.sidebar.write("About<br>Blablablabla<br><br>")
-st.sidebar.write("Auteurs<br>Gaëlle Ekindi<br>Jihade El Ouardi<br>Patricia Verissimo<br>Stéphane Burel")
+auteurs = "Gaëlle Ekindi<br>Jihade El Ouardi<br>Patricia Verissimo<br>Stéphane Burel"
+st.sidebar.markdown(auteurs, unsafe_allow_html=True)
 st.sidebar.image(logods)
 
 # Contenu en fonction de l'option sélectionnée
