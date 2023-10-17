@@ -214,7 +214,6 @@ modelsp = [
 # Barre latérale avec des options cliquables
 st.sidebar.write("<b>Sommaire</b>",unsafe_allow_html=True)
 option = st.sidebar.radio(
-    '',
     ('Contexte', 'Exploration', 'Modélisation', "Prédictions")
 )
 about = "<br><br><b>About</b><br>Blablablabla"
