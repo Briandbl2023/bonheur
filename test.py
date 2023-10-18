@@ -311,13 +311,13 @@ elif option == 'Modélisation':
                 plt.legend();
                 st.pyplot(plt)
                 
-                residus = y_2021 - y_pred_2021
-                plt.figure(figsize=(8, 6))
-                plt.hist(residus, bins=30, color='blue', alpha=0.7)
-                plt.xlabel('Résidus')
-                plt.ylabel('Fréquence')
-                plt.title('Histogramme des Résidus')
-                st.pyplot(plt)
+                #residus = y_2021 - y_pred_2021
+                #plt.figure(figsize=(8, 6))
+                #plt.hist(residus, bins=30, color='blue', alpha=0.7)
+                #plt.xlabel('Résidus')
+                #plt.ylabel('Fréquence')
+                #plt.title('Histogramme des Résidus')
+                #st.pyplot(plt)
                 ecart_optim = abs(y_pred_2021 - y_2021)
                 ecart_optim_df = ecart_optim.to_frame(name='Ecarts')
                 ecart_optim_df["Regional indicator"] = X_2021["Regional indicator"]
@@ -363,13 +363,13 @@ elif option == 'Modélisation':
                 plt.legend();
                 st.pyplot(plt)
                 
-                residus = y_2021 - y_pred_2021
-                plt.figure(figsize=(8, 6))
-                plt.hist(residus, bins=30, color='blue', alpha=0.7)
-                plt.xlabel('Résidus')
-                plt.ylabel('Fréquence')
-                plt.title('Histogramme des Résidus')
-                st.pyplot(plt)
+                #residus = y_2021 - y_pred_2021
+                #plt.figure(figsize=(8, 6))
+                #plt.hist(residus, bins=30, color='blue', alpha=0.7)
+                #plt.xlabel('Résidus')
+                #plt.ylabel('Fréquence')
+                #plt.title('Histogramme des Résidus')
+                #st.pyplot(plt)
                 ecart_optim = abs(y_pred_2021 - y_2021)
                 ecart_optim_df = ecart_optim.to_frame(name='Ecarts')
                 ecart_optim_df["Regional indicator"] = X_2021["Regional indicator"]
@@ -415,13 +415,13 @@ elif option == 'Modélisation':
                 plt.legend();
                 st.pyplot(plt)
                 
-                residus = y_2021 - y_pred_2021
-                plt.figure(figsize=(8, 6))
-                plt.hist(residus, bins=30, color='blue', alpha=0.7)
-                plt.xlabel('Résidus')
-                plt.ylabel('Fréquence')
-                plt.title('Histogramme des Résidus')
-                st.pyplot(plt)
+                #residus = y_2021 - y_pred_2021
+                #plt.figure(figsize=(8, 6))
+                #plt.hist(residus, bins=30, color='blue', alpha=0.7)
+                #plt.xlabel('Résidus')
+                #plt.ylabel('Fréquence')
+                #plt.title('Histogramme des Résidus')
+                #st.pyplot(plt)
                 ecart_optim = abs(y_pred_2021 - y_2021)
                 ecart_optim_df = ecart_optim.to_frame(name='Ecarts')
                 ecart_optim_df["Regional indicator"] = X_2021["Regional indicator"]
@@ -467,13 +467,13 @@ elif option == 'Modélisation':
                 plt.legend();
                 st.pyplot(plt)
                 
-                residus = y_2021 - y_pred_2021
-                plt.figure(figsize=(8, 6))
-                plt.hist(residus, bins=30, color='blue', alpha=0.7)
-                plt.xlabel('Résidus')
-                plt.ylabel('Fréquence')
-                plt.title('Histogramme des Résidus')
-                st.pyplot(plt)
+                #residus = y_2021 - y_pred_2021
+                #plt.figure(figsize=(8, 6))
+                #plt.hist(residus, bins=30, color='blue', alpha=0.7)
+                #plt.xlabel('Résidus')
+                #plt.ylabel('Fréquence')
+                #plt.title('Histogramme des Résidus')
+                #st.pyplot(plt)
                 ecart_optim = abs(y_pred_2021 - y_2021)
                 ecart_optim_df = ecart_optim.to_frame(name='Ecarts')
                 ecart_optim_df["Regional indicator"] = X_2021["Regional indicator"]
