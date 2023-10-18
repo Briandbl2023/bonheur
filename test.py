@@ -22,6 +22,10 @@ from category_encoders import TargetEncoder
 github_url = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2022.xls'
 github_url2 = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2021.csv'
 logods ='https://github.com/Briandbl2023/bonheur/raw/main/logo-2021.png'
+pknn = 'https://github.com/Briandbl2023/bonheur/raw/main/knn.JPG'
+psvr = 'https://github.com/Briandbl2023/bonheur/raw/main/svr.JPG'
+parbre = 'https://github.com/Briandbl2023/bonheur/raw/main/arbre.JPG'
+plineaire = 'https://github.com/Briandbl2023/bonheur/raw/main/lineaire.JPG'
 # Lire le fichier Excel dans un DataFrame
 df = pd.read_excel(github_url)
 df = df[df['year']!=2005]
@@ -257,7 +261,9 @@ elif option == 'Exploration':
     
 elif option == 'Modélisation':
     
-    st.header("Pre-processing et modélisation")
+    st.header("Modélisation")
+    textem = "Les enjeux de la modélisation : <ul><li>Cerner les meilleurs paramétrages de pré-processing</li><li>Vérifier la robustesse de nos algorithmes</li><li>Trouver l’algorithme qui s’adaptera au mieux aux relations complexes de notre jeu de données</li></ul>
+    st.sidebar.markdown(about, unsafe_allow_html=True)
 
     # Barre latérale pour choisir le modèle
     selected_model = st.selectbox('Sélectionnez un modèle', [model_name for model_name, _ in models])
@@ -268,7 +274,7 @@ elif option == 'Modélisation':
         
         if model_name == selected_model:
             if model_name =='Arbre de décision' or model_name=='Random Forest':
-                
+                st.image(parbre)
                 model.fit(X_train, y_train)
                 y_pred = model.predict(X_test)
 
@@ -302,6 +308,7 @@ elif option == 'Modélisation':
                 plt.legend();
                 st.pyplot(plt)
             elif model_name =='Linear Regression' or model_name == 'Ridge' or model_name == 'Lasso':
+                st.image(plineaire)
                 model.fit(X_trainl, y_trainl)
                 y_predl = model.predict(X_testl)
                 X_2021l = gestion_nan1(X_2021)
@@ -336,6 +343,7 @@ elif option == 'Modélisation':
                 plt.legend();
                 st.pyplot(plt)
             elif model_name =='SVR' or model_name == 'BOOST':
+                st.image(psvr)
                 model.fit(X_trains, y_trains)
                 y_preds = model.predict(X_tests)
                 X_2021s = gestion_nan1(X_2021)
@@ -370,6 +378,7 @@ elif option == 'Modélisation':
                 plt.legend();
                 st.pyplot(plt)
             elif model_name =='KNN':
+                st.image(pknn)
                 model.fit(X_traink, y_traink)
                 y_predk = model.predict(X_testk)
 
