@@ -340,7 +340,8 @@ if option == 'Contexte':
 
     choromap3 = go.Figure(data=[data], layout=layout)
 
-    st.iplot(choromap3)
+    st.plotly_chart(choromap3)
+
     st.write(df4.head())  
 
 elif option == 'Exploration':
