@@ -323,6 +323,7 @@ elif option == 'Modélisation':
                 bonnes_reponses = ecart_optim_df[ecart_optim_df["Ecarts"] < 0.3]
                 bonnes_reponses = bonnes_reponses["Regional indicator"].value_counts()
                 pourcentage_bonnes_reponses = ((bonnes_reponses/nb_pays_region)*100).sort_values(ascending = False)
+                st.write("<b><u>Taux de réussite par région</u></b>",unsafe_allow_html=True)
                 st.write(pourcentage_bonnes_reponses)
             elif model_name =='Linear Regression' or model_name == 'Ridge' or model_name == 'Lasso':
                 st.image(plineaire)
