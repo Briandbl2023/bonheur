@@ -59,12 +59,12 @@ X_2021 = df2021.drop(columns=['Life Ladder'])
 df_ensemble = df4.sort_values(by = "year", ascending = False)
 df_ensemble = df_ensemble.drop("year", axis = 1)
 
-def rmse_revu(y_true, y_pred, threshold = 0.3):
-  errors = np.abs(y_true - y_pred)
-  squared_errors = np.where(errors > threshold, errors**2 , 0)
-  mean_squared_error = np.mean(squared_errors)
-  final_score = np.sqrt(mean_squared_error)
-  return final_score
+#def rmse_revu(y_true, y_pred, threshold = 0.3):
+#  errors = np.abs(y_true - y_pred)
+#  squared_errors = np.where(errors > threshold, errors**2 , 0)
+#  mean_squared_error = np.mean(squared_errors)
+#  final_score = np.sqrt(mean_squared_error)
+#  return final_score
 
 #Modèles ensembles
 # Division des données en ensembles d'entraînement et de test
@@ -107,15 +107,15 @@ standard_col = ['Log GDP per capita', 'Social support', 'Freedom to make life ch
                 'Perceptions of corruption', 'Positive affect','Negative affect']
 
 # Prétraitement des colonnes numériques
-numeric_transformer = Pipeline(steps=[
+numeric_transformerl = Pipeline(steps=[
     ('imputer', SimpleImputer(strategy='median')),
-    ('scaler', MinMaxScaler())
+    ('scaler', StandardScaler())
 ])
 
 # Combiner les prétraitements pour toutes les colonnes
 preprocessor = ColumnTransformer(
     transformers=[
-        ('num', numeric_transformer, standard_col)
+        ('num', numeric_transformerl, standard_col)
     ])
 
 #application
