@@ -349,6 +349,12 @@ elif option == 'Exploration':
 
     # Créer le graphique avec Seaborn
     sns.set(style="whitegrid")
+    #graphique de densité kernel (KDE)
+
+    plt.figure(figsize=(15,8))
+    sns.kdeplot(x=df4["Life Ladder"], hue=df4["Regional indicator"],fill=True ,linewidth=2)
+    plt.axvline(df_4["Life Ladder"].mean(),c="black")
+    st.pyplot(plt)
     plt.figure(figsize=(10, 6))
     p = sns.barplot(y=df5['Country name'].head(10), x=df5['Life Ladder'].head(10))
     p.set_title("Top 10 des pays les plus heureux")
