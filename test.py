@@ -342,7 +342,6 @@ elif option == 'Modélisation':
         if model_name == selected_model:
             if model_name =='Arbre de décision' or model_name=='Random Forest':
                 st.image(parbre)
-                st.image(parbre1)
                 
                 model.fit(X_train, y_train)
                 y_pred = model.predict(X_test)
