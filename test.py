@@ -268,7 +268,7 @@ elif option == 'Modélisation':
     # Barre latérale pour choisir le modèle
     selected_model = st.selectbox('Sélectionnez un modèle', [model_name for model_name, _ in models])
     #st.header(selected_model)
-    #st.header("Modélisation jeu d'entraînement")
+    st.write("<b><u>Pré-processing</b></u>",unsafe_allow_html=True)
     # Entraînement du modèle sélectionné    
     for model_name, model in models:
         
