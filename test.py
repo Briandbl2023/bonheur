@@ -28,10 +28,10 @@ psvr = 'https://github.com/Briandbl2023/bonheur/raw/main/svr.JPG'
 parbre = 'https://github.com/Briandbl2023/bonheur/raw/main/arbre.JPG'
 plineaire = 'https://github.com/Briandbl2023/bonheur/raw/main/lineaire.JPG'
 # Lire le fichier Excel dans un DataFrame
-df = pd.read_excel(github_url3)
+df = pd.read_csv(github_url3)
 df = df[df['year']!=2005]
 df1 = pd.read_csv(github_url2)
-df2 = pd.read_csv(github_url)
+df2 = pd.read_excel(github_url)
 df3=pd.DataFrame()
 df3['Country name']= df1['Country name']
 df3['Regional indicator'] = df1['Regional indicator']
