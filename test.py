@@ -121,7 +121,8 @@ preprocessorkm = ColumnTransformer(
 #application
 from sklearn.pipeline import make_pipeline
 preprocessing = make_pipeline(preprocessorkm)
-features_normalises = preprocessing.fit_transform(features)kmeans = KMeans(n_clusters = 4)
+features_normalises = preprocessing.fit_transform(features)
+kmeans = KMeans(n_clusters = 4)
 kmeans.fit(features_normalises)
 features_predict = kmeans.predict(features_normalises)
 
