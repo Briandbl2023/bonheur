@@ -21,15 +21,17 @@ from category_encoders import TargetEncoder
 # URL du fichier Excel sur GitHub
 github_url = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2022.xls'
 github_url2 = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2021.csv'
+github_url3 = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report.csv'
 logods ='https://github.com/Briandbl2023/bonheur/raw/main/logo-2021.png'
 pknn = 'https://github.com/Briandbl2023/bonheur/raw/main/knn.JPG'
 psvr = 'https://github.com/Briandbl2023/bonheur/raw/main/svr.JPG'
 parbre = 'https://github.com/Briandbl2023/bonheur/raw/main/arbre.JPG'
 plineaire = 'https://github.com/Briandbl2023/bonheur/raw/main/lineaire.JPG'
 # Lire le fichier Excel dans un DataFrame
-df = pd.read_excel(github_url)
+df = pd.read_excel(github_url3)
 df = df[df['year']!=2005]
 df1 = pd.read_csv(github_url2)
+df2 = pd.read_csv(github_url)
 df3=pd.DataFrame()
 df3['Country name']= df1['Country name']
 df3['Regional indicator'] = df1['Regional indicator']
@@ -37,14 +39,13 @@ df4 = df.merge(df3, on='Country name')
 df4 = df4.drop(["Confidence in national government"], axis = 1)
 df5 = df4.groupby(['Country name'])['Life Ladder'].mean().to_frame().reset_index()
 df5 = df5.sort_values(by='Life Ladder', ascending = False)
-
+df2021 = df2.merge(df3, on='Country name')
 # Modèles Ensemble : 
-df2021 = df4[df4['year']==2021]
+df2021 = df2021[df2021['year']==2021]
 nb_pays_region = df2021["Regional indicator"].value_counts()
 # Séparation de la variable cible des fonctionnalités
 y_2021 = df2021['Life Ladder']
 X_2021 = df2021.drop(columns=['Life Ladder'])
-df4 = df4[df4['year']!=2021]
 df_ensemble = df4.sort_values(by = "year", ascending = False)
 df_ensemble = df_ensemble.drop("year", axis = 1)
 
