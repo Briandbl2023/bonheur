@@ -24,8 +24,8 @@ github_url = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-r
 github_url2 = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2021.csv'
 github_url3 = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report.csv'
 logods ='https://github.com/Briandbl2023/bonheur/raw/main/logo-2021.png'
-pknn = 'https://github.com/Briandbl2023/bonheur/raw/main/knn_preprocessing.JPG'
-psvr = 'https://github.com/Briandbl2023/bonheur/raw/main/svr_preprocessing.JPG'
+pknn = 'https://github.com/Briandbl2023/bonheur/raw/main/knn_preprocessing.jpg'
+psvr = 'https://github.com/Briandbl2023/bonheur/raw/main/svr_preprocessing.jpg'
 parbre = 'https://github.com/Briandbl2023/bonheur/raw/main/arbre_preprocessing.jpg'
 plineaire = 'https://github.com/Briandbl2023/bonheur/raw/main/lineaire_preprocessing.jpg'
 # Lire le fichier Excel dans un DataFrame
