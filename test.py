@@ -283,10 +283,10 @@ elif option == 'Modélisation':
                 rmse = mean_squared_error(y_test, y_pred, squared=False)
                 # Affichage des résultats
                 #st.write(f"Modèle: {model_name}")
-                st.write("<b>Modélisation jeu d'entraînement</b>",unsafe_allow_html=True)
+                st.write("<b><u>Modélisation jeu d'entraînement</u></b>",unsafe_allow_html=True)
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
-                st.header("Prédictions 2021") 
+                st.write("<b><u>Prédictions 2021</u></b>",unsafe_allow_html=True)
                 y_pred_2021 = model.predict(X_2021)
                 # Calcul des métriques
                 mae = mean_absolute_error(y_pred_2021, y_2021)
@@ -317,10 +317,11 @@ elif option == 'Modélisation':
                 mae = mean_absolute_error(y_testl, y_predl)
                 rmse = mean_squared_error(y_testl, y_predl, squared=False)
                 # Affichage des résultats
-                #st.write(f"Modèle: {model_name}")
+                #st.write(f"Modèle: {model_name}")                
+                st.write("<b><u>Modélisation jeu d'entraînement</u></b>",unsafe_allow_html=True)
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
-                st.header("Prédictions 2021") 
+                st.write("<b><u>Prédictions 2021</u></b>",unsafe_allow_html=True)
                 y_pred_2021 = model.predict(X_2021l)
                 # Calcul des métriques
                 mae = mean_absolute_error(y_pred_2021, y_2021)
@@ -353,9 +354,10 @@ elif option == 'Modélisation':
                 rmse = mean_squared_error(y_tests, y_preds, squared=False)
                 # Affichage des résultats
                 #st.write(f"Modèle: {model_name}")
+                st.write("<b><u>Modélisation jeu d'entraînement</u></b>",unsafe_allow_html=True)
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
-                st.header("Prédictions 2021") 
+                st.write("<b><u>Prédictions 2021</u></b>",unsafe_allow_html=True)
                 y_pred_2021 = model.predict(X_2021s)
                 # Calcul des métriques
                 mae = mean_absolute_error(y_pred_2021, y_2021)
@@ -388,9 +390,10 @@ elif option == 'Modélisation':
                 rmse = mean_squared_error(y_testk, y_predk, squared=False)
                 # Affichage des résultats
                 #st.write(f"Modèle: {model_name}")
+                st.write("<b><u>Modélisation jeu d'entraînement</u></b>",unsafe_allow_html=True)
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
-                st.header("Prédictions 2021") 
+                st.write("<b><u>Prédictions 2021</u></b>",unsafe_allow_html=True)
                 y_pred_2021 = model.predict(X_2021)
                 # Calcul des métriques
                 mae = mean_absolute_error(y_pred_2021, y_2021)
