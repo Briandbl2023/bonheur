@@ -107,24 +107,21 @@ standard_col = ['Log GDP per capita', 'Social support', 'Freedom to make life ch
                 'Perceptions of corruption', 'Positive affect','Negative affect']
 
 # Prétraitement des colonnes numériques
-numeric_transformerl = Pipeline(steps=[
+numeric_transformerkm = Pipeline(steps=[
     ('imputer', SimpleImputer(strategy='median')),
-    ('scaler', StandardScaler())
+    ('scaler', MinMaxScaler())
 ])
 
 # Combiner les prétraitements pour toutes les colonnes
-preprocessorl = ColumnTransformer(
+preprocessorkm = ColumnTransformer(
     transformers=[
-        ('target', pays_transformer, pays_cols),
-       ('hotencoder', region_transformer, k_means_cols),
-        ('num', numeric_transformerl, numeric_cols)
+        ('num', numeric_transformer, standard_col)
     ])
 
 #application
 from sklearn.pipeline import make_pipeline
-preprocessing = make_pipeline(preprocessor)
-features_normalises = preprocessing.fit_transform(features)
-kmeans = KMeans(n_clusters = 4)
+preprocessing = make_pipeline(preprocessorkm)
+features_normalises = preprocessing.fit_transform(features)kmeans = KMeans(n_clusters = 4)
 kmeans.fit(features_normalises)
 features_predict = kmeans.predict(features_normalises)
 
