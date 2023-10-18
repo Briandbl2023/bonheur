@@ -26,6 +26,10 @@ logods ='https://github.com/Briandbl2023/bonheur/raw/main/logo-2021.png'
 pknn = 'https://github.com/Briandbl2023/bonheur/raw/main/knn.JPG'
 psvr = 'https://github.com/Briandbl2023/bonheur/raw/main/svr.JPG'
 parbre = 'https://github.com/Briandbl2023/bonheur/raw/main/arbre.JPG'
+parbre1 = 'https://github.com/Briandbl2023/bonheur/raw/main/arbre_1.jpg'
+parbre2 = 'https://github.com/Briandbl2023/bonheur/raw/main/arbre_2.jpg'
+parbre3 = 'https://github.com/Briandbl2023/bonheur/raw/main/arbre_3.jpg'
+
 plineaire = 'https://github.com/Briandbl2023/bonheur/raw/main/lineaire.JPG'
 # Lire le fichier Excel dans un DataFrame
 df = pd.read_csv(github_url3)
@@ -277,6 +281,10 @@ elif option == 'Modélisation':
         if model_name == selected_model:
             if model_name =='Arbre de décision' or model_name=='Random Forest':
                 st.image(parbre)
+                st.image(parbre1)
+                st.image(parbre2)
+                st.image(parbre3)
+
                 model.fit(X_train, y_train)
                 y_pred = model.predict(X_test)
 
