@@ -315,7 +315,32 @@ if option == 'Contexte':
     st.header("Analyse du bonheur")
     st.header("Présentation du projet")
     st.write("C'est la page de présentation du projet.")
-        
+        #Happiness rankings of nations in 2017
+
+    import plotly.graph_objs as go
+    from plotly.offline import init_notebook_mode, iplot, plot
+    import pandas as pd
+    df_2017 = df[df['year']!=2017]
+
+    init_notebook_mode(connected=True)
+
+    data = dict(
+        type='choropleth',
+        locations=df_2017['Country name'],
+        locationmode='country names',
+        z=df_2017['RANK'],
+        text=df_2017['Country name'],
+        colorbar={'title': 'Happiness'}
+    )
+
+    layout = dict(
+        title='Global Happiness 2017',
+        geo=dict(showframe=False)
+    )
+
+    choromap3 = go.Figure(data=[data], layout=layout)
+
+    st.iplot(choromap3)
     st.write(df4.head())  
 
 elif option == 'Exploration':
