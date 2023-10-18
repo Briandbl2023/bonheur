@@ -28,6 +28,15 @@ pknn = 'https://github.com/Briandbl2023/bonheur/raw/main/knn_preprocessing.jpg'
 psvr = 'https://github.com/Briandbl2023/bonheur/raw/main/svr_preprocessing.jpg'
 parbre = 'https://github.com/Briandbl2023/bonheur/raw/main/arbre_preprocessing.jpg'
 plineaire = 'https://github.com/Briandbl2023/bonheur/raw/main/lineaire_preprocessing.jpg'
+
+oknn = 'https://github.com/Briandbl2023/bonheur/raw/main/knn_optimisation.jpg'
+osvr = 'https://github.com/Briandbl2023/bonheur/raw/main/svr_optimisation.jpg'
+oarbre = 'https://github.com/Briandbl2023/bonheur/raw/main/arbre_optimisation.jpg'
+orandom = 'https://github.com/Briandbl2023/bonheur/raw/main/random_optimisation.jpg'
+olineaire = 'https://github.com/Briandbl2023/bonheur/raw/main/lineaire_optimisation.jpg'
+oridge = 'https://github.com/Briandbl2023/bonheur/raw/main/ridge_optimisation.jpg'
+olasso = 'https://github.com/Briandbl2023/bonheur/raw/main/lasso_optimisation.jpg'
+
 # Lire le fichier Excel dans un DataFrame
 df = pd.read_csv(github_url3)
 df = df[df['year']!=2005]
@@ -342,7 +351,12 @@ elif option == 'Modélisation':
         if model_name == selected_model:
             if model_name =='Arbre de décision' or model_name=='Random Forest':
                 st.image(parbre)
-                
+                st.write("<b><u>Optimisation</b></u>",unsafe_allow_html=True)
+                if model_name=='Arbre de décision':
+                  st.image(oarbre)
+                elif model_name=='Random Forest':
+                  st.image(orandom)
+              
                 model.fit(X_train, y_train)
                 y_pred = model.predict(X_test)
 
@@ -390,10 +404,17 @@ elif option == 'Modélisation':
                 bonnes_reponses = ecart_optim_df[ecart_optim_df["Ecarts"] < 0.3]
                 bonnes_reponses = bonnes_reponses["Regional indicator"].value_counts()
                 pourcentage_bonnes_reponses = ((bonnes_reponses/nb_pays_region)*100).sort_values(ascending = False)
-                st.write("<b><u>Taux de réussite par région</u></b>",unsafe_allow_html=True)
+                st.write("<b><u>Taux de réussite par région(exprimé en pourcentage)</u></b>",unsafe_allow_html=True)
                 st.write(pourcentage_bonnes_reponses)
             elif model_name =='Linear Regression' or model_name == 'Ridge' or model_name == 'Lasso':
                 st.image(plineaire)
+                st.write("<b><u>Optimisation</b></u>",unsafe_allow_html=True)
+                if model_name=='Linear Regression':
+                  st.image(olineaire)
+                elif model_name=='Ridge':
+                  st.image(oridge)
+                elif model_name=='Lasso':
+                  st.image(olasso)
                 model.fit(X_trainl, y_trainl)
                 y_predl = model.predict(X_testl)
                 X_2021l = gestion_nan1(X_2021)
@@ -445,10 +466,12 @@ elif option == 'Modélisation':
                 bonnes_reponses = ecart_optim_df[ecart_optim_df["Ecarts"] < 0.3]
                 bonnes_reponses = bonnes_reponses["Regional indicator"].value_counts()
                 pourcentage_bonnes_reponses = ((bonnes_reponses/nb_pays_region)*100).sort_values(ascending = False)
-                st.write("<b><u>Taux de réussite par région</u></b>",unsafe_allow_html=True)
+                st.write("<b><u>Taux de réussite par région(exprimé en pourcentage)</u></b>",unsafe_allow_html=True)
                 st.write(pourcentage_bonnes_reponses)
             elif model_name =='SVR' or model_name == 'BOOST':
                 st.image(psvr)
+                st.write("<b><u>Optimisation</b></u>",unsafe_allow_html=True)
+                st.image(osvr)
                 model.fit(X_trains, y_trains)
                 y_preds = model.predict(X_tests)
                 X_2021s = gestion_nan1(X_2021)
@@ -497,10 +520,12 @@ elif option == 'Modélisation':
                 bonnes_reponses = ecart_optim_df[ecart_optim_df["Ecarts"] < 0.3]
                 bonnes_reponses = bonnes_reponses["Regional indicator"].value_counts()
                 pourcentage_bonnes_reponses = ((bonnes_reponses/nb_pays_region)*100).sort_values(ascending = False)
-                st.write("<b><u>Taux de réussite par région</u></b>",unsafe_allow_html=True)
+                st.write("<b><u>Taux de réussite par région(exprimé en pourcentage)</u></b>",unsafe_allow_html=True)
                 st.write(pourcentage_bonnes_reponses)
             elif model_name =='KNN':
                 st.image(pknn)
+                st.write("<b><u>Optimisation</b></u>",unsafe_allow_html=True)
+                st.image(oknn)
                 model.fit(X_traink, y_traink)
                 y_predk = model.predict(X_testk)
 
@@ -549,7 +574,7 @@ elif option == 'Modélisation':
                 bonnes_reponses = ecart_optim_df[ecart_optim_df["Ecarts"] < 0.3]
                 bonnes_reponses = bonnes_reponses["Regional indicator"].value_counts()
                 pourcentage_bonnes_reponses = ((bonnes_reponses/nb_pays_region)*100).sort_values(ascending = False)
-                st.write("<b><u>Taux de réussite par région</u></b>",unsafe_allow_html=True)
+                st.write("<b><u>Taux de réussite par région(exprimé en pourcentage)</u></b>",unsafe_allow_html=True)
                 st.write(pourcentage_bonnes_reponses)
 
 elif option == "Prédictions":
