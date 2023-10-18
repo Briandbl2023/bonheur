@@ -35,7 +35,7 @@ oarbre = 'https://github.com/Briandbl2023/bonheur/raw/main/arbre_optimisation.jp
 orandom = 'https://github.com/Briandbl2023/bonheur/raw/main/random_optimisation.jpg'
 olineaire = 'https://github.com/Briandbl2023/bonheur/raw/main/lineaire_optimisation.jpg'
 oridge = 'https://github.com/Briandbl2023/bonheur/raw/main/ridge_optimisation.jpg'
-olasso = 'https://github.com/Briandbl2023/bonheur/raw/main/lasso_optimisation.jpg'
+olasso = 'https://github.com/Briandbl2023/bonheur/raw/main/lasso_opitmisation.jpg'
 
 # Lire le fichier Excel dans un DataFrame
 df = pd.read_csv(github_url3)
