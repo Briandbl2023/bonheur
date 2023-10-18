@@ -263,7 +263,7 @@ elif option == 'Modélisation':
     
     st.header("Modélisation")
     textem = "Les enjeux de la modélisation : <ul><li>Cerner les meilleurs paramétrages de pré-processing</li><li>Vérifier la robustesse de nos algorithmes</li><li>Trouver l’algorithme qui s’adaptera au mieux aux relations complexes de notre jeu de données</li></ul>"
-    st.sidebar.markdown(textem, unsafe_allow_html=True)
+    #st.markdown(textem, unsafe_allow_html=True)
 
     # Barre latérale pour choisir le modèle
     selected_model = st.selectbox('Sélectionnez un modèle', [model_name for model_name, _ in models])
