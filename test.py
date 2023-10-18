@@ -321,7 +321,7 @@ if option == 'Contexte':
     from plotly.offline import init_notebook_mode, iplot, plot
     import pandas as pd
     df_2017 = df[df['year']!=2017]
-
+    df_2017['RANK'] = df_2017['Life Ladder'].rank()
     #init_notebook_mode(connected=True)
 
     data = dict(
