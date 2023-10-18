@@ -369,6 +369,14 @@ elif option == 'Modélisation':
                 plt.ylabel('Fréquence')
                 plt.title('Histogramme des Résidus')
                 st.pyplot(plt)
+                ecart_optim = abs(y_pred_2021 - y_2021)
+                ecart_optim_df = ecart_optim.to_frame(name='Ecarts')
+                ecart_optim_df["Regional indicator"] = X_2021["Regional indicator"]
+                bonnes_reponses = ecart_optim_df[ecart_optim_df["Ecarts"] < 0.3]
+                bonnes_reponses = bonnes_reponses["Regional indicator"].value_counts()
+                pourcentage_bonnes_reponses = ((bonnes_reponses/nb_pays_region)*100).sort_values(ascending = False)
+                st.write("<b><u>Taux de réussite par région</u></b>",unsafe_allow_html=True)
+                st.write(pourcentage_bonnes_reponses)
             elif model_name =='SVR' or model_name == 'BOOST':
                 st.image(psvr)
                 model.fit(X_trains, y_trains)
@@ -413,6 +421,14 @@ elif option == 'Modélisation':
                 plt.ylabel('Fréquence')
                 plt.title('Histogramme des Résidus')
                 st.pyplot(plt)
+                ecart_optim = abs(y_pred_2021 - y_2021)
+                ecart_optim_df = ecart_optim.to_frame(name='Ecarts')
+                ecart_optim_df["Regional indicator"] = X_2021["Regional indicator"]
+                bonnes_reponses = ecart_optim_df[ecart_optim_df["Ecarts"] < 0.3]
+                bonnes_reponses = bonnes_reponses["Regional indicator"].value_counts()
+                pourcentage_bonnes_reponses = ((bonnes_reponses/nb_pays_region)*100).sort_values(ascending = False)
+                st.write("<b><u>Taux de réussite par région</u></b>",unsafe_allow_html=True)
+                st.write(pourcentage_bonnes_reponses)
             elif model_name =='KNN':
                 st.image(pknn)
                 model.fit(X_traink, y_traink)
@@ -457,6 +473,14 @@ elif option == 'Modélisation':
                 plt.ylabel('Fréquence')
                 plt.title('Histogramme des Résidus')
                 st.pyplot(plt)
+                ecart_optim = abs(y_pred_2021 - y_2021)
+                ecart_optim_df = ecart_optim.to_frame(name='Ecarts')
+                ecart_optim_df["Regional indicator"] = X_2021["Regional indicator"]
+                bonnes_reponses = ecart_optim_df[ecart_optim_df["Ecarts"] < 0.3]
+                bonnes_reponses = bonnes_reponses["Regional indicator"].value_counts()
+                pourcentage_bonnes_reponses = ((bonnes_reponses/nb_pays_region)*100).sort_values(ascending = False)
+                st.write("<b><u>Taux de réussite par région</u></b>",unsafe_allow_html=True)
+                st.write(pourcentage_bonnes_reponses)
 
 elif option == "Prédictions":
     st.header("Prédictions")
