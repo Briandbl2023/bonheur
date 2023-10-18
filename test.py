@@ -113,9 +113,11 @@ numeric_transformerl = Pipeline(steps=[
 ])
 
 # Combiner les prétraitements pour toutes les colonnes
-preprocessor = ColumnTransformer(
+preprocessorl = ColumnTransformer(
     transformers=[
-        ('num', numeric_transformerl, standard_col)
+        ('target', pays_transformer, pays_cols),
+       ('hotencoder', region_transformer, k_means_cols),
+        ('num', numeric_transformerl, numeric_cols)
     ])
 
 #application
