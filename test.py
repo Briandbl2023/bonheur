@@ -308,6 +308,7 @@ elif option == 'Modélisation':
                 plt.xticks([0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4])
                 plt.legend();
                 st.pyplot(plt)
+                
                 residus = y_2021 - y_pred_2021
                 plt.figure(figsize=(8, 6))
                 plt.hist(residus, bins=30, color='blue', alpha=0.7)
@@ -351,6 +352,14 @@ elif option == 'Modélisation':
                 plt.xticks([0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4])
                 plt.legend();
                 st.pyplot(plt)
+                
+                residus = y_2021 - y_pred_2021
+                plt.figure(figsize=(8, 6))
+                plt.hist(residus, bins=30, color='blue', alpha=0.7)
+                plt.xlabel('Résidus')
+                plt.ylabel('Fréquence')
+                plt.title('Histogramme des Résidus')
+                st.pyplot(plt)
             elif model_name =='SVR' or model_name == 'BOOST':
                 st.image(psvr)
                 model.fit(X_trains, y_trains)
@@ -387,6 +396,14 @@ elif option == 'Modélisation':
                 plt.xticks([0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4])
                 plt.legend();
                 st.pyplot(plt)
+                
+                residus = y_2021 - y_pred_2021
+                plt.figure(figsize=(8, 6))
+                plt.hist(residus, bins=30, color='blue', alpha=0.7)
+                plt.xlabel('Résidus')
+                plt.ylabel('Fréquence')
+                plt.title('Histogramme des Résidus')
+                st.pyplot(plt)
             elif model_name =='KNN':
                 st.image(pknn)
                 model.fit(X_traink, y_traink)
@@ -422,6 +439,14 @@ elif option == 'Modélisation':
 
                 plt.xticks([0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4])
                 plt.legend();
+                st.pyplot(plt)
+                
+                residus = y_2021 - y_pred_2021
+                plt.figure(figsize=(8, 6))
+                plt.hist(residus, bins=30, color='blue', alpha=0.7)
+                plt.xlabel('Résidus')
+                plt.ylabel('Fréquence')
+                plt.title('Histogramme des Résidus')
                 st.pyplot(plt)
 
 elif option == "Prédictions":
