@@ -322,7 +322,7 @@ if option == 'Contexte':
     import pandas as pd
     df_2017 = df[df['year']!=2017]
 
-    init_notebook_mode(connected=True)
+    #init_notebook_mode(connected=True)
 
     data = dict(
         type='choropleth',
