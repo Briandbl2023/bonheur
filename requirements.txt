@@ -7,3 +7,4 @@ scikit-learn
 numpy
 scipy
 category_encoders
+plotly.graph_objs
