@@ -267,8 +267,8 @@ elif option == 'Modélisation':
 
     # Barre latérale pour choisir le modèle
     selected_model = st.selectbox('Sélectionnez un modèle', [model_name for model_name, _ in models])
-    st.header(selected_model)
-    st.header("Modélisation jeu d'entraînement")
+    #st.header(selected_model)
+    #st.header("Modélisation jeu d'entraînement")
     # Entraînement du modèle sélectionné    
     for model_name, model in models:
         
@@ -283,6 +283,7 @@ elif option == 'Modélisation':
                 rmse = mean_squared_error(y_test, y_pred, squared=False)
                 # Affichage des résultats
                 #st.write(f"Modèle: {model_name}")
+                st.write("<b>Modélisation jeu d'entraînement</b>",unsafe_allow_html=True)
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
                 st.header("Prédictions 2021") 
