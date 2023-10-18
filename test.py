@@ -195,7 +195,7 @@ preprocessors = ColumnTransformer(
 
 # Création des pipelines pour les modèles
 tree = make_pipeline(preprocessor, DecisionTreeRegressor(random_state=42, max_depth=6, min_samples_split = 3))
-random = make_pipeline(preprocessor, RandomForestRegressor(random_state=42, max_depth=16, min_samples_split = 3))
+random = make_pipeline(preprocessor, RandomForestRegressor(random_state=42, max_depth=16, min_samples_split = 7))
 adaboost = make_pipeline(preprocessor, AdaBoostRegressor(RandomForestRegressor(random_state=42, max_features=5, min_samples_split=2, n_estimators=300)))
 linear = make_pipeline(preprocessorl, LinearRegression())
 ridge = make_pipeline(preprocessorl, Ridge(alpha = 0.9, solver = "sag")) #corrélation entre les variables qui ne necessitent pas de revoir le poids des variables
