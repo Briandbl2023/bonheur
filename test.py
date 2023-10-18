@@ -22,7 +22,7 @@ from category_encoders import TargetEncoder
 # URL du fichier Excel sur GitHub
 github_url = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2022.xls'
 github_url2 = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2021.csv'
-github_url3 = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report (1).csv'
+github_url3 = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report 1.csv'
 logods ='https://github.com/Briandbl2023/bonheur/raw/main/logo-2021.png'
 pknn = 'https://github.com/Briandbl2023/bonheur/raw/main/knn_preprocessing.jpg'
 psvr = 'https://github.com/Briandbl2023/bonheur/raw/main/svr_preprocessing.jpg'
