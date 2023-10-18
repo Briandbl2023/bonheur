@@ -266,12 +266,10 @@ preprocessors = ColumnTransformer(
 # Création des pipelines pour les modèles
 tree = make_pipeline(preprocessor, DecisionTreeRegressor(random_state=42, max_depth=6, min_samples_split = 3))
 random = make_pipeline(preprocessor, RandomForestRegressor(random_state=42, max_depth=16, min_samples_split = 7))
-adaboost = make_pipeline(preprocessor, AdaBoostRegressor(RandomForestRegressor(random_state=42, max_features=5, min_samples_split=2, n_estimators=300)))
 linear = make_pipeline(preprocessorl, LinearRegression())
-ridge = make_pipeline(preprocessorl, Ridge(alpha = 0.9, solver = "sag")) #corrélation entre les variables qui ne necessitent pas de revoir le poids des variables
+ridge = make_pipeline(preprocessorl, Ridge(alpha = 1, solver = "sag")) #corrélation entre les variables qui ne necessitent pas de revoir le poids des variables
 lasso = make_pipeline(preprocessorl, Lasso(alpha = 0.1)) #avec un alpha a 0.1, le modèle ressemble à une régression linéaire standard ==> inutile car pas de grosses corélations entre les variables et pas de nécessité de mettre à 0 certaines variables
 svr = make_pipeline(preprocessors, SVR(C = 15))
-boost = make_pipeline(preprocessors, AdaBoostRegressor(SVR(kernel = "rbf")))
 knn = make_pipeline(preprocessork, KNeighborsRegressor(n_neighbors = 3, metric = "manhattan")) #optimisation du nombre de voisins
 
 # Liste des modèles à entraîner
