@@ -305,7 +305,7 @@ elif option == 'Modélisation':
                 
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
-                st.write(f"RMSE_REVU: {RMSE_REVU}")
+                #st.write(f"RMSE_REVU: {RMSE_REVU}")
                 #Histogrammes des erreurs
                 plt.figure(figsize = (8,4))
                 err_hist = np.abs(y_2021 - y_pred_2021)
@@ -356,7 +356,7 @@ elif option == 'Modélisation':
                 
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
-                st.write(f"RMSE_REVU: {RMSE_REVU}")
+                #st.write(f"RMSE_REVU: {RMSE_REVU}")
                 #Histogrammes des erreurs
                 plt.figure(figsize = (8,4))
                 err_hist = np.abs(y_2021 - y_pred_2021)
@@ -408,7 +408,7 @@ elif option == 'Modélisation':
                 
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
-                st.write(f"RMSE_REVU: {RMSE_REVU}")
+                #st.write(f"RMSE_REVU: {RMSE_REVU}")
                 #Histogrammes des erreurs
                 plt.figure(figsize = (8,4))
                 err_hist = np.abs(y_2021 - y_pred_2021)
@@ -460,7 +460,7 @@ elif option == 'Modélisation':
                 
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
-                st.write(f"RMSE_REVU: {RMSE_REVU}")
+                #st.write(f"RMSE_REVU: {RMSE_REVU}")
                 #Histogrammes des erreurs
                 plt.figure(figsize = (8,4))
                 err_hist = np.abs(y_2021 - y_pred_2021)
