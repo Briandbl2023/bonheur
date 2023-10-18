@@ -153,7 +153,6 @@ df_lineaire["k_means"] = df_lineaire["k_means"].apply(lambda x : str(x))
 # Division des données en ensembles d'entraînement et de test
 yl = df_lineaire ['Life Ladder']
 Xl = df_lineaire.drop(["Life Ladder"], axis = 1)
-st.write(Xl)
 X_trainl, X_testl, y_trainl, y_testl = train_test_split(Xl, yl, test_size=0.3, random_state = 42)
 def gestion_nan1(X):
   for colonne in numeric_cols:
@@ -401,6 +400,9 @@ elif option == 'Modélisation':
                 model.fit(X_trainl, y_trainl)
                 y_predl = model.predict(X_testl)
                 X_2021l = gestion_nan1(X_2021)
+                X_2021l["k_means"] = X_2021l["Country name"]
+                X_2021l["k_means"] = X_2021l["k_means"].replace(dico_groupe)
+                X_2021l["k_means"] = X_2021l["k_means"].apply(lambda x : str(x))
                 # Calcul des métriques
                 mae = mean_absolute_error(y_testl, y_predl)
                 rmse = mean_squared_error(y_testl, y_predl, squared=False)
