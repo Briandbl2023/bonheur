@@ -301,7 +301,7 @@ elif option == 'Modélisation':
                 # Calcul des métriques
                 mae = mean_absolute_error(y_pred_2021, y_2021)
                 rmse = mean_squared_error(y_pred_2021, y_2021, squared=False)
-                RMSE_REVU = rmse_revu(y_pred_2021, y_2021)
+                #RMSE_REVU = rmse_revu(y_pred_2021, y_2021)
                 
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
@@ -352,7 +352,7 @@ elif option == 'Modélisation':
                 # Calcul des métriques
                 mae = mean_absolute_error(y_pred_2021, y_2021)
                 rmse = mean_squared_error(y_pred_2021, y_2021, squared=False)
-                RMSE_REVU = rmse_revu(y_pred_2021, y_2021)
+                #RMSE_REVU = rmse_revu(y_pred_2021, y_2021)
                 
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
@@ -404,7 +404,7 @@ elif option == 'Modélisation':
                 # Calcul des métriques
                 mae = mean_absolute_error(y_pred_2021, y_2021)
                 rmse = mean_squared_error(y_pred_2021, y_2021, squared=False)
-                RMSE_REVU = rmse_revu(y_pred_2021, y_2021)
+                #RMSE_REVU = rmse_revu(y_pred_2021, y_2021)
                 
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
@@ -456,7 +456,7 @@ elif option == 'Modélisation':
                 # Calcul des métriques
                 mae = mean_absolute_error(y_pred_2021, y_2021)
                 rmse = mean_squared_error(y_pred_2021, y_2021, squared=False)
-                RMSE_REVU = rmse_revu(y_pred_2021, y_2021)
+                #RMSE_REVU = rmse_revu(y_pred_2021, y_2021)
                 
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
