@@ -150,10 +150,10 @@ df_lineaire = df_lineaire.drop("year", axis = 1)
 df_lineaire["k_means"] = df_lineaire["Country name"]
 df_lineaire["k_means"] = df_lineaire["k_means"].replace(dico_groupe)
 df_lineaire["k_means"] = df_lineaire["k_means"].apply(lambda x : str(x))
-st.write(df_lineaire)
 # Division des données en ensembles d'entraînement et de test
 yl = df_lineaire ['Life Ladder']
 Xl = df_lineaire.drop(["Life Ladder"], axis = 1)
+st.write(Xl)
 X_trainl, X_testl, y_trainl, y_testl = train_test_split(Xl, yl, test_size=0.3, random_state = 42)
 def gestion_nan1(X):
   for colonne in numeric_cols:
