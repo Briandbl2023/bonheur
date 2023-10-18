@@ -353,7 +353,7 @@ elif option == 'Exploration':
 
     plt.figure(figsize=(15,8))
     sns.kdeplot(x=df4["Life Ladder"], hue=df4["Regional indicator"],fill=True ,linewidth=2)
-    plt.axvline(df_4["Life Ladder"].mean(),c="black")
+    plt.axvline(df4["Life Ladder"].mean(),c="black")
     st.pyplot(plt)
     plt.figure(figsize=(10, 6))
     p = sns.barplot(y=df5['Country name'].head(10), x=df5['Life Ladder'].head(10))
