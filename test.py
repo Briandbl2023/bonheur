@@ -17,6 +17,7 @@ from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler,
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
+from sklearn.cluster import KMeans
 from category_encoders import TargetEncoder
 # URL du fichier Excel sur GitHub
 github_url = 'https://github.com/Briandbl2023/bonheur/raw/main/world-happiness-report-2022.xls'
@@ -86,8 +87,71 @@ region_transformer = Pipeline(steps=[('onehot', OneHotEncoder())])
 preprocessor = ColumnTransformer(transformers=[('target', pays_transformer, pays_cols),('hotencoder', region_transformer, region_cols),('num', numeric_transformer, numeric_cols)])
 
 # Modèles Lineaires : 
+K_MEANS = df
+K_MEANS = K_MEANS.sort_values(by = "year", ascending = False)
+K_MEANS = K_MEANS.drop("year", axis=1)
+#Récupération des clusters via un K_means
+K_MEANS = K_MEANS.groupby("Country name").mean()
+
+# Récupération des features
+features = K_MEANS.drop(columns = 'Life Ladder')
+
+
+#Variables à standardiser
+standard_col = ['Log GDP per capita', 'Social support', 'Freedom to make life choices', "Healthy life expectancy at birth",
+                'Perceptions of corruption', 'Positive affect','Negative affect']
+
+# Prétraitement des colonnes numériques
+numeric_transformer = Pipeline(steps=[
+    ('imputer', SimpleImputer(strategy='median')),
+    ('scaler', MinMaxScaler())
+])
+
+# Combiner les prétraitements pour toutes les colonnes
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('num', numeric_transformer, standard_col)
+    ])
+
+#application
+from sklearn.pipeline import make_pipeline
+preprocessing = make_pipeline(preprocessor)
+features_normalises = preprocessing.fit_transform(features)
+kmeans = KMeans(n_clusters = 4)
+kmeans.fit(features_normalises)
+features_predict = kmeans.predict(features_normalises)
+
+#récupérer les coordonnées de tous les points par k-means
+groupe_1_index = features[features_predict == 0].index
+groupe_2_index = features[features_predict == 1].index
+groupe_3_index = features[features_predict == 2].index
+groupe_4_index = features[features_predict == 3].index
+#groupe_5_index = features[features_predict == 4].index
+
+#création d'un dictionnaire
+groupe_1 = [1]* groupe_1_index.shape[0]
+groupe_1_dico = dict(zip(groupe_1_index, groupe_1))
+
+groupe_2 = [2]* groupe_2_index.shape[0]
+groupe_2_dico = dict(zip(groupe_2_index, groupe_2))
+
+groupe_3 = [3]* groupe_3_index.shape[0]
+groupe_3_dico = dict(zip(groupe_3_index, groupe_3))
+
+groupe_4 = [4]* groupe_4_index.shape[0]
+groupe_4_dico = dict(zip(groupe_4_index, groupe_4))
+
+#groupe_5 = [5]* groupe_5_index.shape[0]
+#groupe_5_dico = dict(zip(groupe_5_index, groupe_4))
+
+dico_groupe = (groupe_1_dico | groupe_2_dico | groupe_3_dico | groupe_4_dico)
+
+
 df_lineaire = df4.sort_values(by = "year", ascending = False)
 df_lineaire = df_lineaire.drop("year", axis = 1)
+df_lineaire["k_means"] = df_lineaire["Country name"]
+df_lineaire["k_means"] = df_lineaire["k_means"].replace(dico_groupe)
+df_lineaire["k_means"] = df_lineaire["k_means"].apply(lambda x : str(x))
 
 # Division des données en ensembles d'entraînement et de test
 yl = df_lineaire ['Life Ladder']
@@ -104,6 +168,8 @@ def gestion_nan1(X):
 
 X_trainl = gestion_nan1(X_trainl)
 X_testl = gestion_nan1(X_testl)
+
+k_means_cols = ['k_means']
 
 # Prétraitement des colonnes numériques
 numeric_transformerl = Pipeline(steps=[
@@ -124,7 +190,7 @@ region_transformerl = Pipeline(steps=[
 preprocessorl = ColumnTransformer(
     transformers=[
         ('target', pays_transformerl, pays_cols),
-        ('hotencoder', region_transformerl, region_cols),
+        ('hotencoder', region_transformerl, k_means_cols),
         ('num', numeric_transformerl, numeric_cols)
     ])
 
