@@ -317,7 +317,7 @@ elif option == 'Modélisation':
                 plt.ylabel('Fréquence')
                 plt.title('Histogramme des Résidus')
                 st.pyplot(plt)
-                ecart_optim = abs(y_pred2021 - y_2021)
+                ecart_optim = abs(y_pred_2021 - y_2021)
                 ecart_optim_df = ecart_knn_optim.to_frame(name='Ecarts')
                 ecart_optim_df["Regional indicator"] = X_2021["Regional indicator"]
                 bonnes_reponses = ecart_optim_df[ecart_optim_df["Ecarts"] < 0.3]
