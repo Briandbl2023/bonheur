@@ -356,9 +356,11 @@ elif option == 'Exploration':
     plt.axvline(df4["Life Ladder"].mean(),c="black")
     st.pyplot(plt)
 
-    # Calculer la matrice de corrélation
-    cor = round(df.corr(), 2)
+    # Sélectionner uniquement les colonnes numériques du DataFrame
+    colonnes_numeriques = df.select_dtypes(include=['float64', 'int64'])
 
+    # Calculer la matrice de corrélation pour les colonnes numériques
+    cor = round(colonnes_numeriques.corr(), 2)
     # Créer un heatmap à l'aide de seaborn
     plt.figure(figsize=(10, 8))
     sns.heatmap(cor, vmin=-1, vmax=1, cmap='coolwarm', annot=True)
