@@ -385,6 +385,24 @@ elif option == 'Exploration':
     plt.scatter('Healthy life expectancy at birth','Life Ladder', data = df4,c='g')
     plt.xlabel('Healthy life expectancy at birth');
     st.pyplot(plt)
+    import plotly.express as px
+    # Sélectionner les colonnes nécessaires du DataFrame
+    selected_columns = ['Log GDP per capita', 'Social support', 'Healthy life expectancy at birth']
+    df_selected = dfregion[selected_columns]
+
+    # Créer un scatter plot interactif avec Plotly Express
+    fig = px.scatter_matrix(df_selected, dimensions=selected_columns, labels=selected_columns)
+
+    # Personnaliser le titre du graphique
+    fig.update_layout(
+      title='Scatter Plot Matrix',
+      title_x=0.5,
+      title_font=dict(size=20)
+    )
+
+    # Afficher le graphique interactif dans Streamlit
+    st.plotly_chart(fig)
+
     #plt.figure(figsize=(10, 6))
     #p = sns.barplot(y=df5['Country name'].head(10), x=df5['Life Ladder'].head(10))
     #p.set_title("Top 10 des pays les plus heureux")
