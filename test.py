@@ -611,13 +611,12 @@ elif option == "Prédictions":
     st.header("Prédictions")
     st.write("Le k-NN et le SVR sont les deux algorithmes qui captent le mieux les relations complexes de notre jeu de données : l’un fait moins de petites erreurs et l’autre fait moins de grosses erreurs.")
     st.write("Nous vous proposons, à partir de données totalement inconnues, de réaliser quelques prédictions sur ces deux modèles préalablement entraînés sur le jeu de données 2006-2020.") 
-    st.write("Pour le bon fonctionnement de ces derniers, vous devrez sélectionner un des pays dans la liste des 166 pays analysés et saisir : ")
-    st.write("<ul><li>Dans le champ 'Log GDP per capita', un nombre allant de 0 à 11</li><li>Dans 'Social support', un chiffre décimal compris entre 0 et 1</li><li>Dans 'Healthy life expectancy at birth', un âge entre 0 et 100 ans</li><li>Dans 'Freedom to make life choices', un chiffre décimal compris entre 0 et 1</li><li>Dans 'Generosity', un chiffre décimal compris entre -1 et 1</li><li>Dans 'Perceptions of corruption', un chiffre décimal compris entre 0 et 1</li><li>Dans 'Positive affect', un chiffre décimal compris entre 0 et 1</li><li>Dans 'Negative affect', un chiffre décimal compris entre 0 et 1</li></ul>", unsafe_allow_html=True)     
-    st.write("Certaines variables numériques pourront être omises. Elles seront remplacées par la moyenne de la région (SVR) ou un imputer (k-NN).")
-    st.write("L’ajout de la région, le remplacement des valeurs manquantes ou la mise à l’échelle sera réalisé en automatique à l’aide du code et d’une pipeline.")
+    st.write("Pour le bon fonctionnement de ces derniers, vous devrez : ")
+    st.write("<ul><li>sélectionner un des pays dans la liste des 166 pays analysés</li><li>saisir un nombre entre 0 et 11 pour le champ 'Log GDP per capita'</li><li>saisir un âge entre 0 et 100 ans pour le champ 'Healthy life expectancy at birth</li><li>saisir un chiffre décimal compris entre -1 et 1 pour le champ 'Generosity'</li><li>saisir un chiffre décimal entre 0 et 1 pour les autres variables</li></ul>", unsafe_allow_html=True)     
+    #st.write("Certaines variables numériques pourront être omises. Elles seront remplacées par la moyenne de la région (SVR) ou un imputer (k-NN).")
+    #st.write("L’ajout de la région, le remplacement des valeurs manquantes ou la mise à l’échelle sera réalisé en automatique à l’aide du code et d’une pipeline.")
   # Création du formulaire
     with st.form('modélisation'):
-
         # Zone de liste avec une seule possibilité de sélection
         if "model_select" not in st.session_state :
             st.session_state.model_select=""
