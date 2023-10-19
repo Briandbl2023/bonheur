@@ -367,7 +367,7 @@ elif option == 'Exploration':
     plt.title("Correlations avec Life Ladder")
     plt.xticks(rotation=45, ha='right')
     plt.yticks(rotation=0)
-    st.pyplot()
+    st.pyplot(plt)
   
     plt.figure(figsize=(10, 6))
     p = sns.barplot(y=df5['Country name'].head(10), x=df5['Life Ladder'].head(10))
