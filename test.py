@@ -345,7 +345,7 @@ if option == 'Contexte':
     st.write(df4.head())  
 
 elif option == 'Exploration':
-    st.header("Quelques visualisations du projet")
+    #st.header("Quelques visualisations du projet")
 
     # Créer le graphique avec Seaborn
     sns.set(style="whitegrid")
@@ -369,7 +369,22 @@ elif option == 'Exploration':
     plt.xticks(rotation=45, ha='right')
     plt.yticks(rotation=0)
     st.pyplot(plt)
-  
+
+    fig = plt.figure(figsize = (20,8))
+    fig.suptitle("Relation entre nos variables les plus fortement corrélées avec la variable cible")
+
+    plt.subplot(131)
+    plt.scatter('Log GDP per capita','Life Ladder', data = df4)
+    plt.xlabel('Log GDP per capita')
+
+    plt.subplot(132)
+    plt.scatter('Social support','Life Ladder', data = df4,c='r')
+    plt.xlabel('Social support')
+
+    plt.subplot(133)
+    plt.scatter('Healthy life expectancy at birth','Life Ladder', data = df4,c='g')
+    plt.xlabel('Healthy life expectancy at birth');
+    st.pyplot(plt)
     #plt.figure(figsize=(10, 6))
     #p = sns.barplot(y=df5['Country name'].head(10), x=df5['Life Ladder'].head(10))
     #p.set_title("Top 10 des pays les plus heureux")
