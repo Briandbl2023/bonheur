@@ -354,6 +354,7 @@ elif option == 'Exploration':
     plt.figure(figsize=(15,8))
     sns.kdeplot(x=df4["Life Ladder"], hue=df4["Regional indicator"],fill=True ,linewidth=2)
     plt.axvline(df4["Life Ladder"].mean(),c="black")
+    plt.title("Graphique de densité Kernel (KDE)")
     st.pyplot(plt)
 
     # Sélectionner uniquement les colonnes numériques du DataFrame
@@ -369,15 +370,15 @@ elif option == 'Exploration':
     plt.yticks(rotation=0)
     st.pyplot(plt)
   
-    plt.figure(figsize=(10, 6))
-    p = sns.barplot(y=df5['Country name'].head(10), x=df5['Life Ladder'].head(10))
-    p.set_title("Top 10 des pays les plus heureux")
+    #plt.figure(figsize=(10, 6))
+    #p = sns.barplot(y=df5['Country name'].head(10), x=df5['Life Ladder'].head(10))
+    #p.set_title("Top 10 des pays les plus heureux")
     # Afficher le graphique dans Streamlit
-    st.pyplot(plt)
-    plt.figure(figsize=(10, 6))
-    p= sns.barplot(y=df5['Country name'].tail(10), x=df5['Life Ladder'].tail(10))
-    p.set_title("Top 10 des pays les plus malheureux");
-    st.pyplot(plt)
+    #st.pyplot(plt)
+    #plt.figure(figsize=(10, 6))
+    #p= sns.barplot(y=df5['Country name'].tail(10), x=df5['Life Ladder'].tail(10))
+    #p.set_title("Top 10 des pays les plus malheureux");
+    #st.pyplot(plt)
     
 elif option == 'Modélisation':
     
