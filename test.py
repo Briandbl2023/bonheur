@@ -355,6 +355,18 @@ elif option == 'Exploration':
     sns.kdeplot(x=df4["Life Ladder"], hue=df4["Regional indicator"],fill=True ,linewidth=2)
     plt.axvline(df4["Life Ladder"].mean(),c="black")
     st.pyplot(plt)
+
+    # Calculer la matrice de corrélation
+    cor = round(df.corr(), 2)
+
+    # Créer un heatmap à l'aide de seaborn
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(cor, vmin=-1, vmax=1, cmap='coolwarm', annot=True)
+    plt.title("Correlations avec Life Ladder")
+    plt.xticks(rotation=45, ha='right')
+    plt.yticks(rotation=0)
+    st.pyplot()
+  
     plt.figure(figsize=(10, 6))
     p = sns.barplot(y=df5['Country name'].head(10), x=df5['Life Ladder'].head(10))
     p.set_title("Top 10 des pays les plus heureux")
