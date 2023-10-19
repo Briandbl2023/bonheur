@@ -295,7 +295,7 @@ modelsp = [
 # Utilisation de la chaîne de caractères comme label
 option = st.sidebar.radio(
     '',  # Utilisation d'un espace insécable comme label
-    ('Contexte', 'Exploration', 'Modélisation', "Prédictions"),
+    ('Contexte', 'Exploration', 'Modélisation', "Prédictions", "Conclusion"),
   #label_position="hidden"
 )
 
