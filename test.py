@@ -388,7 +388,7 @@ elif option == 'Exploration':
     import plotly.express as px
     # Sélectionner les colonnes nécessaires du DataFrame
     selected_columns = ['Log GDP per capita', 'Social support', 'Healthy life expectancy at birth']
-    df_selected = dfregion[selected_columns]
+    df_selected = df4[selected_columns]
 
     # Créer un scatter plot interactif avec Plotly Express
     fig = px.scatter_matrix(df_selected, dimensions=selected_columns, labels=selected_columns)
