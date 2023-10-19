@@ -610,8 +610,8 @@ elif option == 'Modélisation':
 elif option == "Prédictions":
     st.header("Prédictions")
     st.write("Le k-NN et le SVR sont les deux algorithmes qui captent le mieux les relations complexes de notre jeu de données : l’un fait moins de petites erreurs et l’autre fait moins de grosses erreurs.")
-    #st.write("Nous vous proposons, à partir de données totalement inconnues, de réaliser quelques prédictions sur ces deux modèles préalablement entraînés sur le jeu de données 2006-2020.") 
-    #st.write("Pour le bon fonctionnement de ces derniers, vous devrez sélectionner un des pays dans la liste des 166 pays analysés et saisir : ")
+    st.write("Nous vous proposons, à partir de données totalement inconnues, de réaliser quelques prédictions sur ces deux modèles préalablement entraînés sur le jeu de données 2006-2020.") 
+    st.write("Pour le bon fonctionnement de ces derniers, vous devrez sélectionner un des pays dans la liste des 166 pays analysés et saisir : ")
     #st.write("<ul><li>Dans le champ 'Log GDP per capita', un nombre allant de 0 à 11<\li><li>Dans 'Social support', un nombre décimal compris entre 0 et 1<\li><li>Dans 'Healthy life expectancy at birth', un âge entre 0 et 100 ans<\li><li>Dans 'Freedom to make life choices', un nombre décimal compris entre 0 et 1<\li><li>Dans 'Generosity', un nombre décimal compris entre -1 et 1<\li><li>Dans 'Perceptions of corruption', un nombre décimal compris entre 0 et 1<\li><li>Dans 'Positive affect', un nombre décimal compris entre 0 et 1<\li><li>Dans 'Negative affect', un nombre décimal compris entre 0 et 1<\li><li><\ul>", unsafe_allow_html=True)     
     # Création du formulaire
     with st.form('modélisation'):
