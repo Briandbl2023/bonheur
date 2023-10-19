@@ -302,7 +302,7 @@ option = st.sidebar.radio(
 
 #st.sidebar.write("<b>Sommaire</b>",unsafe_allow_html=True)
 #option = st.sidebar.radio(
-#    '\u200B',('Contexte', 'Exploration', 'Modélisation', "Prédictions")
+#    '\u200B',('Contexte', 'Exploration', 'Modélisation', "Prédictions", "Conclusion")
 #)
 about = "<br><b>About</b><br>Projet fil rouge dans le cadre de la formation Data Analyst sur le rapport mondial du bien être, publié tous les ans par l'ONU"
 st.sidebar.markdown(about, unsafe_allow_html=True)
@@ -613,7 +613,9 @@ elif option == "Prédictions":
     st.write("Nous vous proposons, à partir de données totalement inconnues, de réaliser quelques prédictions sur ces deux modèles préalablement entraînés sur le jeu de données 2006-2020.") 
     st.write("Pour le bon fonctionnement de ces derniers, vous devrez sélectionner un des pays dans la liste des 166 pays analysés et saisir : ")
     st.write("<ul><li>Dans le champ 'Log GDP per capita', un nombre allant de 0 à 11</li><li>Dans 'Social support', un chiffre décimal compris entre 0 et 1</li><li>Dans 'Healthy life expectancy at birth', un âge entre 0 et 100 ans</li><li>Dans 'Freedom to make life choices', un chiffre décimal compris entre 0 et 1</li><li>Dans 'Generosity', un chiffre décimal compris entre -1 et 1</li><li>Dans 'Perceptions of corruption', un chiffre décimal compris entre 0 et 1</li><li>Dans 'Positive affect', un chiffre décimal compris entre 0 et 1</li><li>Dans 'Negative affect', un chiffre décimal compris entre 0 et 1</li></ul>", unsafe_allow_html=True)     
-    # Création du formulaire
+    st.write("Certaines variables numériques pourront être omises. Elles seront remplacées par la moyenne de la région (SVR) ou un imputer (k-NN).")
+    st.write("L’ajout de la région, le remplacement des valeurs manquantes ou la mise à l’échelle sera réalisé en automatique à l’aide du code et d’une pipeline.")
+  # Création du formulaire
     with st.form('modélisation'):
 
         # Zone de liste avec une seule possibilité de sélection
