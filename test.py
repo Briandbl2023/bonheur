@@ -680,7 +680,7 @@ elif option == "Prédictions":
                     st.header("Prédiction : " + str(y_pred_saisie[0]))
         st.write("Dataframe :")
         st.write(X_train_new)
-elif option = "Conclusion"
+elif option == "Conclusion"
       st.write("<u>Les résultats</u><ul><li>Les résultats sont impressionnants par rapport aux doutes que nous avions sur la précision des indicateurs subjectifs.</li><li>Avec le SVR ou le k-NN, nous avons un taux de réussite d’environ 70% qui pourrait peut-être être amélioré avec l’introduction de nouvelles variables.</li></ul>",unsafe_allow_html=True)
       st.write("<u>Les limites</u><ul><li>L’analyse prédictive ne nous permet pas d’identifier les liens de causalité entre les différentes variables.</li><li>Il est difficile de pouvoir déterminer des leviers pour améliorer le bonheur dans chaque pays.</li></ul>", unsafe_allow_html=True)
 
