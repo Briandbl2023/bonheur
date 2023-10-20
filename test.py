@@ -416,7 +416,7 @@ elif option == 'Exploration':
     st.pyplot(plt)  # Affichez le graphique dans Streamlit
     
     # Affichez les statistiques descriptives de la colonne sélectionnée
-    st.write(f'Distribution de {colonne_selectionnee}')
+    st.write(f'Description de {colonne_selectionnee}')
     st.write(df[colonne_selectionnee].describe())
 
     # Créer le graphique avec Seaborn
