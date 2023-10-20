@@ -417,7 +417,7 @@ elif option == 'Exploration':
     
     # Affichez les statistiques descriptives de la colonne sélectionnée
     st.write(f'Distribution de {colonne_selectionnee}')
-    st.write(df[colonne_selectionnee].describe().to_frame().T.to_string(index=False))
+    st.write(df[colonne_selectionnee].describe())
 
     # Créer le graphique avec Seaborn
     sns.set(style="whitegrid")
