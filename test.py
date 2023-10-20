@@ -401,7 +401,7 @@ elif option == 'Exploration':
     st.write("<b><u>Le jeu de données : </u></b><ul><li>Le premier jeu de données contient les analyses de 166 pays pour la période de 2005 à 2020, totalisant ainsi 1949 lignes d'enregistrement", unsafe_allow_html=True)
     st.write(df.head(10))
     st.write("</li><li>Le second jeu de donnes se concentre exclusivement sur l'année 2021 et concerne 149 pays, correspondant à 149 lignes d'enregistrement", unsafe_allow_html=True)
-    st.write(df1.head(10)
+    st.write(df1.head(10))
     st.write("</li></ul>", unsafe_allow_html=True)     
 
     st.write("<b><u>Description des variables</u></b>",unsafe_allow_html=True)
