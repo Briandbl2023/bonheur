@@ -312,10 +312,12 @@ st.sidebar.image(logods)
 
 # Contenu en fonction de l'option sélectionnée
 if option == 'Contexte':
-    st.header("Analyse du bonheur")
-    st.header("Présentation du projet")
-    st.write("C'est la page de présentation du projet.")
-        #Happiness rankings of nations in 2017
+    st.header("Contexte")
+    st.write("À quel point les gens sont-ils heureux aujourd'hui ?")
+    st.write("Dans quelle mesure les gens sont-ils satisfaits de leur vie dans différentes sociétés ?") 
+    st.write("Et comment nos conditions de vie affectent-elles tout cela ?")
+
+    #Happiness rankings of nations in 2017
 
     import plotly.graph_objs as go
     from plotly.offline import init_notebook_mode, iplot, plot
