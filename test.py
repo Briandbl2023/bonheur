@@ -443,7 +443,19 @@ elif option == 'Exploration':
 
     # Créer le graphique avec Seaborn
     sns.set(style="whitegrid")
- 
+    fig, ax = plt.subplots(1, 3, figsize= (20,8))
+    fig.suptitle("Focus sur la variable generosity")
+    
+    ax[0].set_title('Sa représentation par région')
+    sns.barplot(ax= ax[1], x='Regional indicator', y='Generosity', data=df4)
+    plt.xticks(rotation=45)
+    
+    ax[1].set_title('Sa représentation par année')
+    sns.barplot(ax= ax[2], x='year', y='Generosity', data=df4)
+    plt.xticks(rotation=45);
+    st.pyplot(fig)
+
+  
     # Sélectionner uniquement les colonnes numériques du DataFrame
     colonnes_numeriques = df.select_dtypes(include=['float64', 'int64'])
 
