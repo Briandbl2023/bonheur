@@ -394,7 +394,16 @@ if option == 'Contexte':
     fig.update_geos(showcoastlines=False, projection_type="natural earth")
     st.plotly_chart(fig)
 
-    
+    st.write("<b><u>Evolution au fil des années</u></b><br>",unsafe_allow_html=True)
+    plt.figure(figsize = (15, 6))
+    plt.title("Evolution du bien-être moyen par région du monde \n")
+    plt.xlim(2005, 2020)
+    evolution_life_ladder = df4.groupby(["Regional indicator", "year"], as_index = False).agg({"Life Ladder" : "median"})
+    evolution_life_ladder["year"] = evolution_life_ladder["year"].astype("float")
+    sns.lineplot(x = "year", y = "Life Ladder", data = evolution_life_ladder, hue = "Regional indicator", errorbar = None)
+    plt.legend(bbox_to_anchor = (1,1))
+    st.pyplot(plt)
+  
     #st.write(df4.head())  
 
 elif option == 'Exploration':
@@ -504,15 +513,7 @@ elif option == 'Exploration':
     plt.title("Graphique de densité Kernel (KDE)")
     st.pyplot(plt)
     
-    st.write("<b><u>Evolution au fil des années</u></b><br>",unsafe_allow_html=True)
-    plt.figure(figsize = (15, 6))
-    plt.title("Evolution du bien-être moyen par région du monde \n")
-    plt.xlim(2005, 2020)
-    evolution_life_ladder = df4.groupby(["Regional indicator", "year"], as_index = False).agg({"Life Ladder" : "median"})
-    evolution_life_ladder["year"] = evolution_life_ladder["year"].astype("float")
-    sns.lineplot(x = "year", y = "Life Ladder", data = evolution_life_ladder, hue = "Regional indicator", errorbar = None)
-    plt.legend(bbox_to_anchor = (1,1))
-    st.pyplot(plt)
+    
 elif option == 'Modélisation':
     
     st.header("Modélisation")
