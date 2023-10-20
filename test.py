@@ -316,6 +316,7 @@ if option == 'Contexte':
     st.write("À quel point les gens sont-ils heureux aujourd'hui ?")
     st.write("Dans quelle mesure les gens sont-ils satisfaits de leur vie dans différentes sociétés ?") 
     st.write("Et comment nos conditions de vie affectent-elles tout cela ?")
+    st.write("<b><u>Objectifs : </u></b><ul><li>Etudier les principaux déterminants du bonheur</li><li>Identifier des stratégies d'intervention pour améliorer la qualité de vie des individus</li><li>Prédire avec précision notre variable cible pour l'année 2021 en utilisant les données de 2005 à 2020 et en appliquant le modèle le plus approprié</li><li>Evaluer la pertinence des résultats obtenus à partir du World Happiness Report</li><li>Créer et présenter des visualisations intéractives</li></ul>", unsafe_allow_html=True)     
 
     #Happiness rankings of nations in 2017
 
