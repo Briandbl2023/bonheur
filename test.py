@@ -425,8 +425,10 @@ elif option == 'Exploration':
     st.write(f'Description de {colonne_selectionnee}')
     if colonne_selectionnee =='year':
       category_counts = df['year'].value_counts()
+      st.write("Nombre d'enregistrements par année")
       st.write(category_counts)
     else : 
+      st.write(f'Description de {colonne_selectionnee}')
       st.write(df[colonne_selectionnee].describe())
 
     # Créer le graphique avec Seaborn
