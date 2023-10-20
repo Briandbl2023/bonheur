@@ -429,7 +429,16 @@ elif option == 'Exploration':
     plt.axvline(df4["Life Ladder"].mean(),c="black")
     plt.title("Graphique de densité Kernel (KDE)")
     st.pyplot(plt)
-
+    
+    st.write("<b><u>Evolution au fil des années</u></b><br>",unsafe_allow_html=True)
+    plt.figure(figsize = (15, 6))
+    plt.title("Evolution du bien-être moyen par région du monde \n")
+    plt.xlim(2005, 2020)
+    evolution_life_ladder = df4.groupby(["Regional indicator", "year"], as_index = False).agg({"Life Ladder" : "median"})
+    evolution_life_ladder["year"] = evolution_life_ladder["year"].astype("float")
+    sns.lineplot(x = "year", y = "Life Ladder", data = evolution_life_ladder, hue = "Regional indicator", errorbar = None)
+    plt.legend(bbox_to_anchor = (1,1))
+    st.pyplot(plt)
     # Sélectionner uniquement les colonnes numériques du DataFrame
     colonnes_numeriques = df.select_dtypes(include=['float64', 'int64'])
 
