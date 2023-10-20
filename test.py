@@ -422,7 +422,7 @@ elif option == 'Exploration':
     st.pyplot(plt)  # Affichez le graphique dans Streamlit
     
     # Affichez les statistiques descriptives de la colonne sélectionnée
-    st.write(f'Description de {colonne_selectionnee}')
+    #st.write(f'Description de {colonne_selectionnee}')
     if colonne_selectionnee =='year':
       category_counts = df['year'].value_counts()
       st.write("Nombre d'enregistrements par année")
