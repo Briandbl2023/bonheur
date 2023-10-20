@@ -413,7 +413,7 @@ elif option == 'Exploration':
     plt.xlabel(colonne_selectionnee)
     plt.ylabel('Fréquence')
     plt.grid(True)
-    st.pyplot()  # Affichez le graphique dans Streamlit
+    st.pyplot(plt)  # Affichez le graphique dans Streamlit
     
     # Affichez les statistiques descriptives de la colonne sélectionnée
     st.write(f'Distribution de {colonne_selectionnee}')
