@@ -324,27 +324,76 @@ if option == 'Contexte':
     import pandas as pd
     df_2017 = df[df['year']!=2017]
     df_2017['RANK'] = df_2017['Life Ladder'].rank()
-    #init_notebook_mode(connected=True)
+    selected_columns = ["year", "Life Ladder", "Country name"]
+    df_map = df[selected_columns]data = []
 
-    data = dict(
-        type='choropleth',
-        locations=df_2017['Country name'],
-        locationmode='country names',
-        z=df_2017['RANK'],
-        text=df_2017['Country name'],
-        colorbar={'title': 'Happiness'}
-    )
+    for year in range(2005, 2021):
+        year_data = df_map[df_map['year'] == year]
+
+        data.append(
+            go.Choropleth(
+                locations=year_data['Country name'],
+                locationmode='country names',
+                z=year_data['Life Ladder'],
+                text=year_data['Country name'],
+                colorbar={'title': 'Happiness'},
+                showscale= True
+            )
+        )
+
+    sliders = [{
+        'active': 10,  # L'année active au début
+        'yanchor': 'top',
+        'xanchor': 'left',
+        'currentvalue': {
+            'font': {'size': 20},
+            'prefix': 'Year:',
+            'visible': True,
+            'xanchor': 'right'
+        },
+        'transition': {'duration': 300, 'easing': 'cubic-in-out'},
+        'pad': {'b': 10, 't': 50},
+        'steps': []
+    }]
+
+    for i, year in enumerate(range(2005, 2021)):
+        step = {
+            'args': [
+                ['visible'],
+                [False] * len(data)
+            ],
+            'label': str(year),
+            'method': 'animate'
+        }
+        step['args'][1][i] = True
+        sliders[0]['steps'].append(step)
 
     layout = dict(
-        title='Global Happiness 2017',
-        geo=dict(showframe=False)
+        title='Global Happiness by Year (2005-2020)',
+        geo=dict(showframe=False),
+        sliders=sliders
+    )
+    # Créez la figure animée
+    import plotly.express as px
+
+    # Triez le DataFrame par la colonne "year"
+    df_map = df_map.sort_values(by='year')
+
+    fig = px.choropleth(
+        df_map,
+        locations='Country name',
+        locationmode='country names',
+        color='Life Ladder',
+        animation_frame='year',  # Utilisez "year" en minuscules
+        color_continuous_scale='RdYlGn',
+        range_color=[df_map['Life Ladder'].min(), df_map['Life Ladder'].max()],
+        title='Global Happiness by Year (2005-2020)'
     )
 
-    choromap3 = go.Figure(data=[data], layout=layout)
+    fig.update_geos(showcoastlines=False, projection_type="natural earth")
+    st.plotly_chart(fig)
 
-    st.plotly_chart(choromap3)
-
-    st.write(df4.head())  
+    #st.write(df4.head())  
 
 elif option == 'Exploration':
     #st.header("Quelques visualisations du projet")
