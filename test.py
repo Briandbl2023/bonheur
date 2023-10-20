@@ -415,7 +415,7 @@ elif option == 'Exploration':
 
     # Créez votre graphique en utilisant la colonne sélectionnée
     plt.figure(figsize=(8, 6))
-    sns.histplot(df[colonne_selectionnee], bins=20, kde=True)
+    sns.histplot(dfj[colonne_selectionnee], bins=20, kde=True)
     plt.title(f'Distribution de {colonne_selectionnee}')
     plt.xlabel(colonne_selectionnee)
     plt.ylabel('Fréquence')
@@ -425,7 +425,7 @@ elif option == 'Exploration':
     # Affichez les statistiques descriptives de la colonne sélectionnée
     #st.write(f'Description de {colonne_selectionnee}')
     if colonne_selectionnee =='year':
-      category_counts = df['year'].value_counts()
+      category_counts = dfj['year'].value_counts()
       st.write("Nombre d'enregistrements par année")
       st.write(category_counts)
     else : 
