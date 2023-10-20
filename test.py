@@ -401,7 +401,7 @@ elif option == 'Exploration':
     st.write("Description des variables")
     # Obtenez la liste des noms des colonnes
     
-    colonnes = df.columns.tolist()
+    colonnes = df.columns[1:].tolist()
     
     # Affichez la liste déroulante dans Streamlit
     colonne_selectionnee = st.selectbox("Sélectionnez une variable", colonnes)
