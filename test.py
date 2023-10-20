@@ -322,10 +322,9 @@ if option == 'Contexte':
     import plotly.graph_objs as go
     from plotly.offline import init_notebook_mode, iplot, plot
     import pandas as pd
-    df_2017 = df[df['year']!=2017]
-    df_2017['RANK'] = df_2017['Life Ladder'].rank()
     selected_columns = ["year", "Life Ladder", "Country name"]
-    df_map = df[selected_columns]data = []
+    df_map = df[selected_columns]
+    data = []
 
     for year in range(2005, 2021):
         year_data = df_map[df_map['year'] == year]
