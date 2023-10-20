@@ -39,6 +39,7 @@ olasso = 'https://github.com/Briandbl2023/bonheur/raw/main/lasso_opitmisation.jp
 
 # Lire le fichier Excel dans un DataFrame
 df = pd.read_csv(github_url3)
+dfj = pd.read_csv(github_url3)
 df = df[df['year']!=2005]
 df1 = pd.read_csv(github_url2)
 df2 = pd.read_excel(github_url)
@@ -324,7 +325,7 @@ if option == 'Contexte':
     from plotly.offline import init_notebook_mode, iplot, plot
     import pandas as pd
     selected_columns = ["year", "Life Ladder", "Country name"]
-    df_map = df[selected_columns]
+    df_map = dfj[selected_columns]
     data = []
 
     for year in range(2005, 2021):
@@ -399,7 +400,7 @@ if option == 'Contexte':
 elif option == 'Exploration':
     st.header("Exploration de données et Data visualisation")
     st.write("<b><u>Le jeu de données : </u></b><ul><li>Le premier jeu de données contient les analyses de 166 pays pour la période de 2005 à 2020, totalisant ainsi 1949 lignes d'enregistrement", unsafe_allow_html=True)
-    st.write(df.head(10))
+    st.write(dfj.head(10))
     st.write("</li></ul><ul><li>Le second jeu de donnes se concentre exclusivement sur l'année 2021 et concerne 149 pays, correspondant à 149 lignes d'enregistrement<br>", unsafe_allow_html=True)
     st.write(df1.head(10))
     st.write("</li></ul>", unsafe_allow_html=True)     
