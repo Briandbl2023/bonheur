@@ -392,10 +392,32 @@ if option == 'Contexte':
     fig.update_geos(showcoastlines=False, projection_type="natural earth")
     st.plotly_chart(fig)
 
+    
     #st.write(df4.head())  
 
 elif option == 'Exploration':
-    #st.header("Quelques visualisations du projet")
+    st.header("Exploration de données et Data visualisation")
+
+    st.write("Description des variables")
+    # Obtenez la liste des noms des colonnes
+    
+    colonnes = df.columns.tolist()
+    
+    # Affichez la liste déroulante dans Streamlit
+    colonne_selectionnee = st.selectbox("Sélectionnez une variable", colonnes)
+    
+    # Créez votre graphique en utilisant la colonne sélectionnée
+    plt.figure(figsize=(8, 6))
+    sns.histplot(df[colonne_selectionnee], bins=20, kde=True)
+    plt.title(f'Distribution de {colonne_selectionnee}')
+    plt.xlabel(colonne_selectionnee)
+    plt.ylabel('Fréquence')
+    plt.grid(True)
+    st.pyplot()  # Affichez le graphique dans Streamlit
+    
+    # Affichez les statistiques descriptives de la colonne sélectionnée
+    st.write(f'Distribution de {colonne_selectionnee}')
+    st.write(df[colonne_selectionnee].describe())
 
     # Créer le graphique avec Seaborn
     sns.set(style="whitegrid")
