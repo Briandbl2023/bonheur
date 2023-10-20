@@ -433,25 +433,7 @@ elif option == 'Exploration':
 
     # Créer le graphique avec Seaborn
     sns.set(style="whitegrid")
-    #graphique de densité kernel (KDE)
-    st.write("<b><u>Analyse du bonheur - approche par régions</u></b><br>",unsafe_allow_html=True)
-    st.write("<b><u>Graphique de densité Kernel (KDE)</u></b><br>",unsafe_allow_html=True)
-
-    plt.figure(figsize=(15,8))
-    sns.kdeplot(x=df4["Life Ladder"], hue=df4["Regional indicator"],fill=True ,linewidth=2)
-    plt.axvline(df4["Life Ladder"].mean(),c="black")
-    plt.title("Graphique de densité Kernel (KDE)")
-    st.pyplot(plt)
-    
-    st.write("<b><u>Evolution au fil des années</u></b><br>",unsafe_allow_html=True)
-    plt.figure(figsize = (15, 6))
-    plt.title("Evolution du bien-être moyen par région du monde \n")
-    plt.xlim(2005, 2020)
-    evolution_life_ladder = df4.groupby(["Regional indicator", "year"], as_index = False).agg({"Life Ladder" : "median"})
-    evolution_life_ladder["year"] = evolution_life_ladder["year"].astype("float")
-    sns.lineplot(x = "year", y = "Life Ladder", data = evolution_life_ladder, hue = "Regional indicator", errorbar = None)
-    plt.legend(bbox_to_anchor = (1,1))
-    st.pyplot(plt)
+ 
     # Sélectionner uniquement les colonnes numériques du DataFrame
     colonnes_numeriques = df.select_dtypes(include=['float64', 'int64'])
 
@@ -511,7 +493,25 @@ elif option == 'Exploration':
     #p= sns.barplot(y=df5['Country name'].tail(10), x=df5['Life Ladder'].tail(10))
     #p.set_title("Top 10 des pays les plus malheureux");
     #st.pyplot(plt)
+       #graphique de densité kernel (KDE)
+    st.write("<b><u>Analyse du bonheur - approche par régions</u></b><br>",unsafe_allow_html=True)
+    st.write("<b><u>Graphique de densité Kernel (KDE)</u></b><br>",unsafe_allow_html=True)
+
+    plt.figure(figsize=(15,8))
+    sns.kdeplot(x=df4["Life Ladder"], hue=df4["Regional indicator"],fill=True ,linewidth=2)
+    plt.axvline(df4["Life Ladder"].mean(),c="black")
+    plt.title("Graphique de densité Kernel (KDE)")
+    st.pyplot(plt)
     
+    st.write("<b><u>Evolution au fil des années</u></b><br>",unsafe_allow_html=True)
+    plt.figure(figsize = (15, 6))
+    plt.title("Evolution du bien-être moyen par région du monde \n")
+    plt.xlim(2005, 2020)
+    evolution_life_ladder = df4.groupby(["Regional indicator", "year"], as_index = False).agg({"Life Ladder" : "median"})
+    evolution_life_ladder["year"] = evolution_life_ladder["year"].astype("float")
+    sns.lineplot(x = "year", y = "Life Ladder", data = evolution_life_ladder, hue = "Regional indicator", errorbar = None)
+    plt.legend(bbox_to_anchor = (1,1))
+    st.pyplot(plt)
 elif option == 'Modélisation':
     
     st.header("Modélisation")
