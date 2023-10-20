@@ -398,7 +398,7 @@ if option == 'Contexte':
 elif option == 'Exploration':
     st.header("Exploration de données et Data visualisation")
 
-    st.write("Description des variables")
+    st.write("<b><u>Description des variables</u></b>",unsafe_allow_html=True)
     # Obtenez la liste des noms des colonnes
     
     colonnes = df.columns[1:].tolist()
@@ -422,6 +422,7 @@ elif option == 'Exploration':
     # Créer le graphique avec Seaborn
     sns.set(style="whitegrid")
     #graphique de densité kernel (KDE)
+    st.write("<b><u>Graphique de densité Kernel (KDE)</u></b><br>",unsafe_allow_html=True)
 
     plt.figure(figsize=(15,8))
     sns.kdeplot(x=df4["Life Ladder"], hue=df4["Regional indicator"],fill=True ,linewidth=2)
@@ -432,6 +433,8 @@ elif option == 'Exploration':
     # Sélectionner uniquement les colonnes numériques du DataFrame
     colonnes_numeriques = df.select_dtypes(include=['float64', 'int64'])
 
+    st.write("<b><u>Matrice de corrélation</u></b><br>",unsafe_allow_html=True)
+
     # Calculer la matrice de corrélation pour les colonnes numériques
     cor = round(colonnes_numeriques.corr(), 2)
     # Créer un heatmap à l'aide de seaborn
@@ -441,6 +444,8 @@ elif option == 'Exploration':
     plt.xticks(rotation=45, ha='right')
     plt.yticks(rotation=0)
     st.pyplot(plt)
+
+    st.write("<b><u>Relations entre variables</u></b><br>",unsafe_allow_html=True)
 
     fig = plt.figure(figsize = (20,8))
     fig.suptitle("Relation entre nos variables les plus fortement corrélées avec la variable cible")
