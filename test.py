@@ -460,20 +460,7 @@ elif option == 'Exploration':
     
     # Affichez le graphique dans Streamlit
     st.pyplot(fig)
-    dfregion = df4
-    from scipy.stats import pearsonr
-    max = pearsonr(dfregion['Life Ladder'],
-     (dfregion['Generosity']).fillna(dfregion['Generosity'].max()))
-    min = pearsonr(dfregion['Life Ladder'],
-     (dfregion['Generosity']).fillna(dfregion['Generosity'].min()))
-    mean = pearsonr(dfregion['Life Ladder'],
-     (dfregion['Generosity']).fillna(dfregion['Generosity'].mean()))
-    mode = pearsonr(dfregion['Life Ladder'],
-     (dfregion['Generosity']).fillna(dfregion['Generosity'].mode()[0]))
     
-    dico = {'min':min, 'max':max, 'mean':mean, 'mode':mode}
-    dx = pd.DataFrame(data=dico, index=['pearson_coeff','p-value'])
-    st.write(dx)
   
     # Sélectionner uniquement les colonnes numériques du DataFrame
     colonnes_numeriques = df.select_dtypes(include=['float64', 'int64'])
