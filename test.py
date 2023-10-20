@@ -428,6 +428,7 @@ elif option == 'Exploration':
     # Créer le graphique avec Seaborn
     sns.set(style="whitegrid")
     #graphique de densité kernel (KDE)
+    st.write("<b><u>Analyse du bonheur - approche par régions</u></b><br>",unsafe_allow_html=True)
     st.write("<b><u>Graphique de densité Kernel (KDE)</u></b><br>",unsafe_allow_html=True)
 
     plt.figure(figsize=(15,8))
