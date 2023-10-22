@@ -815,8 +815,8 @@ elif option == "Prédictions":
     if submit_button:
         selected_model = st.session_state.model_select
         # Filtrer les valeurs non vides
-        user_inputs = {key: value for key, value in user_inputs.items() if value != ''}
-        user_inputs = {clef: float(valeur.replace(',', '.')) for clef, valeur in user_inputs.items()}
+        #user_inputs = {key: value for key, value in user_inputs.items() if value != ''}
+        #user_inputs = {clef: float(valeur.replace(',', '.')) for clef, valeur in user_inputs.items()}
 #        # Dictionnaire pour stocker les valeurs saisies par l'utilisateur
 #        user_inputs = {}
 
@@ -826,6 +826,9 @@ elif option == "Prédictions":
 
   #      # Remplacer les champs vides par np.nan
    #     user_inputs = {key: float(value.replace(',', '.')) if value != '' else np.nan for key, value in user_inputs.items()}
+        # Remplacer les champs vides par np.nan dans st.session_state.user_inputs
+        user_inputs = {key: float(value.replace(',', '.')) if value != '' else np.nan 
+                   for key, value in st.session_state.user_inputs.items()}
 
         # Créer un DataFrame à partir du dictionnaire
         X_new = pd.DataFrame([user_inputs])
