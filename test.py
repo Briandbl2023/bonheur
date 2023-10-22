@@ -708,8 +708,8 @@ elif option == 'Modélisation':
                 st.image(osvr)
                 model.fit(X_trains, y_trains)
                 y_preds = model.predict(X_tests)
-                SVR2.fit(X_trains, y_trains)
-                y_preds2 = model.predict(X_tests)
+                svr2.fit(X_trains, y_trains)
+                y_preds2 = svr2.predict(X_tests)
                 X_2021s = gestion_nan1(X_2021)
                 # Calcul des métriques
                 mae = mean_absolute_error(y_tests, y_preds)
@@ -726,7 +726,7 @@ elif option == 'Modélisation':
                 st.write(f"RMSE: {rmse2}")
                 st.write("<b><u>Prédictions 2021</u></b>",unsafe_allow_html=True)
                 y_pred_2021 = model.predict(X_2021s)
-                y_pred_20212 = SVR2.predict(X_2021s)
+                y_pred_20212 = svr2.predict(X_2021s)
                 # Calcul des métriques
                 mae = mean_absolute_error(y_pred_2021, y_2021)
                 rmse = mean_squared_error(y_pred_2021, y_2021, squared=False)
