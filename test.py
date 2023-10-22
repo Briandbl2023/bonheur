@@ -603,8 +603,8 @@ elif option == 'Modélisation':
                 pourcentage_bonnes_reponses = ((bonnes_reponses/nb_pays_region)*100).sort_values(ascending = False)
                 st.write("<b><u>Taux de réussite par région (exprimé en pourcentage)</u></b>",unsafe_allow_html=True)
                 st.write(pourcentage_bonnes_reponses)
-                st.write(model_name)
-                if model_name == 'Random forest':
+                
+                if model_name == 'Random Forest':
                   st.write("<b><u>Features importance</u></b>",unsafe_allow_html=True)
                   st.write("<ul><li>Variable la plus utilisée : Country name</li><li>Variables les moins utilisées : Healthy et Perceptions of corruption</li><li>Les autres variables sont assez équilibrées</li></ul>",unsafe_allow_html=True)
                 
