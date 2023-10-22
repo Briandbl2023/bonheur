@@ -777,15 +777,21 @@ elif option == 'Modélisation':
                 st.image(oknn)
                 model.fit(X_traink, y_traink)
                 y_predk = model.predict(X_testk)
-
+                knn2.fit(X_trains, y_trains)
+                y_predk2 = knn2.predict(X_tests)
                 # Calcul des métriques
                 mae = mean_absolute_error(y_testk, y_predk)
                 rmse = mean_squared_error(y_testk, y_predk, squared=False)
+                mae2 = mean_absolute_error(y_testk, y_predk2)
+                rmse2 = mean_squared_error(y_testk, y_predk2, squared=False)
                 # Affichage des résultats
                 #st.write(f"Modèle: {model_name}")
                 st.write("<b><u>Modélisation jeu d'entraînement</u></b>",unsafe_allow_html=True)
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
+                st.write("<b><u>Modélisation jeu d'entraînement One Hot</u></b>",unsafe_allow_html=True)
+                st.write(f"MAE: {mae2}")
+                st.write(f"RMSE: {rmse2}")
                 st.write("<b><u>Prédictions 2021</u></b>",unsafe_allow_html=True)
                 y_pred_2021 = model.predict(X_2021)
                 # Calcul des métriques
@@ -795,6 +801,15 @@ elif option == 'Modélisation':
                 
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
+                st.write("<b><u>Prédictions 2021 One Hot</u></b>",unsafe_allow_html=True)
+                y_pred_20212 = knn2.predict(X_2021)
+                # Calcul des métriques
+                mae2 = mean_absolute_error(y_pred_20212, y_2021)
+                rmse2 = mean_squared_error(y_pred_20212, y_2021, squared=False)
+                #RMSE_REVU = rmse_revu(y_pred_2021, y_2021)
+                
+                st.write(f"MAE: {mae2}")
+                st.write(f"RMSE: {rmse2}")
                 #st.write(f"RMSE_REVU: {RMSE_REVU}")
                 #Histogrammes des erreurs
                 plt.figure(figsize = (8,4))
