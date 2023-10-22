@@ -778,7 +778,7 @@ elif option == 'Modélisation':
                 model.fit(X_traink, y_traink)
                 y_predk = model.predict(X_testk)
                 knn2.fit(X_trains, y_trains)
-                y_predk2 = knn2.predict(X_tests)
+                y_predk2 = knn2.predict(X_testk)
                 # Calcul des métriques
                 mae = mean_absolute_error(y_testk, y_predk)
                 rmse = mean_squared_error(y_testk, y_predk, squared=False)
