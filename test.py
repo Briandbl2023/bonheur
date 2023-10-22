@@ -736,6 +736,7 @@ elif option == 'Modélisation':
                 
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
+                st.write("<b><u>Prédictions 2021 One Hot</u></b>",unsafe_allow_html=True)
                 st.write(f"MAE: {mae2}")
                 st.write(f"RMSE: {rmse2}")
                 #st.write(f"RMSE_REVU: {RMSE_REVU}")
