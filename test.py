@@ -810,7 +810,7 @@ elif option == "Prédictions":
         # Dans le formulaire, utilisez le dictionnaire user_inputs de st.session_state
         for column in list(df_ensemble.columns)[2:-1]:
           #if column not in st.session_state.user_inputs:
-            st.session_state.user_inputs[column] = st.text_input(column)
+          st.session_state.user_inputs[column] = st.text_input(column)
 
         # Zones de texte pour les colonnes du DataFrame df_ensemble à partir de la deuxième colonne
         #for column in list(df_ensemble.columns)[2:-1]:
