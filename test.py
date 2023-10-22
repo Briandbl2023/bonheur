@@ -603,6 +603,10 @@ elif option == 'Modélisation':
                 pourcentage_bonnes_reponses = ((bonnes_reponses/nb_pays_region)*100).sort_values(ascending = False)
                 st.write("<b><u>Taux de réussite par région (exprimé en pourcentage)</u></b>",unsafe_allow_html=True)
                 st.write(pourcentage_bonnes_reponses)
+                if model_name == "Random forest":
+                  st.write("<b><u>Features importance</u></b>",unsafe_allow_html=True)
+                  st.write("<ul><li>Variable la plus utilisée : Country name</li><li>Variables les moins utilisées : Healthy et Perceptions of corruption</li><li>Les autres variables sont assez équilibrées</li></ul>",unsafe_allow_html=True)
+                
             elif model_name =='Linear Regression' or model_name == 'Ridge' or model_name == 'Lasso':
                 st.image(plineaire)
                 st.write("<b><u>Optimisation</b></u>",unsafe_allow_html=True)
@@ -719,6 +723,8 @@ elif option == 'Modélisation':
                 pourcentage_bonnes_reponses = ((bonnes_reponses/nb_pays_region)*100).sort_values(ascending = False)
                 st.write("<b><u>Taux de réussite par région (exprimé en pourcentage)</u></b>",unsafe_allow_html=True)
                 st.write(pourcentage_bonnes_reponses)
+                st.write("<b><u>Features importance</u></b>",unsafe_allow_html=True)
+                st.write("<ul><li>Les indicateurs socio économiques sont privilégiés</li><li>Seul l'indicateur Healthy a été relayé au second plan</li><li>Les variables Generosity et Perceptions of corruption étaient les moins corrélées (en accord avec notre exloration)</li></ul>",unsafe_allow_html=True)
             elif model_name =='KNN':
                 st.image(pknn)
                 st.write("<b><u>Optimisation</b></u>",unsafe_allow_html=True)
