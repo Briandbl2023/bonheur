@@ -230,6 +230,23 @@ preprocessork = ColumnTransformer(
         ('hotencoder', region_transformerk, region_cols),
         ('num', numeric_transformerk, numeric_cols)
     ])
+# Prétraitement des colonnes catégorielles
+pays_transformerk2 = Pipeline(steps=[
+    ('targetencoder', OneHotEncoder())
+])
+
+# Prétraitement des colonnes catégorielles
+region_transformerk2 = Pipeline(steps=[
+    ('onehot', OneHotEncoder())
+])
+
+# Combiner les prétraitements numériques et catégoriels
+preprocessork2 = ColumnTransformer(
+    transformers=[
+        ('target', pays_transformerk2, pays_cols),
+        ('hotencoder', region_transformerk2, region_cols),
+        ('num', numeric_transformerk, numeric_cols)
+    ])
 
 #SVR
 df_SVM = df4.sort_values(by = "year", ascending = False)
@@ -264,6 +281,19 @@ preprocessors = ColumnTransformer(
         ('num', numeric_transformers, numeric_cols)
     ])
 
+# Prétraitement des colonnes catégorielles
+pays_transformers2 = Pipeline(steps=[
+    ('targetencoder', OneHotEncoder())
+])
+
+# Combiner les prétraitements numériques et catégoriels
+preprocessors2 = ColumnTransformer(
+    transformers=[
+        ('target', pays_transformers2, pays_cols),
+        ('hotencoder', region_transformers, region_cols),
+        ('num', numeric_transformers, numeric_cols)
+    ])
+
 # Création des pipelines pour les modèles
 tree = make_pipeline(preprocessor, DecisionTreeRegressor(random_state=42, max_depth=6, min_samples_split = 3))
 random = make_pipeline(preprocessor, RandomForestRegressor(random_state=42, max_depth=16, min_samples_split = 7))
@@ -272,6 +302,8 @@ ridge = make_pipeline(preprocessorl, Ridge(alpha = 1, solver = "sag")) #corréla
 lasso = make_pipeline(preprocessorl, Lasso(alpha = 0.1)) #avec un alpha a 0.1, le modèle ressemble à une régression linéaire standard ==> inutile car pas de grosses corélations entre les variables et pas de nécessité de mettre à 0 certaines variables
 svr = make_pipeline(preprocessors, SVR(C = 15))
 knn = make_pipeline(preprocessork, KNeighborsRegressor(n_neighbors = 3, metric = "manhattan")) #optimisation du nombre de voisins
+svr2 = make_pipeline(preprocessors2, SVR(C = 15))
+knn2 = make_pipeline(preprocessork2, KNeighborsRegressor(n_neighbors = 3, metric = "manhattan")) #optimisation du nombre de voisins
 
 # Liste des modèles à entraîner
 models = [
@@ -676,24 +708,36 @@ elif option == 'Modélisation':
                 st.image(osvr)
                 model.fit(X_trains, y_trains)
                 y_preds = model.predict(X_tests)
+                SVR2.fit(X_trains, y_trains)
+                y_preds2 = model.predict(X_tests)
                 X_2021s = gestion_nan1(X_2021)
                 # Calcul des métriques
                 mae = mean_absolute_error(y_tests, y_preds)
                 rmse = mean_squared_error(y_tests, y_preds, squared=False)
+                mae2 = mean_absolute_error(y_tests, y_preds2)
+                rmse2 = mean_squared_error(y_tests, y_preds2, squared=False)
                 # Affichage des résultats
                 #st.write(f"Modèle: {model_name}")
                 st.write("<b><u>Modélisation jeu d'entraînement</u></b>",unsafe_allow_html=True)
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
+                st.write("<b><u>Modélisation jeu d'entraînement One Hot</u></b>",unsafe_allow_html=True)
+                st.write(f"MAE: {mae2}")
+                st.write(f"RMSE: {rmse2}")
                 st.write("<b><u>Prédictions 2021</u></b>",unsafe_allow_html=True)
                 y_pred_2021 = model.predict(X_2021s)
+                y_pred_20212 = SVR2.predict(X_2021s)
                 # Calcul des métriques
                 mae = mean_absolute_error(y_pred_2021, y_2021)
                 rmse = mean_squared_error(y_pred_2021, y_2021, squared=False)
+                mae2 = mean_absolute_error(y_pred_20212, y_2021)
+                rmse2 = mean_squared_error(y_pred_20212, y_2021, squared=False)
                 #RMSE_REVU = rmse_revu(y_pred_2021, y_2021)
                 
                 st.write(f"MAE: {mae}")
                 st.write(f"RMSE: {rmse}")
+                st.write(f"MAE: {mae2}")
+                st.write(f"RMSE: {rmse2}")
                 #st.write(f"RMSE_REVU: {RMSE_REVU}")
                 #Histogrammes des erreurs
                 plt.figure(figsize = (8,4))
