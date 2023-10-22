@@ -801,12 +801,20 @@ elif option == "Prédictions":
             st.session_state.country_select=""
         st.session_state.country_select = st.selectbox('Sélectionnez le pays', sorted(df_ensemble['Country name'].unique()))
 
-        # Dictionnaire pour stocker les valeurs saisies par l'utilisateur
-        user_inputs = {}
+#        # Dictionnaire pour stocker les valeurs saisies par l'utilisateur
+#        user_inputs = {}
+        # Initialisation du dictionnaire user_inputs dans st.session_state si ce n'est pas déjà fait
+        if "user_inputs" not in st.session_state:
+        st.session_state.user_inputs = {}
+
+        # Dans le formulaire, utilisez le dictionnaire user_inputs de st.session_state
+        for column in list(df_ensemble.columns)[2:-1]:
+          #if column not in st.session_state.user_inputs:
+            st.session_state.user_inputs[column] = st.text_input(column)
 
         # Zones de texte pour les colonnes du DataFrame df_ensemble à partir de la deuxième colonne
-        for column in list(df_ensemble.columns)[2:-1]:
-            user_inputs[column] = st.text_input(column)
+        #for column in list(df_ensemble.columns)[2:-1]:
+        #    user_inputs[column] = st.text_input(column)
 
         # Bouton "Entraîner les modèles"
         submit_button = st.form_submit_button('Prédiction Life Ladder')
