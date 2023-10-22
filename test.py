@@ -827,9 +827,10 @@ elif option == "Prédictions":
   #      # Remplacer les champs vides par np.nan
    #     user_inputs = {key: float(value.replace(',', '.')) if value != '' else np.nan for key, value in user_inputs.items()}
         # Remplacer les champs vides par np.nan dans st.session_state.user_inputs
-        user_inputs = {key: float(value.replace(',', '.')) if value != '' else np.nan 
-                   for key, value in st.session_state.user_inputs.items()}
-
+        user_inputs = {
+          key: float(value.replace(',', '.')) if value != '' else np.nan 
+          for key, value in st.session_state.user_inputs.items()
+        }
         # Créer un DataFrame à partir du dictionnaire
         X_new = pd.DataFrame([user_inputs])
        
