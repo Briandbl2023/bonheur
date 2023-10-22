@@ -278,8 +278,8 @@ models = [
 ('Arbre de décision', tree),
 ('Random Forest', random),
 ('Linear Regression', linear),
-('Ridge', ridge),
-('Lasso', lasso),
+#('Ridge', ridge),
+#('Lasso', lasso),
 ('KNN', knn),
 ('SVR', svr)
 ]
