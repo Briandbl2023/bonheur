@@ -805,7 +805,7 @@ elif option == "Prédictions":
 #        user_inputs = {}
         # Initialisation du dictionnaire user_inputs dans st.session_state si ce n'est pas déjà fait
         if "user_inputs" not in st.session_state:
-        st.session_state.user_inputs = {}
+          st.session_state.user_inputs = {}
 
         # Dans le formulaire, utilisez le dictionnaire user_inputs de st.session_state
         for column in list(df_ensemble.columns)[2:-1]:
