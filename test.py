@@ -947,7 +947,7 @@ elif option == "Prédictions":
                 if model_name =='SVR' or model_name == 'BOOST':
                     model.fit(X_trains, y_trains)
                     y_preds = model.predict(X_tests)
-                    X_train_new = gestion_nan1(X_train_new, X_trains)
+                    X_train_new = gestion_nan2(X_train_new, X_trains)
                     y_pred_saisie = model.predict(X_train_new)
                     st.write(y_pred_saisie)
                     st.header("Prédiction : " + str(y_pred_saisie[0]))
