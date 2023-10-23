@@ -772,7 +772,7 @@ elif option == 'Modélisation':
                 st.write("<b><u>Features importance</u></b>",unsafe_allow_html=True)
                 st.write("<ul><li>Les indicateurs socio économiques sont privilégiés</li><li>Seul l'indicateur Healthy a été relayé au second plan</li><li>Les variables Generosity et Perceptions of corruption étaient les moins corrélées (en accord avec notre exloration)</li></ul>",unsafe_allow_html=True)
                 st.write(f"<table><tr><th>Target Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>{mae}</td><td>{rmse}</td></tr><tr><td>Prédictions 2021</td><td>{mae2}</td><td>{rmse2}</td></tr></table>",unsafe_allow_html=True)
-                st.write(f"<table><tr><th>One Hot Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>{mae3}</td><td>{rmse3}</td></tr><tr><td>Prédictions 2021</td><td>{mae4}</td><td>{rmse4}</td></tr></table>",unsafe_allow_html=True)
+                st.write(f"<br><table><tr><th>One Hot Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>{mae3}</td><td>{rmse3}</td></tr><tr><td>Prédictions 2021</td><td>{mae4}</td><td>{rmse4}</td></tr></table>",unsafe_allow_html=True)
             elif model_name =='KNN':
                 st.image(pknn)
                 st.write("<b><u>Optimisation</b></u>",unsafe_allow_html=True)
@@ -844,7 +844,9 @@ elif option == 'Modélisation':
                 st.write(pourcentage_bonnes_reponses)
                 st.write("<b><u>Features importance</u></b>",unsafe_allow_html=True)
                 st.write("<ul><li>Les indicateurs privilégiés sont : Log GDP, Country, Healthy</li><li>Les moins utilisés sont : Generosity et Positive affect</li></ul>",unsafe_allow_html=True)
-            
+                st.write(f"<table><tr><th>Target Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>{mae}</td><td>{rmse}</td></tr><tr><td>Prédictions 2021</td><td>{mae2}</td><td>{rmse2}</td></tr></table>",unsafe_allow_html=True)
+                st.write(f"<br><table><tr><th>One Hot Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>{mae3}</td><td>{rmse3}</td></tr><tr><td>Prédictions 2021</td><td>{mae4}</td><td>{rmse4}</td></tr></table>",unsafe_allow_html=True)
+
 elif option == "Prédictions":
     st.header("Prédictions")
     st.write("Le k-NN et le SVR sont les deux algorithmes qui captent le mieux les relations complexes de notre jeu de données : l’un fait moins de petites erreurs et l’autre fait moins de grosses erreurs.")
