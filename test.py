@@ -172,14 +172,18 @@ def gestion_nan1(X):
   return X_new
 
 def gestion_nan2(X, Y):
-  st.write(X['Regional indicator'])
+  # Fusionner les DataFrames sur la colonne 'Regional indicator'
+  merged_df = pd.merge(X, Y, on='Regional indicator', how='left', suffixes=('', '_y'))
+
+  # Remplacer les valeurs manquantes dans X avec les valeurs de Y
   for colonne in numeric_cols:
-    if 'Regional indicator' in X.columns:
-      X[colonne] = X[colonne].fillna(Y[Y['Regional indicator'] == 'South Asia'][colonne].median())#X['Regional indicator']][colonne].median())
+    X[colonne] = X[colonne].fillna(merged_df[colonne + '_y'].median())
 
-  X_new = X #.drop("Regional indicator", axis = 1)
+  # Supprimer les colonnes ajoutées lors de la fusion si nécessaire
+  X.drop(columns=[colonne + '_y' for colonne in numeric_cols], inplace=True)
 
-  return X_new
+
+  return X
 
 X_trainl = gestion_nan1(X_trainl)
 X_testl = gestion_nan1(X_testl)
