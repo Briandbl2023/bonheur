@@ -604,7 +604,7 @@ elif option == 'Modélisation':
                 mae2 = mean_absolute_error(y_pred_2021, y_2021)
                 rmse2 = mean_squared_error(y_pred_2021, y_2021, squared=False)
                 #RMSE_REVU = rmse_revu(y_pred_2021, y_2021)
-                st.write(f"<table><tr><th>Target Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>round({mae},4)</td><td>round({rmse},4)</td></tr><tr><td>Prédictions 2021</td><td>round({mae2},4)</td><td>round({rmse2},4)</td></tr></table>",unsafe_allow_html=True)
+                st.write(f"<table><tr><th>Target Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>{round(mae,4)}</td><td>{round(rmse,4)}</td></tr><tr><td>Prédictions 2021</td><td>{round(mae2,4)}</td><td>{round(rmse2,4)}</td></tr></table>",unsafe_allow_html=True)
 #                st.write(f"MAE: {mae}")
 #                st.write(f"RMSE: {rmse}")
                 #st.write(f"RMSE_REVU: {RMSE_REVU}")
@@ -675,8 +675,7 @@ elif option == 'Modélisation':
  #               st.write(f"MAE: {mae}")
   #              st.write(f"RMSE: {rmse}")
                 #st.write(f"RMSE_REVU: {RMSE_REVU}")
-                st.write(f"<table><tr><th>Target Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>round({mae},4)</td><td>round({rmse},4)</td></tr><tr><td>Prédictions 2021</td><td>round({mae2},4)</td><td>round({rmse2},4)</td></tr></table>",unsafe_allow_html=True)
-
+                st.write(f"<table><tr><th>Target Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>{round(mae,4)}</td><td>{round(rmse,4)}</td></tr><tr><td>Prédictions 2021</td><td>{round(mae2,4)}</td><td>{round(rmse2,4)}</td></tr></table>",unsafe_allow_html=True)
                 #Histogrammes des erreurs
                 plt.figure(figsize = (8,4))
                 err_hist = np.abs(y_2021 - y_pred_2021)
@@ -745,8 +744,8 @@ elif option == 'Modélisation':
           #      st.write(f"MAE: {mae4}")
            #     st.write(f"RMSE: {rmse4}")
                 #st.write(f"RMSE_REVU: {RMSE_REVU}")
-                st.write(f"<table><tr><th>Target Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>round({mae},4)</td><td>round({rmse},4)</td></tr><tr><td>Prédictions 2021</td><td>round({mae2},4)</td><td>round({rmse2},4)</td></tr></table>",unsafe_allow_html=True)
-                st.write(f"<br><table><tr><th>One Hot Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>round({mae3},4)</td><td>round({rmse3},4)</td></tr><tr><td>Prédictions 2021</td><td>round({mae4},4)</td><td>round({rmse4},4)</td></tr></table>",unsafe_allow_html=True)
+                st.write(f"<table><tr><th>Target Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>{round(mae,4)}</td><td>{round(rmse,4)}</td></tr><tr><td>Prédictions 2021</td><td>{round(mae2,4)}</td><td>{round(rmse2,4)}</td></tr></table>",unsafe_allow_html=True)
+                st.write(f"<br><table><tr><th>One Hot Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>{round(mae3,4)}</td><td>{round(rmse3,4)}</td></tr><tr><td>Prédictions 2021</td><td>{round(mae4,4)}</td><td>{round(mse4,4)}</td></tr></table>",unsafe_allow_html=True)
                 #Histogrammes des erreurs
                 plt.figure(figsize = (8,4))
                 err_hist = np.abs(y_2021 - y_pred_2021)
@@ -816,8 +815,8 @@ elif option == 'Modélisation':
                 mae4 = mean_absolute_error(y_pred_20212, y_2021)
                 rmse4 = mean_squared_error(y_pred_20212, y_2021, squared=False)
                 #RMSE_REVU = rmse_revu(y_pred_2021, y_2021)                
-                st.write(f"<table><tr><th>Target Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>round({mae},4)</td><td>round({rmse},4)</td></tr><tr><td>Prédictions 2021</td><td>round({mae2},4)</td><td>round({rmse2},4)</td></tr></table>",unsafe_allow_html=True)
-                st.write(f"<br><table><tr><th>One Hot Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>round({mae3},4)</td><td>round({rmse3},4)</td></tr><tr><td>Prédictions 2021</td><td>round({mae4},4)</td><td>round({rmse4},4)</td></tr></table>",unsafe_allow_html=True)
+                st.write(f"<table><tr><th>Target Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>{round(mae,4)}</td><td>{round(rmse,4)}</td></tr><tr><td>Prédictions 2021</td><td>{round(mae2,4)}</td><td>{round(rmse2,4)}</td></tr></table>",unsafe_allow_html=True)
+                st.write(f"<br><table><tr><th>One Hot Encoder</th><th>MAE</th><th>RMSE</th></tr><tr><td>Jeu d'entrainement</td><td>{round(mae3,4)}</td><td>{round(rmse3,4)}</td></tr><tr><td>Prédictions 2021</td><td>{round(mae4,4)}</td><td>{round(mse4,4)}</td></tr></table>",unsafe_allow_html=True)
 
                 #                st.write(f"MAE: {mae4}")
 #                st.write(f"RMSE: {rmse4}")
