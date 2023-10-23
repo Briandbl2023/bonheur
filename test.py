@@ -175,7 +175,7 @@ def gestion_nan2(X, Y):
   
 # Créer un dictionnaire de médianes par région à partir de Y
   median_dict = Y.set_index('Regional indicator')[numeric_cols].to_dict()
-  st.write(median_dict)
+  #st.write(median_dict)
 # Remplacer les valeurs manquantes dans X en utilisant les médianes correspondantes
   for col in numeric_cols:
     if pd.isna(X[col].values[0]):
