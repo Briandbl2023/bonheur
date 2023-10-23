@@ -175,7 +175,7 @@ def gestion_nan2(X, Y):
   st.write(X['Regional indicator'])
   for colonne in numeric_cols:
     if 'Regional indicator' in X.columns:
-      X[colonne] = X[colonne].fillna(Y[Y['Regional indicator'] == X['Regional indicator']][colonne].median())
+      X[colonne] = X[colonne].fillna(Y[Y['Regional indicator'] == 'South Asia'][colonne].median())#X['Regional indicator']][colonne].median())
 
   X_new = X #.drop("Regional indicator", axis = 1)
 
