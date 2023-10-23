@@ -171,6 +171,15 @@ def gestion_nan1(X):
 
   return X_new
 
+def gestion_nan2(X, Y):
+  for colonne in numeric_cols:
+    if 'Regional indicator' in X.columns:
+      X[colonne] = X[colonne].fillna(Y[Y['Regional indicator'] == X['Regional indicator']][colonne].median())
+
+  X_new = X #.drop("Regional indicator", axis = 1)
+
+  return X_new
+
 X_trainl = gestion_nan1(X_trainl)
 X_testl = gestion_nan1(X_testl)
 
@@ -938,7 +947,7 @@ elif option == "Prédictions":
                 if model_name =='SVR' or model_name == 'BOOST':
                     model.fit(X_trains, y_trains)
                     y_preds = model.predict(X_tests)
-                    X_train_new = gestion_nan1(X_train_new)
+                    X_train_new = gestion_nan1(X_train_new, X_trains)
                     y_pred_saisie = model.predict(X_train_new)
                     st.write(y_pred_saisie)
                     st.header("Prédiction : " + str(y_pred_saisie[0]))
