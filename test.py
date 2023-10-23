@@ -473,25 +473,8 @@ elif option == 'Exploration':
       st.write(f'Description de {colonne_selectionnee}')
       st.write(df[colonne_selectionnee].describe())
     
-    st.write("<b><u>Variable Generosity</u></b><br>",unsafe_allow_html=True)
-
+  
     sns.set(style="whitegrid")
-    fig, ax = plt.subplots(1, 3, figsize=(20, 8))
-    fig.suptitle("Focus sur la variable Generosity")
-    
-    ax[0].set_title('Sa représentation par région')
-    sns.barplot(x='Regional indicator', y='Generosity', data=df4, ax=ax[0])
-    ax[0].tick_params(axis='x', rotation=45)
-    
-    ax[1].set_title('Sa représentation par année')
-    sns.barplot(x='year', y='Generosity', data=df4, ax=ax[1])
-    ax[1].tick_params(axis='x', rotation=45)
-    
-    # Supprimez le subplot vide
-    ax[2].axis('off')
-    
-    # Affichez le graphique dans Streamlit
-    st.pyplot(fig)
     
          #graphique de densité kernel (KDE)
     st.write("<b><u>Analyse du bonheur - approche par régions</u></b><br>",unsafe_allow_html=True)
