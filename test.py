@@ -172,21 +172,12 @@ def gestion_nan1(X):
   return X_new
 
 def gestion_nan2(X, Y):
-  X.columns = X.columns.str.strip()  # Supprimer les espaces en début et fin de nom de colonne
-  Y.columns = Y.columns.str.strip()
+  
+  median_dict = Y.groupby('Regional indicator')[numeric_cols].median().to_dict()
 
-  # Fusionner les DataFrames sur la colonne 'Regional indicator' en respectant la condition
-  merged_df = pd.merge(X, Y, on='Regional indicator', how='left')
-  merged_df = merged_df[merged_df['Country name_x'] == merged_df['Country name_y']]  # Appliquer la condition
-
-  # Réinitialiser l'index et supprimer l'ancien index
-  merged_df.reset_index(drop=True, inplace=True)
-  st.write(merged_df)
-  for colonne in numeric_cols:
-    X[colonne] = X[colonne].fillna(merged_df[colonne + '_y'].median())
-
-  # Supprimer les colonnes ajoutées lors de la fusion si nécessaire
-  X.drop(columns=[colonne + '_y' for colonne in numeric_cols], inplace=True)
+  # Remplacer les valeurs manquantes dans X en utilisant le dictionnaire de médianes
+  for col in numeric_cols:
+    X[col] = X.apply(lambda row: median_dict[row['Regional indicator']][col] if pd.isna(row[col]) else row[col], axis=1)
 
 
   return X
