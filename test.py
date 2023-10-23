@@ -174,7 +174,7 @@ def gestion_nan1(X):
 def gestion_nan2(X, Y):
   # Fusionner les DataFrames sur la colonne 'Regional indicator'
   merged_df = pd.merge(X, Y, on='Regional indicator', how='left', suffixes=('', '_y'))
-
+  st.write(merged_df.columns)
   # Remplacer les valeurs manquantes dans X avec les valeurs de Y
   for colonne in numeric_cols:
     X[colonne] = X[colonne].fillna(merged_df[colonne + '_y'].median())
