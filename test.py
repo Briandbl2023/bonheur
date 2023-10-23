@@ -172,12 +172,12 @@ def gestion_nan1(X):
   return X_new
 
 def gestion_nan2(X, Y):
-  # Nettoyer les noms des colonnes dans X et Y
   X.columns = X.columns.str.strip()  # Supprimer les espaces en début et fin de nom de colonne
   Y.columns = Y.columns.str.strip()
 
-  # Fusionner les DataFrames sur la colonne 'Regional indicator'
+  # Fusionner les DataFrames sur la colonne 'Regional indicator' en respectant la condition
   merged_df = pd.merge(X, Y, on='Regional indicator', how='left')
+  merged_df = merged_df[merged_df['Country name'] == merged_df['Country name_y']]  # Appliquer la condition
 
   # Réinitialiser l'index et supprimer l'ancien index
   merged_df.reset_index(drop=True, inplace=True)
