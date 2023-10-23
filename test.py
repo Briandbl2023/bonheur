@@ -177,7 +177,7 @@ def gestion_nan2(X, Y):
 
   # Fusionner les DataFrames sur la colonne 'Regional indicator' en respectant la condition
   merged_df = pd.merge(X, Y, on='Regional indicator', how='left')
-  merged_df = merged_df[merged_df['Country name_X'] == merged_df['Country name_y']]  # Appliquer la condition
+  merged_df = merged_df[merged_df['Country name_x'] == merged_df['Country name_y']]  # Appliquer la condition
 
   # Réinitialiser l'index et supprimer l'ancien index
   merged_df.reset_index(drop=True, inplace=True)
