@@ -172,21 +172,21 @@ def gestion_nan1(X):
   return X_new
 
 def gestion_nan2(X, Y):
-  # Nettoyer les noms des colonnes dans X et Y
-  X.columns = X.columns.str.strip()  # Supprimer les espaces en début et fin de nom de colonne
-  Y.columns = Y.columns.str.strip()
+    # Nettoyer les noms des colonnes dans X et Y
+    X.columns = X.columns.str.strip()  # Supprimer les espaces en début et fin de nom de colonne
+    Y.columns = Y.columns.str.strip()
 
-  # Fusionner les DataFrames sur la colonne 'Regional indicator'
-  merged_df = pd.merge(X, Y, on='Regional indicator', how='left')
+    # Fusionner les DataFrames sur la colonne 'Regional indicator'
+    merged_df = pd.merge(X, Y, on='Regional indicator', how='left')
 
-  # Réinitialiser l'index et supprimer l'ancien index
-  merged_df.reset_index(drop=True, inplace=True)
-  st.write(merged_df)
+    # Réinitialiser l'index et supprimer l'ancien index
+    merged_df.reset_index(drop=True, inplace=True)
+    st.write(merged_df)
     for colonne in numeric_cols:
       X[colonne] = X[colonne].fillna(merged_df[colonne + '_y'].median())
 
-  # Supprimer les colonnes ajoutées lors de la fusion si nécessaire
-  X.drop(columns=[colonne + '_y' for colonne in numeric_cols], inplace=True)
+    # Supprimer les colonnes ajoutées lors de la fusion si nécessaire
+    X.drop(columns=[colonne + '_y' for colonne in numeric_cols], inplace=True)
 
 
   return X
