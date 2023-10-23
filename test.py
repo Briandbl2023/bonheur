@@ -806,7 +806,7 @@ elif option == 'Modélisation':
                 
  #               st.write(f"MAE: {mae3}")
  #               st.write(f"RMSE: {rmse3}")
-                st.write("<b><u>Prédictions 2021 One Hot</u></b>",unsafe_allow_html=True)
+     #           st.write("<b><u>Prédictions 2021 One Hot</u></b>",unsafe_allow_html=True)
                 y_pred_20212 = knn2.predict(X_2021)
                 # Calcul des métriques
                 mae4 = mean_absolute_error(y_pred_20212, y_2021)
