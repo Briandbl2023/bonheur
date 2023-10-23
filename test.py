@@ -493,7 +493,17 @@ elif option == 'Exploration':
     # Affichez le graphique dans Streamlit
     st.pyplot(fig)
     
-  
+         #graphique de densité kernel (KDE)
+    st.write("<b><u>Analyse du bonheur - approche par régions</u></b><br>",unsafe_allow_html=True)
+    st.write("<b><u>Graphique de densité Kernel (KDE)</u></b><br>",unsafe_allow_html=True)
+
+    plt.figure(figsize=(15,8))
+    sns.kdeplot(x=df4["Life Ladder"], hue=df4["Regional indicator"],fill=True ,linewidth=2)
+    plt.axvline(df4["Life Ladder"].mean(),c="black")
+    plt.title("Graphique de densité Kernel (KDE)")
+    st.pyplot(plt)
+        
+
     # Sélectionner uniquement les colonnes numériques du DataFrame
     colonnes_numeriques = df.select_dtypes(include=['float64', 'int64'])
 
@@ -553,15 +563,25 @@ elif option == 'Exploration':
     #p= sns.barplot(y=df5['Country name'].tail(10), x=df5['Life Ladder'].tail(10))
     #p.set_title("Top 10 des pays les plus malheureux");
     #st.pyplot(plt)
-       #graphique de densité kernel (KDE)
-    st.write("<b><u>Analyse du bonheur - approche par régions</u></b><br>",unsafe_allow_html=True)
-    st.write("<b><u>Graphique de densité Kernel (KDE)</u></b><br>",unsafe_allow_html=True)
+    st.write("<b><u>Variable Generosity</u></b><br>",unsafe_allow_html=True)
 
-    plt.figure(figsize=(15,8))
-    sns.kdeplot(x=df4["Life Ladder"], hue=df4["Regional indicator"],fill=True ,linewidth=2)
-    plt.axvline(df4["Life Ladder"].mean(),c="black")
-    plt.title("Graphique de densité Kernel (KDE)")
-    st.pyplot(plt)
+    sns.set(style="whitegrid")
+    fig, ax = plt.subplots(1, 3, figsize=(20, 8))
+    fig.suptitle("Focus sur la variable Generosity")
+    
+    ax[0].set_title('Sa représentation par région')
+    sns.barplot(x='Regional indicator', y='Generosity', data=df4, ax=ax[0])
+    ax[0].tick_params(axis='x', rotation=45)
+    
+    ax[1].set_title('Sa représentation par année')
+    sns.barplot(x='year', y='Generosity', data=df4, ax=ax[1])
+    ax[1].tick_params(axis='x', rotation=45)
+    
+    # Supprimez le subplot vide
+    ax[2].axis('off')
+    
+    # Affichez le graphique dans Streamlit
+    st.pyplot(fig)
     
     
 elif option == 'Modélisation':
