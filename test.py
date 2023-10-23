@@ -173,11 +173,14 @@ def gestion_nan1(X):
 
 def gestion_nan2(X, Y):
   
-  median_dict = Y.groupby('Regional indicator')[numeric_cols].median().to_dict()
+# Créer un dictionnaire de médianes par région à partir de Y
+  median_dict = Y.set_index('Regional indicator')[numeric_cols].to_dict()
 
-  # Remplacer les valeurs manquantes dans X en utilisant le dictionnaire de médianes
+# Remplacer les valeurs manquantes dans X en utilisant les médianes correspondantes
   for col in numeric_cols:
-    X[col] = X.apply(lambda row: median_dict[row['Regional indicator']][col] if pd.isna(row[col]) else row[col], axis=1)
+    if pd.isna(X[col].values[0]):
+      region = X['Regional indicator'].values[0]
+      X[col] = median_dict[col][region]
 
 
   return X
