@@ -770,7 +770,7 @@ elif option == 'Modélisation':
                 st.write("<b><u>Taux de réussite par région (exprimé en pourcentage)</u></b>",unsafe_allow_html=True)
                 st.write(pourcentage_bonnes_reponses)
                 st.write("<b><u>Features importance</u></b>",unsafe_allow_html=True)
-                st.write("<ul><li>Les indicateurs socio économiques sont privilégiés</li><li>Seul l'indicateur Healthy a été relayé au second plan</li><li>Les variables Generosity et Perceptions of corruption étaient les moins corrélées (en accord avec notre exloration)</li></ul>",unsafe_allow_html=True)
+                st.write("<ul><li>Les indicateurs privilégiés sont : Log GDP, Country, Healthy</li><li>Les moins utilisés sont : Generosity et Positive affect</li></ul>",unsafe_allow_html=True)
             elif model_name =='KNN':
                 st.image(pknn)
                 st.write("<b><u>Optimisation</b></u>",unsafe_allow_html=True)
@@ -840,7 +840,9 @@ elif option == 'Modélisation':
                 pourcentage_bonnes_reponses = ((bonnes_reponses/nb_pays_region)*100).sort_values(ascending = False)
                 st.write("<b><u>Taux de réussite par région (exprimé en pourcentage)</u></b>",unsafe_allow_html=True)
                 st.write(pourcentage_bonnes_reponses)
-
+                st.write("<b><u>Features importance</u></b>",unsafe_allow_html=True)
+                st.write("<ul><li>Les indicateurs socio économiques sont privilégiés</li><li>Seul l'indicateur Healthy a été relayé au second plan</li><li>Les variables Generosity et Perceptions of corruption étaient les moins corrélées (en accord avec notre exloration)</li></ul>",unsafe_allow_html=True)
+            
 elif option == "Prédictions":
     st.header("Prédictions")
     st.write("Le k-NN et le SVR sont les deux algorithmes qui captent le mieux les relations complexes de notre jeu de données : l’un fait moins de petites erreurs et l’autre fait moins de grosses erreurs.")
