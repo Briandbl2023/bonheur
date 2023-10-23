@@ -777,7 +777,7 @@ elif option == 'Modélisation':
                 st.image(oknn)
                 model.fit(X_traink, y_traink)
                 y_predk = model.predict(X_testk)
-                knn2.fit(X_trains, y_trains)
+                knn2.fit(X_traink, y_traink)
                 y_predk2 = knn2.predict(X_testk)
                 # Calcul des métriques
                 mae = mean_absolute_error(y_testk, y_predk)
